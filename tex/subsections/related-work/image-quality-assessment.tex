@@ -1,0 +1,221 @@
+\subsection{Image sharpness measure for blurred images in frequency domain}
+
+\citeonline{kanjar2013image} proposed a Fourier Transform based algorithm to compute an image quality measure of blurred images. This approach is an attempt to quantify sharpness considering the fact that the amount of high frequency components in a blurred image is smaller than in a sharper one. The algorithm consists of the following, considering $f(x,y)$ as the input image of size $M \times N$:
+
+\begin{enumerate}[label=\Roman*.]
+    \item - Compute the Fourier Transform representation of image $f(x,y)$, denoted by $\hat{f}(m,n)$;
+    
+    \item - Shift the origin of the Fourier coefficients to the center of the matrix;
+    
+    \item - For each Fourier coefficient, compute its magnitude and assign to a matrix $A(m,n)$
+    
+    \begin{equation*}
+        A(m,n) = \sqrt{
+            [\operatorname{Re}{(\hat{f}(m,n))}]^{2}
+            + [\operatorname{Im}{(\hat{f}(m,n))}]^{2}
+          }
+    \end{equation*}
+    
+    \item  Calculate the maximum value $m$ of $A(m,n)$; 
+    
+    \item Calculate the number $t$ of pixels in $\hat{f}$ where $\hat{f} > m /1000$;
+    
+    \item Calculate the image quality measure $FM = t /M.N$.
+\end{enumerate}
+
+\subsection{A no-reference perceptual blur metric}
+
+A very simple but efficient perceptual blur metric was proposed in
+\cite{marziliano2002noreference}. It is also based on the fact that high frequency components are attenuated in a blurred image. Considering that blur affects the edges and texture regions of an image, the technique attempts to measure how scattered they are. 
+
+First, an edge detector is applied to the luminance component of the image (equivalent to a grayscale-converted image) in order to find the vertical edges. Each row of the image is scanned for pixels corresponding to edges, and the width of each edge is computed by the difference of local extrema closest to the edge. This measure is done for each edge location, and the global blur measure is the average of all computed widths.
+
+\subsection{A No-Reference Objective Image Sharpness Metric Based on the Notion of Just Noticeable Blur (JNB)}
+\label{subsec:jnb_approach}
+
+The authors in \cite{ferzli2009noreference} utilize a psychometric model, i.e. the assignment of numerical representations to subjective tests to create an perceptual sharpness metric. The subjective tests are made concerning the \emph{Just Noticeable Blur} (JNB) concept, which is the minimum amount of perceived blurriness around an edge given a contrast higher than the limit of contrast between background and foreground that is possible to notice. 
+
+The subjective test experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that is treated as the probability of detecting blur in function of the standard deviation $\sigma$. The denoted by equation \ref{eqn:psychometric_jnb}:
+
+\begin{equation}
+\label{eqn:psychometric_jnb}
+P = 1 - \exp{\left( - \left| \frac{\sigma}{\sigma_{JNB} } \right|^{\beta} \right)}
+\end{equation}
+
+\noindent where $\sigma$ is the standard deviation of the Gaussian blur filter and corresponds to the blur strength at the considered edge, $\sigma_{JNB}$ is the standard deviation corresponding to the JNB threshold. The parameters $\sigma_{JNB}$ and $\beta$ are chosen by means of a least-square fitting to approximate the probabilities $P$ with the answers from volunteers. The $\sigma_{JNB}$ value is adjusted to obtain $P = 63\%$.
+
+First and foremost, the image is divided in blocks of dimensions $64 \times 64$. Let each block and the image be denoted by $R$ and $I$, respectively. All the blocks go through a Sobel edge detection process, and are later classified as “smooth” or “edge” using a threshold. If the number of edge pixels in a block is greater than $0.2\%$ of the total number of pixels in it, than it is classified as an edge block. The smooth blocks are not processed since they are not relevant in terms of blur. Than, for each block the horizontal edge pixels are retrieved and the width of each edge is computed. With this in hands, the perceptual blur metric for each block $R_{b}$ is described by equation 
+
+\begin{equation}
+\label{eqn:perceptual_blur_metric}
+D_{R_{b}} = \left(
+\sum_{e_{i} \in R_{b}}
+\left|
+\frac{w(e_{i})}{w_{JNB}(e_{i})}
+\right|_{\beta}
+\right)^{\frac{1}{\beta}}
+\end{equation}
+
+\noindent where $w_{JNB}(e_{i})$ is the JNB width relative to the contrast of block $R_{b}$ for all edges $e_{i}$. The parameter $\beta$ is empirically determined to be $3.4 \leq \beta \leq 3.8$ with median $3.6$. Thus, the general blur measure concerning the whole image corresponds to the probability of all blocks being blurred, given by
+
+\begin{equation}
+\label{eqn:p_blur}
+    P_{blur}(I) = 1 - \Pi_{R_{b} \in I}
+    \left(
+    1 - P_{blur}(R_{b})
+    \right)
+\end{equation}
+
+\noindent where $P_{blur}(R_{b})$ may be substituted by $1 - \exp{\left(-D_{R_{b}}^{\beta} \right)}$, which results in
+
+\begin{align}
+\label{eqn:p_blur_final}
+    P_{blur}(I) = 1 - \exp{\left(-D^{\beta}\right)}
+&&
+D = \left(
+    \sum_{R_{b}}
+    \left|D_{R_{b}}
+    \right|^{\beta}
+    \right)^{\frac{1}{\beta}}
+\end{align}
+
+\noindent Finally, $D$ from equation \ref{eqn:p_blur_final} is then normalized by the amount of blocks an represents the final image quality index.
+
+\subsection{A No-Reference Image Blur Metric Based on the Cumulative Probability of Blur Detection (CPBD)}
+
+A blurriness metric that extends the approach described in \ref{subsec:jnb_approach} was proposed in \cite{narvekar2011noreference}. It is based on the cumulative probability of blur detection (CPBD), which applies the same psychometric function framework from JNB. The $w_{JNB}$ value is defined as 5 if the contrast is less or equal to 50 and 3 otherwise. The metric explores the normalized histogram of the probability of blur detection from the whole image, where CPBD is actually the percentage of edges at which blur is not likely to be detected.
+
+First, the horizontal edges from the image are detected, also divided into blocks of $64 \times 64$ and classified as edge blocks or sharp blocks with the same threshold as in \citeonline{ferzli2009noreference}. The probability of detection blur for and edge $e_{i}$ is computed with the equation \ref{eqn:cpbd_jnb}
+
+\begin{equation}
+\label{eqn:cpbd_jnb}
+\begin{split}
+    P_{BLUR} &= P_{BLUR}(e_{i})\\
+    &= 1 - \exp{
+    \left(
+        - \left|
+            \frac{w(e_{i}}{w_{JNB}(e_{i})}
+        \right|^\beta
+    \right)}
+\end{split}
+\end{equation}
+
+\noindent Then, the cumulative probability of blur detection is computed from the probability density function of equation \ref{eqn:cpbd_jnb}, and may be described as
+
+\begin{equation}
+\label{eqn:cpbd}
+\begin{split}
+    CPBD &= P(P_{BLUR} \leq P_{JNB})\\
+    &=\sum_{P_{BLUR} = 0}^{P_{BLUR} = P_{JNB}}P(P_{BLUR})
+\end{split}
+\end{equation}
+
+\noindent Thus, greater values for the CPBD metric mean sharper images.
+
+
+\subsection{S3: A Spectral and Spatial Measure of Local Perceived Sharpness in Natural Images}
+
+\citeonline{vu2012s3} proposed one technique to assess image quality that explores both spatial and spectral information from the image. The denomination $S_{3}$ represents the combination of $S_{1}$, that denotes the spectral measure of sharpness and $S_{2}$, which the authors denote as the spatial measure of sharpness. The first step is to convert the RGB image to the grayscale color space with weights $0.2989$, $0.5870$ and $0.1140$ for the red, green and blue channels, respectively. The grayscale image is then divided into blocks $\mathbf{x}$ of dimensions $m \times m$ pixels and an overlap $d$ around each neighbor block.
+
+In order to compute the $S_{1}(\mathbf{x})$ measure, the first step is to compute the luminance contrast of each $\mathbf{x}$ block, denoted by $CR$ with the equation
+
+\begin{align}
+\label{eqn:luminance_contrast}
+CR(\mathbf{x}) = l(\mathbf{x}) = \left(b + k\mathbf{x}\right)^{\gamma}
+&&
+b = 0.7656;\; k = 0.0364;\; \gamma = 2.2
+\end{align}
+
+\begin{align*}
+\label{eqn:contrast_constraints}
+CR(\mathbf{x}) = 0 \iff
+    \begin{cases}
+        max(l(\mathbf{x})) - min(l(x)) \leq T_{1}\\
+        \mu_{1} \leq T_{2}    
+    \end{cases}
+&&
+T_{1} = 5;\; T_{2}= 2
+\end{align*}
+
+\vspace{0.1in}
+
+\noindent The $S_{1}$ measure for a block is set to zero if the contrast is zero. For the blocks with $CR > 0$, the magnitude spectrum is computed from the two-dimensional DFT, which is defined as the modulus of each complex coefficient and represents how much each frequency is present in the image and is represented here as $mag(\hat{\mathbf{x}})$. Then, the slope of the magnitude spectrum denoted by $\alpha_{\mathbf{x}}$ is the slope of a line in the standard form $ax + b$ and is obtained by linear regression with
+
+\begin{equation}
+\label{eqn:slope_of_magnitude}
+\alpha_{\mathbf{x}} = \arg \min_{\alpha} \left\lVert \beta \hat{\mathbf{x}}^{-\alpha} -  mag(\hat{\mathbf{x}}) \right\rVert^{2}_{2}
+\end{equation}
+
+\noindent where the $L_{2}$ norm is taken over all frequencies. From this framework, $S_{1}(\mathbf{x})$ is described by
+
+\begin{equation}
+\label{eqn:sigmoid_s1}
+S_{1}(\mathbf{x}) = 1 - \frac{1}{1 + e^{\tau_{1}
+(\alpha_{\mathbf{x}} - \tau_{2})}}
+\end{equation}
+
+\noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. Equation \ref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information.
+
+$S_{2}$ incorporates the spatial information by analysing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
+
+\begin{equation}
+\label{eqn:total_variation}
+v(\mathbf{x}) = \frac{1}{255}\sum_{i,j}\left|x_{i} - x_{j}\right|
+\end{equation}
+
+\noindent where $x_{i}$ and $x_{j}$ are 8-neighbors in $\mathbf{x}$. The TV provides a good representation of the absolute differences in each block; this implies that the contrast information is consequently described well. The larger the TV index is, the higher the contrast in the block. The $S_{2}$ map is then computed as
+
+\begin{equation}
+\label{eqn:spatial_s2}
+S_{2} = \frac{1}{4} \max_{a \in \mathbf{x}} v(a)
+\end{equation}
+
+\noindent where $a$ is a $2 \times 2$ block of $\mathbf{x}$. Each $x$ is of dimensions $8 \times 8$ and the overlap is $d = 4$. The final map for the whole image is the sum of all indices for each of the blocks.
+
+Finally, let $\mathbf{X}$ denote the set of all blocks which form the image. The $S_{3}$ image quality index is the weighted geometric mean defined by
+
+\begin{equation}
+\label{eqn:s3_index}
+S_{3}(\mathbf{X}) = S_{1}(\mathbf{X})^{\eta} S_{2}(\mathbf{X})^{1 - \eta}
+\end{equation}
+
+\noindent where $0 \leq \eta \leq 1$, and $\eta = 0.5$ is the best empirically obtained value for the parameter.
+
+\subsection{A Fast Approach for No-Reference Image Sharpness Assessment Based on Maximum Local Variation}
+
+\citeonline{bahrami2014fast} proposed the \sigla{MLV}{Maximum Local Variation} metric for image sharpness assessment. The MLV metric improves the idea of the total variation measure. Instead of computing the variations of pixel values among 8-neighborhoods, the authors propose the maximum among all differences in a neighborhood, represented by $\psi$ described by
+
+\begin{align}
+\label{eqn:mlv}
+\psi(f(i,j)) = \max(f(i,j) - f(x,y))
+&&
+x = \{i - 1, i, i + 1\};\;\;
+y = \{j - 1, j, j + 1\}
+\end{align}
+
+\noindent where $f(x,y)$ with the bounds for $x$ and $y$ denoted in equation \ref{eqn:mlv} are the 8-neighbors of the pixel $f(i,j)$. In a nutshell, the metric finds the maximum among the 8-neighborhood of a pixel, concerning the $\ell_{1}$ norm as a distance. With this setup, the algorithm begins with the grayscale conversion of an image of dimensions $M \times N$. The neighborhoods are $3 \times 3$ blocks along the image and the MLV is computed for all pixels, which results in a map $\Psi(f)$ given by
+
+\begin{equation}
+\label{eqn:mlv_matrix}
+\Psi(f) =
+    \begin{pmatrix}
+        \psi(f(1,1)) & \cdots &  \psi(f(1,N))\\
+        \vdots & \ddots & \vdots\\
+        \psi(f(M,1)) & \cdots & \psi(f(M,N))
+    \end{pmatrix}
+\end{equation}
+
+\noindent The next step is to apply a statistical technique to analyse how the distribution of $\Psi$ behaves when the image is sharp or blurred. For the sharp regions, i.e. high MLV values or black content, the distribution is closer to hyper-laplacian; for smoother and blurred regions, the distribution is closer to Gaussian. Therefore, the authors chose to parametrize the MLV with a \sigla{GGD}{Generalized Gaussian Distribution}, which covers the Gaussian, the laplacian and hyper-laplacian distributions and is denoted as
+
+\begin{equation}
+\label{eqn:GGD_distribution}
+GGD(\Psi(f); \mu, \gamma, \sigma) =
+\left(
+    \frac{\gamma}{2 \sigma \Gamma \left( \frac{1}{\gamma} \right) \sqrt{\frac{\Gamma \left( \frac{1}{\gamma} \right)}{\Gamma \left( \frac{3}{\gamma} \right)}}}
+\right)
+e^{- \left(
+        \frac{\Psi(f) - \mu}{\sigma \sqrt{\frac{\Gamma \left( \frac{1}{\gamma} \right)}{\Gamma \left( \frac{3}{\gamma} \right)}}}
+    \right)^{\gamma}}
+\end{equation}
+
+\noindent where $\mu$ is the mean, $\sigma$ is the standard deviation, $\gamma$ is the shape parameter and $\Gamma(.)$ is the gamma function. In a nutshell, the MLV metric is relative to the standard deviation of the GGD distribution: the sharper the image is, the higher the standard deviation. The $\Psi$ matrix is weighted with values obtained with the exponential function $w_{i,j} = e^{\eta_{i,j}}$, where $\eta_{i,j}$ is the rank of $\psi(f(i,j))$ when sorted in ascending order.
