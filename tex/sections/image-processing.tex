@@ -10,6 +10,8 @@
 \simbolo{\mathbb{E}}{Set of edges of a graph}
 
 
+\textbf{RENAME THIS CHAPTER}
+
 This chapter aims to provide the necessary image processing background for the blur map construction and the image fusion procedure, as proposed by in the project. The approach for obtaining the blur map is an extension of the segmentation techniques, as they are created and used for extracting regions of interest in images. On the other hand, image fusion comprises a series of methods commonly applied in photography that will be addressed from a scientific point of view. Blur may have different causes such as movement, defocus, aberrations in the optical system, among others. All of them are addressed by researchers with image processing. On the other hand, image fusion can be seen as a decision problem, which can be dealt with a large amount of methods.
 
 \section{Blur properties}
@@ -125,65 +127,71 @@ The Fourier Transform is a mathematical framework that expresses a periodic or n
 
 \noindent where $h(x,y)$ consists of an image, $M$ and $N$ are the image dimensions and $u$ and $v$ are coordinates in the frequency domain. This operation is extremely useful for almost every field related to analysis of functions. However, the DFT consists of a convolution process with $O(n^{2})$ asymptotic complexity, which can be too slow for larger dimensions. The \sigla{FFT}{Fast Fourier Transform} is an algorithm to compute the DFT by taking small slices of the signal, computing the transform with them and them merging the result. This procedure is performed in $O(n \log n)$ complexity, which is reasonable for many applications.
 
-\subsection{Short-time Fourier Transform}
 
-The set of advantages and applications of the FFT was already mentioned, but there is a remarkable property that should also be mentioned, since it has motivated the development of several other techniques: the FFT is a global transform. It transfers signals to the frequency domain, but does not take into account the local properties of the signal. The local histograms on an image may substantially vary, since it has different textures, edges, contrast, noise and even more features. The information about the position where a particular frequency occurs is also lost. Therefore, the solutions to the more complex analysis are the use of a \emph{Window Function} or the \emph{Multiscale analysis}.
+\textbf{STFT REMOVED}
 
-The \sigla{STFT}{Short-time Fourier Transform} summarizes these concepts. It takes a particular window function, multiplies the signal with that window and performs the FFT, creating several output arrays representing each determined window size, i.e. sections of the signal. A window is a smooth function - a mask, in the discrete domain - which equals to zero on the boundaries of some interval. It is used to compute the STFT, hence it allows the local analysis of an image. One example of a discrete window function is the Hann window of length $L$ denoted by equation \ref{eqn:1D_hann}, as proposed by \citeonline{paukner2007foundations}:
 
-\begin{align}
-\label{eqn:1D_hann}
-    w^{Hann}(x) - \frac{1}{2}
-    \Bigg(
-        1 - \cos\Bigg({\frac{2 \pi x}{L - 1}}\Bigg)
-    \Bigg),
-    &&
-    x \in L
-\end{align}
+% \subsection{Short-time Fourier Transform}
 
-\noindent For two-dimensional windows, the tensor product of two windowing functions should be done. The STFT is therefore described by \citeonline{chikkerur2007fingerprint} equation \ref{eqn:2D_stft}:
+% The set of advantages and applications of the FFT was already mentioned, but there is a remarkable property that should also be mentioned, since it has motivated the development of several other techniques: the FFT is a global transform. It transfers signals to the frequency domain, but does not take into account the local properties of the signal. The local histograms on an image may substantially vary, since it has different textures, edges, contrast, noise and even more features. The information about the position where a particular frequency occurs is also lost. Therefore, the solutions to the more complex analysis are the use of a \emph{Window Function} or the \emph{Multiscale analysis}.
 
-\begin{equation}
-\label{eqn:2D_stft}
-    F(\tau_{1},\tau_{2},\omega_{1},\omega_{1}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y)w(x-\tau_{1},y-\tau_{2}) e^{-j(\omega_{1}x + \omega_{2}y)}
-\end{equation}
 
-\noindent where $\tau_{1}$ and $\tau_{2}$ are spatial positions of the window and $\omega_{1}$ and $\omega_{2}$ are spatial frequency parameters.
+% The \sigla{STFT}{Short-time Fourier Transform} summarizes these concepts. It takes a particular window function, multiplies the signal with that window and performs the FFT, creating several output arrays representing each determined window size, i.e. sections of the signal. A window is a smooth function - a mask, in the discrete domain - which equals to zero on the boundaries of some interval. It is used to compute the STFT, hence it allows the local analysis of an image. One example of a discrete window function is the Hann window of length $L$ denoted by equation \ref{eqn:1D_hann}, as proposed by \citeonline{paukner2007foundations}:
 
-\subsection{Wavelet Transform}
+% \begin{align}
+% \label{eqn:1D_hann}
+%     w^{Hann}(x) - \frac{1}{2}
+%     \Bigg(
+%         1 - \cos\Bigg({\frac{2 \pi x}{L - 1}}\Bigg)
+%     \Bigg),
+%     &&
+%     x \in L
+% \end{align}
 
-The Wavelet Transform is based on waves of varied frequency and limited time length, called "small waves" or wavelets \cite{gonzalez2008digital}.  Wavelets are functions that vary according to time or space and have oscillatory properties, such as a sine wave as defined by equation \ref{eqn:sinusoidal_wave}:
+% \noindent For two-dimensional windows, the tensor product of two windowing functions should be done. The STFT is therefore described by \citeonline{chikkerur2007fingerprint} equation \ref{eqn:2D_stft}:
 
-\begin{equation}
-\label{eqn:sinusoidal_wave}    
-    f(t) = A \sin{(\omega t + \varphi)}
-\end{equation}
+% \begin{equation}
+% \label{eqn:2D_stft}
+%     F(\tau_{1},\tau_{2},\omega_{1},\omega_{1}) = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y)w(x-\tau_{1},y-\tau_{2}) e^{-j(\omega_{1}x + \omega_{2}y)}
+% \end{equation}
 
-\noindent where $A$ is the wave amplitude, $\omega$ is the angular frequency and $\phi$ is the phase shift. The Fourier Transform also deals with this type of problem, and it is of utmost importance for mathematics, science and engineering
-in general, in problems which are independent of time or consist of stationary states. Since Fourier Transforms can not carry information about time and frequency in parallel, wavelets are designed to help with those problems. Still according to \citeonline{gonzalez2008digital}, a wavelet transform may be seen as music sheet  that allows musicians to play certain notes at exact moments. 
+% \noindent where $\tau_{1}$ and $\tau_{2}$ are spatial positions of the window and $\omega_{1}$ and $\omega_{2}$ are spatial frequency parameters.
 
-The concepts of \citeonline{burrus1998introduction} will be used to clarify the mentioned transform. Wavelets are orthogonal functions (which means that their inner product equals to zero), represented by equation \ref{eqn:inner_product_wavelets}:
+\textbf{WAVELET TRANSFORM REMOVED}
+% \subsection{Wavelet Transform}
 
-\begin{equation}
-\label{eqn:inner_product_wavelets}    
-    \langle \psi_{k}(t), \psi_{l}(t) \rangle = \int\psi_{k}(t)\psi_{l}(t)dt = 0
-\end{equation}
+% The Wavelet Transform is based on waves of varied frequency and limited time length, called "small waves" or wavelets \cite{gonzalez2008digital}.  Wavelets are functions that vary according to time or space and have oscillatory properties, such as a sine wave as defined by equation \ref{eqn:sinusoidal_wave}:
 
-\noindent where $\psi$ is a set of real-valued functions which can be substituted by any real-valued function $f$, which will lead to a coefficient instead of zero. The wavelet functions has a scaling function which originates the transforms, named \emph{mother wavelet} and represented by equation \ref{eqn:mother_wavelet}:
+% \begin{equation}
+% \label{eqn:sinusoidal_wave}    
+%     f(t) = A \sin{(\omega t + \varphi)}
+% \end{equation}
 
-\begin{equation}
-\label{eqn:mother_wavelet}    
-    \psi_{j,k}(t) = 2^{j/2}\psi(2^{j}t - k)
-\end{equation}
+% \noindent where $A$ is the wave amplitude, $\omega$ is the angular frequency and $\phi$ is the phase shift. The Fourier Transform also deals with this type of problem, and it is of utmost importance for mathematics, science and engineering
+% in general, in problems which are independent of time or consist of stationary states. Since Fourier Transforms can not carry information about time and frequency in parallel, wavelets are designed to help with those problems. Still according to \citeonline{gonzalez2008digital}, a wavelet transform may be seen as music sheet  that allows musicians to play certain notes at exact moments. 
 
-\noindent where $j,k \in \mathbb{Z}$ and $j$ is a scaling value. In this sense, the two-dimensional \sigla{DWT}{Discrete Wavelet Transform} is defined by equation \ref{eqn:dwt} \cite{gonzalez2008digital}:
+% The concepts of \citeonline{burrus1998introduction} will be used to clarify the mentioned transform. Wavelets are orthogonal functions (which means that their inner product equals to zero), represented by equation \ref{eqn:inner_product_wavelets}:
 
-\begin{equation}
-\label{eqn:dwt}    
-    W_{\psi}^{i}(j,m,n) = \frac{1}{\sqrt{MN}}\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)\psi_{j,m,n}^{i}(x,y)
-\end{equation}
+% \begin{equation}
+% \label{eqn:inner_product_wavelets}    
+%     \langle \psi_{k}(t), \psi_{l}(t) \rangle = \int\psi_{k}(t)\psi_{l}(t)dt = 0
+% \end{equation}
 
-\noindent where $W$ contains coefficients for horizontal, diagonal and vertical details for scales $j$. 
+% \noindent where $\psi$ is a set of real-valued functions which can be substituted by any real-valued function $f$, which will lead to a coefficient instead of zero. The wavelet functions has a scaling function which originates the transforms, named \emph{mother wavelet} and represented by equation \ref{eqn:mother_wavelet}:
+
+% \begin{equation}
+% \label{eqn:mother_wavelet}    
+%     \psi_{j,k}(t) = 2^{j/2}\psi(2^{j}t - k)
+% \end{equation}
+
+% \noindent where $j,k \in \mathbb{Z}$ and $j$ is a scaling value. In this sense, the two-dimensional \sigla{DWT}{Discrete Wavelet Transform} is defined by equation \ref{eqn:dwt} \cite{gonzalez2008digital}:
+
+% \begin{equation}
+% \label{eqn:dwt}    
+%     W_{\psi}^{i}(j,m,n) = \frac{1}{\sqrt{MN}}\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)\psi_{j,m,n}^{i}(x,y)
+% \end{equation}
+
+% \noindent where $W$ contains coefficients for horizontal, diagonal and vertical details for scales $j$. 
 
 \section{Image Fusion}
 
