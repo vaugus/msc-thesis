@@ -15,7 +15,7 @@ The light was described in different ways according to different geniuses. Isaac
 
 The corpuscular approach for explaining the behavior of light was accepted during the 17th and 18th centuries since Newton played a central role in science within that era. The development of electricity and magnetism as solid fields of research and theoretical representations of natural phenomena was happening concomitantly with optics; Michael Faraday (1791-1867) connected magnetism and light for the first time with his studies on light polarization in magnetic field immersed materials, and later James Clerk Maxwell (1831-1879) established a complete relation between optics and electromagnetism by defining the displacement current density - a relation that involves the polarization of a medium, the intensity of electric fields and the electric permittivity of vacuum - and writing its differential equations \cite{zilio2009optica}.
 
-Light as an electromagnetic wave is therefore composed of the two vectors and propagates in some particular coordinate direction upon a metric space, e.g. the $\mathit{x}$ coordinate on a three-dimensional Euclidean space. Hence, it is possible to treat light as a wave or particle, according to the application and its needs. Light microscopy deals with light as a wave and its related phenomena such as reflection, refraction, and diffraction, which will be presented on the posterior subsections and are useful for a deep understanding of this work. Posterior studies of Max Planck (1858-1947), Albert Einstein (1879-1995) and Niels Bohr (1885-1962) \cite{fowles1989introduction} were responsible for linking the prior discoveries with the quantum theory, and therefore differ from this research's scope. Maxwell enunciated that there were two different vectors which could cause a state of disturbance in the space while dealing with electric charges; those consist of the electric vector $\mathit{\mathbf{E}}$ and the magnetic induction vector $\mathit{\mathbf{H}}$, that together construct the electromagnetic field \cite{born1999principles}, as shown in Figure \ref{fig:electromagnetic_wave}.
+Light as an electromagnetic wave is therefore composed of the two vectors and propagates in some particular coordinate direction upon a metric space, e.g. the $\mathit{x}$ coordinate on a three-dimensional Euclidean space. Hence, it is possible to treat light as a wave or particle, according to the application and its needs. Light microscopy deals with light as a wave and its related phenomena such as reflection, refraction, interference and diffraction, which will be presented on the posterior subsections and are useful for a deep understanding of this work. Posterior studies of Max Planck (1858-1947), Albert Einstein (1879-1995) and Niels Bohr (1885-1962) \cite{fowles1989introduction} were responsible for linking the prior discoveries with the quantum theory, and therefore differ from this research's scope. Maxwell enunciated that there were two different vectors which could cause a state of disturbance in the space while dealing with electric charges; those consist of the electric vector $\mathit{\mathbf{E}}$ and the magnetic induction vector $\mathit{\mathbf{H}}$, that together construct the electromagnetic field \cite{born1999principles}, as shown in Figure \ref{fig:electromagnetic_wave}.
 
 \begin{figure}[htb]
 	\centering
@@ -31,9 +31,17 @@ Light as an electromagnetic wave is therefore composed of the two vectors and pr
 
 \subsection{Light Wave Properties}
 
-The light waves can be represented by a ray, i.e. a single oriented line which shows the direction of propagation; several waves that propagate in nearly the same direction can be named as a beam \cite{halliday2013fundamentals}. These two models of the real light are important and useful representations within the boundaries of visible light, and allow easier explanations of light properties.
+The light waves can be represented by a ray, i.e. a single oriented line which shows the direction of propagation; several waves that propagate in nearly the same direction can be named as a beam \cite{halliday2013fundamentals}. These two models of the real light are important and useful representations within the boundaries of visible light, and allow easier explanations of light properties. Some basic properties of waves are important for a full understanding of optical phenomena related to microscopy and its image formation, and may be described according to \cite{tipler2007physics} as follows:
 
-Rays or beams of light may come from a picometric scale source (due to nuclear processes) or from a relatively larger scale, e.g. the fluorescent and incandescent light bulbs, which are sources of electric light. Eventually, light reaches surfaces during its propagation, and this is the event that allows the human vision feature; when it occurs, there are three prominent phenomena to consider: reflection, refraction, and diffraction. The incident ray of light suffers a split procedure when it reaches a frontier between two homogeneous media. One of the resulting rays propagates in the initial medium and the other one propagates inside the other medium; the first phenomenon is denominated \emph{reflection} and the second, \emph{refraction} \cite{born1999principles}.
+\begin{itemize}
+    \item \emph{Frequency}: The number of cycles per unit of time, or the reciprocal of the time that a periodic wave takes to execute a complete cycle of oscillatory motion, given by $f = \frac{1}{T}$;
+    
+    \item \emph{Amplitude}: The maximum displacement from the equilibrium position, where the wave peak reaches its highest value;
+    
+    \item \emph{Phase}: A point in time on the cycle of a wave propagation, quantified in degrees.
+\end{itemize}
+
+Rays or beams of light may come from a picometric scale source (due to nuclear processes) or from a relatively larger scale, e.g. the fluorescent and incandescent light bulbs, which are sources of electric light. Eventually, light reaches surfaces during its propagation, and this is the event that allows the human vision feature; when it occurs, there are four prominent phenomena to consider: reflection, refraction, interference and diffraction. The incident ray of light suffers a split procedure when it reaches a frontier between two homogeneous media. One of the resulting rays propagates in the initial medium and the other one propagates inside the other medium; the first phenomenon is denominated \emph{reflection} and the second, \emph{refraction} \cite{born1999principles}.
 
 The speed of light depends on the medium in which it propagates. The \emph{refractive index} is a number that quantifies the speed of light in a particular medium in relation to the speed of light a vacuum, and can be described by
 
@@ -62,7 +70,21 @@ The speed of light depends on the medium in which it propagates. The \emph{refra
     \fdireta{halliday2013fundamentals}
 \end{figure}
 
-The wave theory of light also contains another important property for the real processes: the \emph{diffraction}, a phenomenon that was discovered by Francesco Maria Grimaldi (1618-1663) and consists of the distortion in a wavefront which focuses on obstacles such as apertures on an object, spheres, disks, or anything with similar dimension to the wavelength of the focusing light \cite{zilio2009optica}. The wavefront deviates and scatters after propagating through the obstacle and transforms itself into circular or spherical waves; this is a relevant property that distinguishes a wave from a particle, since the latter would either propagate without any change in its trajectory or would be blocked by the obstacle \cite{tipler2007physics}. When a beam of light reaches an opaque object, the waves suffer changes in their direction of propagation, which can be predicted by the fact that all the points in each wavefront (points of identical phase on waves) generate a new wave, as stated by Huygens \cite{fowles1989introduction}. According to the Huygens principle, each point of the wavefront acts as a source and creates secondary waves which scatter in every direction; each of the new wavefronts is generated by the interference, i.e. the formation of a lasting intensity pattern by two or more waves that superpose in space \cite{tipler2008physics}, of an infinite number of sources of waves \cite{zilio2009optica}. The scheme in figure \ref{fig:diffraction} illustrates the diffraction phenomenon with an arbitrary obstacle and a small source of waves.
+When two or more waves of similar or equal frequency superpose in space and form of a different intensity pattern, it is said that the \emph{interference} of the waves occurred \cite{tipler2008physics}. Mathematically, when interference is observed with light waves, it consists in a vector addition of the electromagnetic fields \cite{zilio2009optica}.
+If the interfering waves are in phase, i.e. the difference between the same positions within the wave cycles of the two waves in zero, then the process is called \emph{constructive}, which yields a larger amplitude to the new wave; similarly, if the interfering waves are not in phase, then the process is named \emph{destructive} and yield smaller or null amplitudes to the new wave \cite{tipler2007physics}. Both types of interference are show in Figure .
+
+\begin{figure}[htb]
+	\centering
+	\caption{\label{fig:interference} 
+	    (a) Constructive interference and (b) destructive interference.}
+	\begin{center}
+	    \includegraphics[width=\textwidth,height=5cm]{images/interference.png}
+	\end{center}
+	\centering
+    \fadaptada{tipler2007physics}
+\end{figure}
+
+The wave theory of light also contains another important property for the real processes: the \emph{diffraction}, a phenomenon that was discovered by Francesco Maria Grimaldi (1618-1663) and consists of the distortion in a wavefront which focuses on obstacles such as apertures on an object, spheres, disks, or anything with similar dimension to the wavelength of the focusing light \cite{zilio2009optica}. The wavefront deviates and scatters after propagating through the obstacle and transforms itself into circular or spherical waves; this is a relevant property that distinguishes a wave from a particle, since the latter would either propagate without any change in its trajectory or would be blocked by the obstacle \cite{tipler2007physics}. When a beam of light reaches an opaque object, the waves suffer changes in their direction of propagation, which can be predicted by the fact that all the points in each wavefront (points of identical phase on waves) generate a new wave, as stated by Huygens \cite{fowles1989introduction}. According to the Huygens principle, each point of the wavefront acts as a source and creates secondary waves which scatter in every direction; each of the new wavefronts is generated by the interference of an infinite number of sources of waves \cite{zilio2009optica}. The scheme in figure \ref{fig:diffraction} illustrates the diffraction phenomenon with an arbitrary obstacle and a small source of waves.
 
 \begin{figure}[htb]
 	\centering
@@ -84,11 +106,11 @@ Diffraction is a phenomenon that always happens as waves pass through apertures,
 \end{itemize}
 
 
-\subsection{Imaging Properties of Optical Systems}
+\subsection{Properties of the Spherical Lenses}
 
 Within the scope of this work, the main reason for introducing the concepts of optics is the imaging devices - the microscope, in particular. The structure of the apparatus will be described in Section \ref{sec:light_microscopy}. Moreover, a substantially large amount of devices rely on optical lenses for imaging, with properties such as depth of field and depth of focus.
 
-As stated by \citeonline{halliday2013fundamentals}, \emph{lenses} are objects consisting of a transparent material, with a certain refractive index, that are made of two spherical surfaces on which light propagates and suffers refraction. They are used in optical systems due to their capacity to create images as long as their refractive index is not equal to that of the medium. Still, in agreement with \citeonline{halliday2013fundamentals}, some concepts related to lenses are important in our context and will be shown below. Figure \ref{fig:spherical_lens} denotes an illustration of an arbitrary spherical lens, and the following list depicts the principal elements from geometric optics that relates to lenses and its consequent imaging properties:
+As stated by \citeonline{halliday2013fundamentals}, \emph{lenses} are objects consisting of a transparent material, with a certain refractive index, that are made of two spherical surfaces on which light propagates and suffers refraction. They are used in optical systems due to their capacity to create images as long as their refractive index is not equal to that of the medium. Still, in agreement with \citeonline{halliday2013fundamentals}, some concepts related to lenses are important in our context and will be shown below. The following list depicts the principal elements from geometric optics that relates to lenses and its consequent imaging properties:
 
 \begin{itemize}
     \item \emph{Radius of Curvature}: the distance between the center of the sphere and a refracting surface, named $\mathit{r_{1}}$ and $\mathit{r_{2}}$ on Figure \ref{fig:spherical_lens};
@@ -109,6 +131,8 @@ As stated by \citeonline{halliday2013fundamentals}, \emph{lenses} are objects co
     
 \end{itemize}
 
+A single lens or a set of lenses (most of the optical systems are more complicated than a single lens) have the \emph{depth of field} and the \emph{depth of focus} properties. Although the terms appear to be similar, the former relates to objects and the latter, to images \cite{davidson2002optical}. For every system, there is a focal plane in which the formed images will be sharp. Depth of Field is the tolerance for the object focal plane that may produce sharp images, while Depth of Focus dictates the same tolerance for the image focal plane. In other words, depth of field is the zone in the real world that would yield an acceptably sharp image and depth of focus is the same idea for the imaging sensors or for plotting the image.Figure \ref{fig:spherical_lens} denotes an illustration of an arbitrary spherical lens.
+
 \begin{figure}[htb]
 	\centering
 	\caption{\label{fig:spherical_lens} Arbitrary scheme of the optical properties of a spherical lens.}
@@ -119,28 +143,36 @@ As stated by \citeonline{halliday2013fundamentals}, \emph{lenses} are objects co
     \fadaptada{halliday2013fundamentals}
 \end{figure}
 
-A single lens or a set of lenses (most of the optical systems are more complicated than a single lens) have the \emph{depth of field} and the \emph{depth of focus} properties. Although the terms appear to be similar, the former relates to objects and the latter, to images \cite{davidson2002optical}. For every system, there is a focal plane in which the formed images will be sharp. Depth of Field is the tolerance for the object focal plane that may produce sharp images, while Depth of Focus dictates the same tolerance for the image focal plane. In other words, depth of field is the zone in the real world that would yield an acceptably sharp image and depth of focus is the same idea for the imaging sensors or for plotting the image.
+Some properties of the spherical lenses directly influence the image formation process and, consequently, the resulting image quality. The \emph{numerical aperture}, as reported by \citeonline{murphy2012fundamentals}, is a measurement in terms of angles that shows how much lenses can capture light, and is given by
+
+\begin{equation}
+    \label{eqn:numerical_aperture}
+    NA = n \sin{\theta},
+\end{equation}
+
+\noindent where $\theta$ is the half angle of the cone of specimen light accepted by the objective lens and $n$ is the refractive index between the lens and the specimen. There are optical flaws in lenses that hinder a proper image formation. Those are named \emph{aberrations} \cite{lawlor2019introduction}, and the most relevant types in the scope of this project are the \emph{spherical aberrations}. According to \citeonline{murphy2012fundamentals}, the spherical aberrations occur when there is a difference in the focal point of incident parallel rays at central and peripheral locations of a spherical lens' surface, which yields a blurred image of either a point source of light or an extended object. It is possible to correct a spherical aberration by changing the shape of the refracting surface, i.e. changing the radius of curvature for the lenses in order to adjust the focal point to one particular distance \cite{smith1988optics}. The illustration in Figure \ref{fig:spherical_aberrations} represents the spherical aberration for a point source of light, where it is possible to see the difference between incident rays in the borders and in the inner regions of the lens. The resulting image is, in this case, a set of concentric circles around a point.
+
+\begin{figure}[htb]
+	\centering
+	\caption{\label{fig:spherical_aberrations} Arbitrary example of the spherical aberration.}
+	\begin{center}
+	    \includegraphics[scale=0.3]{images/spherical_aberration.png}
+	\end{center}
+	\centering
+    \fdireta{tipler2008physics}
+\end{figure}
 
 \section{Light microscopy}
 \label{sec:light_microscopy}
 
-The type of microscope discussed and used in this work is the light microscope; there are several techniques and approaches for employing optical lenses in order to obtain magnified images, but they are outside the bounds of this research. The compound light microscope is a device designed to generate magnified images from objects with the aid of visible light, and consists of two lenses: the \emph{objective} (closer to the object) and the \emph{ocular} (closer to the observer) \cite{murphy2012fundamentals}. This section presents some concepts and principles from the field.
+There are several techniques and approaches for employing optical lenses in order to obtain magnified images. Especially, in the scope of this work, light microscopy is a simple yet robust example to understand, explore and integrate with image processing techniques. This section presents some concepts and principles from the field, as well as important key definitions for the next chapter.
 
-\subsection{General Structure}
+\subsection{Types of Light Microscopy}
+According to \citeonline{dokland2006techniques}, the purpose of light microscopy is to provide magnified images of specimens by means of capturing emitted, reflected or transmitted light in the visible range of the spectrum, or even in the ultraviolet or near-infrared regions. As reported by \citeonline{lawlor2019introduction}, there are three general styles of light microscope. The \emph{upright microscope} is the easily affordable, easy to use traditional configuration with a light source on the base, a stage and the objectives. The \emph{inverted microscope} consists of the same configuration as an upright microscope, but inverted, and that offers some advantages when it comes to life sciences applications such as live cell imaging. Finally, the \emph{stereomicroscope}, which is the type of microscope discussed and used in this project, is a compound microscope with two eyepieces.
 
-As reported by \citeonline{bell2009introduction}, the basic structure of a microscope consists of objective lenses, eyepieces, condensers, the stage and the light source, which are graphically described by Figure \ref{fig:compound_microscope} and explained as follows:
+\subsection{General Structure of a Compound Microscope}
 
-\begin{itemize}
-    \item \emph{Objective Lenses}: a set of multiple lenses merged inside a tubular structure (barrel), which are designed for capturing light rays from the specimen or object and are built for minimizing the series of optical unwanted phenomena in imaging;
-
-    \item \emph{Eyepieces}: lenses where the observer may look through, also inside a tubular structure, but with lower magnification in comparison to the objective;
-    
-    \item \emph{Condensers}: a collector of light from the light source, which focus the rays on the object;
-    
-    \item \emph{Stage}: the support for the object; which may have height and positional adjustments in some devices;
-    
-    \item \emph{Light Source}: the main source of light, usually a lamp.
-\end{itemize}
+Historically, the structure of the first microscopes that were developed by Hooke and Leeuwenhoek had no eyepiece; the compound microscope, developed by Janssen, consists of the magnification lenses and also an eyepiece, which is capable of adding more magnification power and deliver the image to the user \cite{lawlor2019introduction}. As stated by \citeonline{murphy2012fundamentals}, the word \emph{compound} refers to the fact that the objective lens and the eyepiece (or ocular), work together to produce the final magnification of the image as a product of their magnifications.A graphical representation of the general structure of a compound microscope is show in Figure \ref{fig:compound_microscope}.
 
 \begin{figure}[H]
 	\centering
@@ -152,14 +184,32 @@ As reported by \citeonline{bell2009introduction}, the basic structure of a micro
     \fdireta{bell2009introduction}
 \end{figure}
 
+As reported by \citeonline{bell2009introduction}, the basic structure of most of light microscope models consists of objective lenses, eyepieces, condensers, the stage and the light source, which are and explained as follows:
+
+\begin{itemize}
+    
+    \item \emph{Objective Lenses}: a set of multiple lenses merged inside a tubular structure (barrel), which are designed for capturing light rays from the specimen or object and are built for minimizing the series of optical unwanted phenomena in imaging;
+
+    \item \emph{Eyepieces}: lenses where the observer may look through, also inside a tubular structure, but with lower magnification in comparison to the objective;
+
+    \item \emph{Condensers}: a collector of light from the light source, which focus the rays on the object;
+    
+    \item \emph{Stage}: the support for the object; which may have height and positional adjustments in some devices;
+    
+    \item \emph{Light Source}: the main source of light, usually a lamp.
+\end{itemize}
+
 Since light is some sort of radiation, there are several different ways to achieve imaging in microscopes; it can be made by light, polarized light, lasers, X-rays, among others. There are also advanced techniques such as confocal microscopy, which is capable of imaging a very small area of the object, with all the light rays focused on it \cite{rochow1994introduction}. It all depends on the purpose of microscopy within the proposed task.
+
+% {\color{red} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id dui quam. Duis bibendum turpis velit, quis tempor massa tristique quis. In id volutpat urna. Fusce sed ornare sapien, eget accumsan odio. Vivamus eget ornare neque. Sed quis elit suscipit, imperdiet est eget, tincidunt turpis. Etiam ac erat eget urna accumsan tincidunt. Proin metus nisi, dictum a odio id, sodales accumsan neque. Aenean suscipit varius elementum. Donec at nisi id eros luctus convallis quis at ante. Maecenas sollicitudin sapien mauris, ac cursus mi sollicitudin molestie. Donec nisl diam, malesuada vel dolor vitae, euismod hendrerit massa. Pellentesque lacinia enim ac velit efficitur commodo. Sed vitae velit quis tortor tincidunt iaculis.
+
+% Nullam ut odio nec odio venenatis tempor in consequat sem. Mauris facilisis sem ut neque tempor, eget iaculis massa ultrices. Cras hendrerit nisl quam, ac scelerisque odio vulputate ut. Fusce non consequat arcu, sit amet elementum ex. Morbi turpis nibh, commodo id est at, dapibus laoreet ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam rhoncus ex non tellus dictum mollis. Etiam commodo lobortis velit, sit amet elementum elit cursus eget. Nam pretium aliquam ex, ac fringilla odio malesuada et. Sed elementum tristique nunc, non facilisis diam finibus a. Pellentesque magna dolor, porta non lacus sed, faucibus fringilla arcu. Curabitur volutpat tellus et imperdiet sodales. Proin egestas felis vitae magna gravida, in accumsan quam porta.}
 
 \subsection{Stereo Compound Microscope}
 
+As previously discussed, of the versions of compound microscopes is the stereomicroscope. It consists of a fusion of two compound microscopes in a convergent optical system and may have two different objectives and eyepieces or only one objective and two eyepieces \cite{schreier2004advances}. The former is named \emph{binobjective-binocular} (Greenough) and the latter is named \emph{monobjective-binocular}, also named \sigla{CMO}{Common Main Objective Stereo Microscope}. One of the advantages of CMO microscopes is the higher depth of field, which allows the user to view and investigate biological specimens, relatively small materials and any kind of non-smooth surfaces. Furthermore, it is possible to view and acquire images on three dimensions \cite{rochow1994introduction}. The structure of both types of stereo compound microscopes are denoted by Figure \ref{fig:stereo_compound_microscope}.
 
-One of the versions of compound microscopes is the stereomicroscope. It consists of a fusion of two compound microscopes in a convergent optical system and may have two different objectives and eyepieces or only one objective and two eyepieces \cite{schreier2004advances}. The former is named \emph{binobjective-binocular} (Greenough) and the latter is named \emph{monobjective-binocular}, also named \sigla{CMO}{Common Main Objective Stereo Microscope}. One of the advantages of CMO microscopes is the higher depth of field, which allows the user to view and investigate biological specimens, relatively small materials and any kind of non-smooth surfaces. Furthermore, it is possible to view and acquire images on three dimensions \cite{rochow1994introduction}. The structure of both types of stereo compound microscopes are denoted by Figure \ref{fig:stereo_compound_microscope}
-
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\caption{\label{fig:stereo_compound_microscope} Graphic representation of the basic stereo compound light microscope structure, (a) for the Greenough type and (b) for the CMO.}
 	\begin{center}
