@@ -1,0 +1,54 @@
+### chapter 2
+
+bright-field
+stereomicroscopy
+z-stacking
+
+### chapter 3 
+
+3.1  Image formation
+- image formation
+- depth of field 
+- details about depth of field
+- diffraction-limited resolution
+- finite lens aperture
+- spectral support
+- aberrations
+- resolution limit
+- defocus blur only
+- numerical aperture
+
+Blur Characterization
+
+- point spread function
+- convolution
+
+
+### chapter 4
+
+- Fourier Transform
+
+- IQA 
+evaluation methods
+
+- Image Registration
+
+- Image fusion
+
+- pixel-level fusion
+- feature-level fusion
+- decision-level fusion
+
+evaluation methods
+
+
+### chapter 5
+
+- IQA related work
+- FUSION related work
+
+
+### chapter 6
+
+- IQA method
+- FUSION method
