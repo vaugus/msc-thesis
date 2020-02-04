@@ -1,8 +1,7 @@
-### chapter 2
+### chapter 2 DONE
 
-bright-field
-stereomicroscopy
-z-stacking
+bright-field DONE
+z-stacking DONE
 
 ### chapter 3 
 
@@ -26,29 +25,46 @@ Blur Characterization
 
 ### chapter 4
 
-- Fourier Transform
-
 - IQA 
-evaluation methods
+
+- Fourier Transform
 
 - Image Registration
 
 - Image fusion
+ - pixel-level fusion
+ - feature-level fusion
+ - decision-level fusion
 
-- pixel-level fusion
-- feature-level fusion
-- decision-level fusion
-
-evaluation methods
-
+- Evaluation methods
+ - IQA evaluation methods
+ - FUSION evaluation methods
 
 ### chapter 5
 
 - IQA related work
 - FUSION related work
 
-
 ### chapter 6
 
-- IQA method
-- FUSION method
+- Materials
+ - microscopes
+ - image datasets
+ - repositories
+
+- Methods
+ - IQA method
+ - FUSION method
+
+### chapter 7
+
+- IQA results
+- FUSION results
+
+
+### chapter 8
+
+- conclusions about IQA
+- conclusions about FUSION
+- improvements
+- future work

@@ -57,6 +57,10 @@
 \subsection{Discrete Fourier Transform based no-reference image quality assessment}
 \input{tex/subsections/materials-and-methods/fourier-IQA.tex}
 
+\subsection{Energy of Laplacian based Image Fusion}
+\input{tex/subsections/materials-and-methods/laplacian-based-fusion}
+
+
 % One of the pre-processing tasks consists of colour space conversion, from RGB to HSV and LAB , or to grayscale for testing purposes only. A noise reduction procedure may also be necessary, since microscopy images have a considerable amount of noise. If the amount of noise is created by the texture of the surface, e.g. the coin surface, which shows a particle pattern when magnified, noise reduction procedures should not be done as pre-processing.
 
 % According to the literature review from chapter \ref{chapter:related-work}, both segmentation and fusion procedures depend on the problem and should have their parameters optimized empirically. There are several approaches applied by image segmentation algorithms such as pixel-level analysis, region based segmentation, edge based segmentation and so on. Those which are done in the spatial domain have a high computational cost and also a high computational complexity, and are designed for tasks where the segmentation appears to be simple. For region-based segmentation, there are techniques that rely on other mathematical frameworks, e.g. transform domain methods, statistical analysis and linear algebra, as shown in chapter \ref{chapter:related-work}. This work proposes a region-based image segmentation method within transform domains.
