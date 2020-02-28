@@ -57,13 +57,13 @@
 % Resumo em PORTUGUÊS
 % conter no máximo 500 palavras
 % conter no mínimo 1 e no máximo 5 palavras-chave
-\textoresumo[brazil]{A microscopia é uma técnica extremamente relevante relacionada a tarefas que lidam com estruturas com dimensões de ordem micrométrica. Seu uso remonta ao século XVII e tende a melhorias progressivas paralelamente à evolução tecnológica do conhecimento humano. Dentre as diversas aplicações, destacam-se as áreas de ciências biológicas e de saúde, que envolvem estruturas normalmente invisíveis a olho nu. Há diferenças inevitáveis em profundidade entre os pontos das superfícies e estruturas, independentemente de sua ordem de grandeza. Trabalhos recentes em campos de processamento de imagens como segmentação e fusão mostram que as transformadas fornecem abordagens eficazes para a obtenção de uma imagem nítida. O objetivo deste trabalho é obter uma imagem de microscopia de luz de profundidade de campo estendida, ou seja, uma imagem que seja mais nítida, mesmo com as diferenças naturais de foco entre as estruturas. O conjunto de técnicas de processamento de imagem para este tipo de aplicação é denominada fusão de imagens multifocais, na qual uma pilha de várias imagens multifocais (no escopo do projeto, de microscopia de luz) é tida como entrada para procedimentos de segmentação e algum tipo de regra ou heurística para unir as seções nítidas de cada imagem, a fim de alcançar a imagem mas nítida possível. Um método baseado na Transformada de Fourier de Curto-termo para segmentação e fusão é proposto, e os resultados mostram que a otimização dos parâmetros do algoritmo da transformada é uma solução promissora para o problema.}{Fusão de Imagens Multifocais, Segmentação de Imagens, Microscopia de Luz, Transformada de Fourier de Curto-termo}
+\textoresumo[brazil]{}{}
 
 
 % resumo em INGLÊS
 % conter no máximo 500 palavras
 % conter no mínimo 1 e no máximo 5 palavras-chave
-\textoresumo[english]{Microscopy is an extremely relevant technique related to tasks that deal with micrometric order structures. Its use dates back to the 17th century and has since improved together with advances in human technology. Among the various applications, the areas of biological and health sciences stand out, which involve structures normally invisible to the naked eye. There are unavoidable differences in depth between the points of the surfaces and structures, regardless of their order of magnitude. Recent works in image processing fields such as segmentation and fusion show that image transforms provide effective approaches towards a better and  sharper image. The aim of this work is to produce an extended depth of field light microscopy image, i.e. an image that is mostly sharp, even with the natural differences in focus between the structures. The image processing framework for this type of application is named multifocus image fusion, in which a stack of several light microscopy (in the scope of this work) multifocal images as input and combines a segmentation-based procedure and some sort of rule or heuristic to unite each sharp section from each input image, in order to obtain the sharpest image. A Short-time Fourier Transform method for segmentation and fusion is proposed, and the results show that the optimization of the parameters of the transform's algorithm is a promising solution to the problem.}{Multifocus Image Fusion, Image Segmentation, Light Microscopy, Short-time Fourier Transform}
+\textoresumo[english]{}{}
 
 
 % ----------------------------------------------------------
@@ -76,7 +76,7 @@
 % DEDICATÓRIA / AGRADECIMENTO / EPÍGRAFE
 % \textodedicatoria*{tex/pre-textual/dedicatoria}
 % \textoagradecimentos*{tex/pre-textual/agradecimentos}
-\textoepigrafe*{tex/pre-textual/epigrafe}
+% \textoepigrafe*{tex/pre-textual/epigrafe}
 
 % Inclui a lista de figuras
 \incluilistadefiguras
@@ -115,15 +115,15 @@
 
 \chapter{Fundamentals of Optics and Light Microscopy}
 \label{chapter:fundamentals-of-optics-and-light-microscopy}
-\input{tex/sections/fundamentals-of-optics-and-light-microscopy}
+\input{tex/sections/fundamentals-of-optics-and-light-microscopy/main.tex}
 
 \chapter{Bright-field Microscopy Image Formation and Degradation}
 \label{chapter:blur-characterization-and-image-formation}
-\input{tex/sections/blur-characterization-and-image-formation}
+\input{tex/sections/blur-characterization-and-image-formation/main.tex}
 
-\chapter{Theoretical Background}
-\label{chapter:theoretical-background}
-\input{tex/sections/theoretical-background}
+% \chapter{Theoretical Background}
+% \label{chapter:theoretical-background}
+% \input{tex/sections/theoretical-background}
 
 % \chapter{Related Work}
 % \label{chapter:related-work}
