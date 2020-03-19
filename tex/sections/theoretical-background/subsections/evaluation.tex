@@ -1,0 +1,57 @@
+% Every image processing method of any kind is implemented
+
+
+% \subsection{IQA Evaluation Metrics}
+
+% Three objective metrics were chosen to evaluate the performance of the proposed method. The classification of the images on our datasets can be considered as a subjective quality score, and therefore the objective metrics for comparison should relate to it. According to \citeonline{wang2011information}, evaluation metrics such as the Pearson Linear Correlation Coefficient (PLCC), the Spearman\'s Rank Correlation Coefficient (SRCC) and the Kendall\'s Rank Correlation Coefficient (KRCC) are suitable for the case. For all correlation coefficients, higher values yield higher reliability to the objective IQA metric.
+
+% \subsection{Image Fusion Evaluation Metrics}
+
+% Our method does not rely on a reference image for evaluation purposes. We employ reference-free fusion metrics or adapt the ones that require a reference image to the available data. We propose the use of Entropy, \sigla{SF}{Spatial Frequency} and the \sigla{STD}{Standard Deviation} \cite{naidu2008pixel}. The Entropy is used to measure the information content of an image and can be denoted as
+
+% \begin{equation}
+% \label{eqn:entropy}
+% He = - \sum_{i = 0}^{L} h(i) \log_2 h(i),
+% \end{equation}
+
+% \noindent where $h(i)$ is the normalized histogram of the fused image and $L$ is the number of bins of such histogram. The higher the Entropy value, the more details the fused image has. The Spatial Frequency presents the overall activity level in the fused image by means of the amount of information in the rows and columns, given by
+
+% \begin{equation*}
+% RF = \sqrt{\frac{1}{M N} 
+%             \sum_{x = 1}^{M}
+%             \sum_{y = 2}^{N}
+%             \left[
+%                 I(x,y) - I(x,y - 1)
+%             \right]^{2}
+% }
+% \end{equation*}
+
+% \vspace{0.25cm}
+
+% \begin{equation*}
+% CF = \sqrt{\frac{1}{M N} 
+%             \sum_{y = 1}^{N}
+%             \sum_{x = 2}^{M}
+%             \left[
+%                 I(x,y) - I(x - 1,y)
+%             \right]^{2}
+% }
+% \end{equation*}
+
+% \vspace{0.25cm}
+
+% \begin{equation}
+% \label{eqn:spatial_frequency}
+% SF = \sqrt{RF^{2} + CF^{2}},
+% \end{equation}
+
+% \noindent where $I(x,y)$ is the fused image and $M$, $N$ are the image width and height, respectively. Higher values indicate better fusion quality. Finally, the Standard Deviation may be obtained as
+
+% \begin{align}
+% \label{eqn:standard_deviation}
+% STD = \sqrt{\sum_{i = 0}^{L}}(i - \Bar{i})^{2} h(i),
+% &&
+% \Bar{i} = \sum_{i = 0}^{L}i h(i).
+% \end{align}
+
+% \noindent The Standard Deviation measures the contrast in the fused image, and therefore higher values yield higher contrast.
