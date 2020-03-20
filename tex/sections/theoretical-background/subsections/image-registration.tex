@@ -64,7 +64,7 @@ With the scale-space extrema in hands, the keypoints are localized by fitting a 
 \begin{equation}
 \label{eqn:taylor_DoG}
 D(\mathbf{x}) = D + 
-                \frac{\partial D^{T}}{\partial  \mathbf{x}}\mathbf{x} + \frac{1}{2}\mathbf{x^{T}}\frac{\partial^{2} D}{\partial \mathbf{x}^{2}}\mathbf{x}
+                \frac{\partial D^{T}}{\partial  \mathbf{x}}\mathbf{x} + \frac{1}{2}\mathbf{x^{T}}\frac{\partial^{2} D}{\partial \mathbf{x}^{2}}\mathbf{x},
 \end{equation}
 
 \noindent where the derivatives of the difference-of-Gaussians matrix $D$ is computed at the sample point and $\mathbf{x} = (x,y,\sigma)^{T}$ is the offset for such point. The extremum location is found with the derivative of $D$ with respect to $\mathbf{x}$ and setting it to zero. The value of $D$ at the extremum provides a way to include only stable and good contrast extrema. Together with this low contrast keypoint exclusion, it is necessary to exclude those which possess a large principal curvature across the edge direction and a small one in its perpedicular direction; this is achieved by means of a threshold based on the sum and product of the eigenvalues from the trace and determinant of a Hessian matrix computed at the location and scale of each keypoint.
