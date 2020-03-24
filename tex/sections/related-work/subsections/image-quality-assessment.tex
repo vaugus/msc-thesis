@@ -1,8 +1,8 @@
-Defocus blur is an example among all distortions that an image may be acquainted with during its acquisition or any processing application; this implies that the resulting image will have some sort of degradation in its visual quality, and therefore justify the need of objective techniques to evaluate and predict the quality of images, since the subjective ways are commonly unavailable or inconvenient \cite{wang2004image}. This section presents a literature review on no-reference IQA methods based on frequency domain analysis, human perception of blur, probabilities, local contrast levels and gray level variability. Those methods contributed significantly to achieve and evaluate the quality of images without any reference, and guided the study and development of our approach. Our method explores one of those techniques, i.e. the frequency domain analysis.
+Defocus blur is an example among all distortions that an image may be acquainted with during its acquisition or any processing application; this implies that the resulting image will have some sort of degradation in its visual quality, and therefore justify the need of objective techniques to evaluate and predict the quality of images since the subjective ways are commonly unavailable or inconvenient \cite{wang2004image}. This section presents a literature review on no-reference IQA methods based on frequency domain analysis, human perception of blur, probabilities, local contrast levels, and gray level variability. Those methods contributed significantly to achieve and evaluate the quality of images without any reference and guided the study and development of our approach. Our method explores one of those techniques, i.e. the frequency domain analysis.
 
 \subsection{Image sharpness measure for blurred images in frequency domain}
 
-\citeonline{kanjar2013image} proposed a Fourier Transform based algorithm to compute an image quality measure of blurred images. This approach is an attempt to quantify sharpness considering the fact that the amount of high frequency components in a blurred image is smaller than in a sharper one. The algorithm consists of the following, where $g(x,y)$ denotes the input image of size $M \times N$:
+\citeonline{kanjar2013image} proposed a Fourier Transform based algorithm to compute an image quality measure of blurred images. This approach is an attempt to quantify sharpness because the amount of high-frequency components in a blurred image is smaller than in a sharper one. The algorithm consists of the following, where $g(x,y)$ denotes the input image of size $M \times N$:
 
 \begin{enumerate}[label=\Roman* -]
     \item Compute the Fourier Transform representation of image $g(x,y)$, denoted here by $\hat{g}(m,n)$;
@@ -28,16 +28,16 @@ Defocus blur is an example among all distortions that an image may be acquainted
 \subsection{A no-reference perceptual blur metric}
 
 A very simple but efficient perceptual blur metric was proposed in
-\cite{marziliano2002noreference}. It is also based on the fact that high frequency components are attenuated in a blurred image. Considering that blur affects the edges and texture regions of an image, the technique attempts to measure how scattered they are. 
+\cite{marziliano2002noreference}. It is also based on the fact that high-frequency components are attenuated in a blurred image. Considering that blur affects the edges and texture regions of an image, the technique attempts to measure how scattered they are. 
 
 First, an edge detector is applied to the luminance component of the image (equivalent to a grayscale-converted image) in order to find the vertical edges. Each row of the image is scanned for pixels corresponding to edges, and the width of each edge is computed by the difference of local extrema closest to the edge. This measure is done for each edge location, and the global blur measure is the average of all computed widths.
 
 \subsection{A No-Reference Objective Image Sharpness Metric Based on the Notion of Just Noticeable Blur (JNB)}
 \label{subsec:jnb_approach}
 
-The authors in \cite{ferzli2009noreference} employ a psychometric model, i.e. the assignment of numerical representations to subjective tests to create an perceptual sharpness metric. The subjective tests are made concerning the \emph{Just Noticeable Blur} (JNB) concept, which is the minimum amount of perceived blurriness around an edge given a contrast higher than the limit of contrast between background and foreground that is possible to notice. 
+The authors in \cite{ferzli2009noreference} employ a psychometric model, i.e. the assignment of numerical representations to subjective tests to create a perceptual sharpness metric. The subjective tests are made concerning the \emph{Just Noticeable Blur} (JNB) concept, which is the minimum amount of perceived blurriness around an edge given a contrast higher than the limit of contrast between background and foreground that is possible to notice. 
 
-The subjective test experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that is treated as the probability of detecting blur in function of the standard deviation $\sigma$. The denoted by equation \ref{eqn:psychometric_jnb}:
+The subjective test experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with the aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that are treated as the probability of detecting blur as a function of the standard deviation $\sigma$. The denoted by equation \ref{eqn:psychometric_jnb}:
 
 \begin{equation}
 \label{eqn:psychometric_jnb}
@@ -46,7 +46,7 @@ P = 1 - \exp{\left( - \left| \frac{\sigma}{\sigma_{JNB} } \right|^{\beta} \right
 
 \noindent where $\sigma$ is the standard deviation of the Gaussian blur filter and corresponds to the blur strength at the considered edge, $\sigma_{JNB}$ is the standard deviation corresponding to the JNB threshold. The parameters $\sigma_{JNB}$ and $\beta$ are chosen by means of a least-square fitting to approximate the probabilities $P$ with the answers from volunteers. The $\sigma_{JNB}$ value is adjusted to obtain $P = 63\%$.
 
-First and foremost, the image is divided in blocks of dimensions $64 \times 64$. Let each block and the image be denoted by $R$ and $g$, respectively. All the blocks go through a Sobel edge detection process, and are later classified as “smooth” or “edge” using a threshold. If the number of edge pixels in a block is greater than $0.2\%$ of the total number of pixels in it, than it is classified as an edge block. The smooth blocks are not processed since they are not relevant in terms of blur. Than, for each block the horizontal edge pixels are retrieved and the width of each edge is computed. With this in hands, the perceptual blur metric for each block $R_{b}$ is described by equation 
+First and foremost, the image is divided into blocks of dimensions $64 \times 64$. Let each block and the image be denoted by $R$ and $g$, respectively. All the blocks go through a Sobel edge detection process and are later classified as “smooth” or “edge” using a threshold. If the number of edge pixels in a block is greater than $0.2\%$ of the total number of pixels in it, then it is classified as an edge block. The smooth blocks are not processed since they are not relevant in terms of blur. Then, for each block, the horizontal edge pixels are retrieved and the width of each edge is computed. With this in hands, the perceptual blur metric for each block $R_{b}$ is described by equation 
 
 \begin{equation}
 \label{eqn:perceptual_blur_metric}
@@ -85,7 +85,7 @@ D = \left(
 
 \subsection{A No-Reference Image Blur Metric Based on the Cumulative Probability of Blur Detection (CPBD)}
 
-A blurriness metric that extends the approach described in \ref{subsec:jnb_approach} was proposed in \cite{narvekar2011noreference}. It is based on the cumulative probability of blur detection (CPBD), which applies the same psychometric function framework from JNB. The $w_{JNB}$ value is defined as 5 if the contrast is less or equal to 50 and 3 otherwise. The metric explores the normalized histogram of the probability of blur detection from the whole image, where CPBD is actually the percentage of edges at which blur is not likely to be detected.
+A sharpness metric that extends the approach described in \ref{subsec:jnb_approach} was proposed in \cite{narvekar2011noreference}. It is based on the cumulative probability of blur detection (CPBD), which applies the same psychometric function framework from JNB. The $w_{JNB}$ value is defined as 5 if the contrast is less or equal to 50 and 3 otherwise. The metric explores the normalized histogram of the probability of blur detection from the whole image, where CPBD is the percentage of edges at which blur is not likely to be detected.
 
 First, the horizontal edges from the image are detected, also divided into blocks of $64 \times 64$ and classified as edge blocks or sharp blocks with the same threshold as in \citeonline{ferzli2009noreference}. The probability of detection blur for and edge $e_{i}$ is computed with the equation \ref{eqn:cpbd_jnb}
 
@@ -117,7 +117,7 @@ First, the horizontal edges from the image are detected, also divided into block
 
 \subsection{S3: A Spectral and Spatial Measure of Local Perceived Sharpness in Natural Images}
 
-\citeonline{vu2012s3} proposed one technique to assess image quality that explores both spatial and spectral information from the image. The denomination $S_{3}$ represents the combination of $S_{1}$, that denotes the spectral measure of sharpness and $S_{2}$, which the authors denote as the spatial measure of sharpness. The first step is to convert the RGB image to the grayscale color space with weights $0.2989$, $0.5870$ and $0.1140$ for the red, green and blue channels, respectively. The grayscale image is then divided into blocks denoted by $\mathbf{x}$ of dimensions $m \times m$ and an overlap $d$ around each neighbor block.
+\citeonline{vu2012s3} proposed one technique to assess image quality that explores both spatial and spectral information from the image. The denomination $S_{3}$ represents the combination of $S_{1}$, which denotes the spectral measure of sharpness and $S_{2}$, which the authors denote as the spatial measure of sharpness. The first step is to convert the RGB image to the grayscale color space with weights $0.2989$, $0.5870$ and $0.1140$ for the red, green and blue channels, respectively. The grayscale image is then divided into blocks denoted by $\mathbf{x}$ of dimensions $m \times m$ and an overlap $d$ around each neighbor block.
 
 In order to compute the $S_{1}(\mathbf{x})$ measure, the first step is to compute the luminance contrast of each $\mathbf{x}$ block, denoted by $CR$ with the equation
 
@@ -158,7 +158,7 @@ S_{1}(\mathbf{x}) = 1 - \frac{1}{1 + e^{\tau_{1}
 
 \noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. Equation \ref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information.
 
-$S_{2}$ incorporates the spatial information by analysing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
+$S_{2}$ incorporates the spatial information by analyzing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
 
 \begin{equation}
 \label{eqn:total_variation}
@@ -207,7 +207,7 @@ y = \{j - 1, j, j + 1\},
     \end{pmatrix}
 \end{equation}
 
-\noindent The next step is to apply a statistical technique to analyse how the distribution of $\Psi$ behaves when the image is sharp or blurred. For the sharp regions, i.e. high MLV values or black content, the distribution is closer to hyper-laplacian; for smoother and blurred regions, the distribution is closer to Gaussian. Therefore, the authors chose to parametrize the MLV with a \sigla{GGD}{Generalized Gaussian Distribution}, which covers the Gaussian, the laplacian and hyper-laplacian distributions and is denoted as
+\noindent The next step is to apply a statistical technique to analyze how the distribution of $\Psi$ behaves when the image is sharp or blurred. For the sharp regions, i.e. high MLV values or black content, the distribution is closer to hyper-laplacian; for smoother and blurred regions, the distribution is closer to Gaussian. Therefore, the authors chose to parametrize the MLV with a \sigla{GGD}{Generalized Gaussian Distribution}, which covers the Gaussian, the laplacian and hyper-laplacian distributions and is denoted as
 
 \begin{equation}
 \label{eqn:GGD_distribution}
