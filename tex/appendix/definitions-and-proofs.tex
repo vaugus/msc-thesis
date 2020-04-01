@@ -1,0 +1,500 @@
+This appendix presents the mathematical description of how the feature vectors are built and a proof of the fact that the algorithm yields a probability distribution as the final structure, which allows the use of statistical analysis as the basis of our quality metric. Along with the proof, several definitions and auxiliary theorems that are necessary to the understanding of the proof are described.
+
+\vspace{0.1in}
+
+% Algebra
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\begin{definition}{(Algebra) \cite{folland2013real}}
+
+Let $X$ be a nonempty set. A \textbf{field} or an \textbf{algebra} of sets on $X$ is a nonempty collection $\mathcal{A}$ of subsets of $X$ that is closed under finite unions and complements, as described as follows:
+
+\begin{enumerate}[label=(\roman*)]
+    \item if $\{E_{j}\}_{j = 1}^{n} \in \mathcal{A}$, then $\bigcup_{j = 1}^{n}E_{j} \in \mathcal{A}$;
+    
+    \item if $E \in \mathcal{A}$, then $E^{c} \in \mathcal{A}$.
+    
+\end{enumerate}
+\end{definition}
+\vspace{0.1in}
+
+% Sigma-algebra
+\begin{definition}{($\sigma$-algebra) \cite{folland2013real}}
+
+A \textbf{$\sigma$-field} or \textbf{$\sigma$-algebra} $\mathcal{M}$ is an algebra that is closed under countable unions.
+\end{definition}
+
+\vspace{0.1in}
+
+% Measure
+\begin{definition}{(Measure) \cite{folland2013real}}
+
+Let $X$ be a set equipped with a $\sigma$-algebra $\mathcal{M}$. A \textbf{measure} on $\mathcal{M}$ is a function $\mu : \mathcal{M} \rightarrow [0, + \infty]$, such that
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\mu(\emptyset) = 0$.
+    \item if $\{E_{j}\}_{j = 1}^{\infty}$ is a sequence of disjoint sets in $\mathcal{M}$, then
+    
+    \[ \mu \left( \bigcup_{j = 1}^{\infty} E_{j} \right) = \sum_{j = 1}^{\infty} \mu(E_{j}). \]
+
+\end{enumerate}
+
+\noindent From (ii), if $E_{j} = \emptyset$ for $j > n$, if $\{E_{1},E_{2},...,E_{n}\}$ are disjoint sets in $\mathcal{M}$, then $\mu \left( \bigcup_{j = 1}^{n} E_{j} \right) = \sum_{j = 1}^{n} \mu(E_{j})$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Dirac Measure
+\begin{definition}{(Dirac Measure) \cite{ccinlar2011probability}}
+
+Let $(X,\mathcal{M})$ be a measurable space and let $x$ be a fixed point of $X$. For each subset $E$ in $\mathcal{M}$, put
+
+    \[ 
+        \delta_{x}(E) = \left\{
+        \begin{array}{lr}
+            1, & \text{if } x \in E\\\
+            0, & \text{if } x \notin E\\
+        \end{array}
+        \right..
+    \]
+
+\noindent Then, $\delta_{x}$ is a measure on $(X,\mathcal{M})$ and is called the \textbf{Dirac measure} sitting at $x$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Discrete Measure
+\begin{definition}{(Discrete Measure) \cite{ccinlar2011probability}}
+
+Let $(X,\mathcal{M},\mu)$ be a measurable space. Let $D$ be a countable subset of $X$. For each arbitrarily chosen $x \in D$, let $m(x) > 0$ . For $E \in \mathcal{M}$, define
+
+    \[ \mu_{E} =  \sum_{x \in D}m(x)\delta_{x}(E). \]
+
+\noindent Then, $\mu$ is called a \textbf{discrete measure} on $(X,\mathcal{M})$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Metric Space
+\begin{definition}{(Metric and Metric Space) \cite{folland2013real}}
+
+Let $X$ be a nonempty set. A \textbf{metric} on $X$ is a function $\rho : X \times X \rightarrow [0,\infty)$ such that
+    
+\begin{enumerate}[label=(\roman*)]
+    \item $\rho(x,y) = 0 \Leftrightarrow x = y$;
+    
+    \item $\rho(x,y) = \rho(y,x)$ for all $x,y \in X$;
+    
+    \item $\rho(x,z) \leq \rho(x,y) + \rho(y,z)$ for all $x,y,z \in X$.
+    
+\end{enumerate}
+
+\vspace{0.05in}
+
+A set equipped with a metric is called a \textbf{metric space}.
+
+\end{definition}
+\vspace{0.1in}
+
+% Open and Closed Ball
+\begin{definition}{(Open and Closed Ball) \cite{folland2013real}}
+
+Let $(X, \rho)$ be a metric space. If $x \in X$ and $r > 0$, the \textbf{open ball} of radius $r$ about $x$ is
+
+\[B(r;x) = \{y \in X : \rho(x,y) < r \}.\]
+
+\noindent In other words, a ball of radius $r$ is the collection of points of distance less than (which makes it \textbf{open}) or equal to (which makes it \textbf{closed}) $r$ from a fixed point $x$ in a metric space \cite{croft2012unsolved}.
+
+\end{definition}
+\vspace{0.1in}
+
+% Topology
+\begin{definition}{(Topology and Topological Space) \cite{royden1988real}}
+
+Let $X$ be a nonempty set. A \textbf{topology} on $X$ is a family of subsets $\tau \subset \mathcal{P}(X)$, satisfying
+    
+\begin{enumerate}[label=(\roman*)]
+    \item $X \in \tau$ and $\emptyset \in \tau$.
+    
+    \item if $O_{1}, O_{2} \in \tau$ imply $O_{1} \cap O_{2} \in \tau$ ($\tau$ is closed under finite intersections).
+    
+    \item if $(O_{i})_{i \in I} \in \tau$, then $\cup_{i \in I}O_{i} \in \tau$ ($\tau$ is closed under arbitrary unions).
+    
+\end{enumerate}
+
+\vspace{0.05in}
+
+\noindent A \textbf{topological space} $(X, \tau)$ is a nonempty set together with a \textbf{topology} $\tau$ on it. The elements of $\tau$ are called \textbf{open sets} of $X$. 
+
+\end{definition}
+\vspace{0.1in}
+
+% Topological Vector Space
+\begin{definition}{(Topological Vector Space) \cite{folland2013real}}
+
+A \textbf{topological vector space} is a vector space $\mathbb{V}$ over $\mathbb{K} = (\mathbb{R}$ or $\mathbb{C})$ which is endowed with a topology such that the maps $(x,y) \rightarrow x + y$ and $(\lambda,x) \rightarrow \lambda x$ are continuous from $\mathbb{V} \times \mathbb{V}$ and $\mathbb{K} \times \mathbb{V}$ to $\mathbb{V}$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Locally Convex Topological Vector Space
+\begin{definition}{(Locally Convex Topological Vector Space) \cite{folland2013real}}
+
+A topological vector space is called \textbf{locally convex} if there is a base for the topology consisting of convex sets (that is, sets $A$ such that if $x,y \in A$ then $tx + (1-t)y \in A$ for $0 < t < 1$). Most topological vector spaces that arise in practice are locally convex.
+
+\end{definition}
+\vspace{0.1in}
+
+% Inductive limit topology
+\begin{definition}{(Inductive Limit Topology) \cite{gheondea2016locally}}
+
+The inductive limit topology of a topological vector space is the strongest locally convex topology on $\mathbb{V}$ that makes the linear maps on continuous.
+
+\end{definition}
+\vspace{0.1in}
+
+
+% Generated sigma algebra
+\begin{definition}{(Generated $\sigma$-algebra) \cite{folland2013real}}
+
+Let $X$ be an nonempty set. If $\mathcal{E}$ is any subset of $ \mathcal{P}(X)$, there is an unique smallest $\sigma$-algebra $\mathcal{M}(\mathcal{E})$ containing $\mathcal{E}$, namely, the intersection of all $\sigma$-algebras containing $\mathcal{E}$. Then, $\mathcal{M}(\mathcal{E})$ is called the $\sigma$-algebra \textbf{generated} by $\mathcal{E}$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Borel sigma-algebra
+\begin{definition}{(Borel $\sigma$-algebra) \cite{folland2013real}}
+
+If $X$ is a topological space, the $\sigma$-algebra generated by the family of open sets in $X$ (or, equivalently, by the family of closed sets in $X$) is called the \textbf{Borel $\sigma$}-algebra on $X$ and is denoted by $\mathcal{B}_{X}$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Closure
+\begin{definition}{(Closure) \cite{royden1988real}}
+
+For a set $E$ of real numbers, a real number $x$ is called a \textbf{point of closure} of $E$ provided every open interval that contains $x$ also contains a point in $E$. The collection of points of closure of $E$ is called the \textbf{closure} of $E$ and denoted by $\bar{E}$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Bounded set
+\begin{definition}{(Bounded Set, Totally Bounded Set, Cover and Subcover) \cite{folland2013real}}
+
+Let the minimal upper bound of a set $A \in \mathbb{R}$ be called the \textbf{supremum} and be denoted by $sup(A)$. 
+
+Let $(X, \rho)$ be a metric space. We also define the \textbf{diameter} of $E \subset X$ as
+
+\[ diam(E) = \left\{sup \rho(x,y): x,y \in E \right\}. \]
+
+\vspace{0.05in}
+
+\noindent Then $E$ is called \textbf{bounded} if $diam(E) < \infty$. 
+
+If $E \subset X$ and ${V_{\alpha}}_{\alpha \in A}$ is a family of sets
+such that $E \subset \bigcup_{\alpha \in A}V_{\alpha}$, $\{V_{\alpha \in A}\}$ is called
+a \textbf{cover} of $E$, and $E$ is said to be \textbf{covered} by the $V_{\alpha}$'s. A 
+\textbf{subcover} of $E$ is a subset of $\{V_{\alpha}\}_{\alpha \in A}$ that still covers $E$.
+
+Finally, $E$ is called \textbf{totally bounded} if, for every $\varepsilon > 0$, $E$ can be covered by
+finitely many balls of radius $\varepsilon$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Sequence
+\begin{definition}{(Sequence) \cite{folland2013real}}
+
+A \textbf{sequence} in a set $X$ is a mapping from $\mathbb{N}$ into $X$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Cauchy Sequence
+\begin{definition}{(Cauchy Sequence) \cite{folland2013real}}
+
+A sequence $\{x_{n}\}$ in a metric space $(X, \rho)$ is called \textbf{Cauchy} if 
+$\rho(x_{n},x_{m}) \rightarrow 0$ as $n,m \rightarrow \infty$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Complete Subset
+\begin{definition}{(Complete Subset) \cite{folland2013real}}
+
+Let $(X,\rho)$ be a metric space. A subset $E$ of $X$ is called \textbf{complete} if
+every Cauchy sequence in $E$ converges and its limit is in E.
+
+\end{definition}
+\vspace{0.1in}
+
+% Compact
+\begin{theorem}{1 \cite{folland2013real}}
+
+If $E$ is a subset of the metric space $(X,\rho)$, the following are equivalent:
+
+\begin{enumerate}[label=(\roman*)]
+    \item The subset $E$ is complete and totally bounded;
+    
+    \item \textbf{(Bolzano-Weierstrass Property)} Every sequence in $E$ has a subsequence that converges to a point of $E$;
+    
+    \item \textbf{(The Heine-Borel Property)} If $\{V_{\alpha}\}_{\alpha \in A}$ is a cover of $E$ by open sets, there is a finite set $F \subset A$ such that $\{V_{\alpha}\}_{\alpha \in F}$ covers $E$.
+    
+\end{enumerate}
+\end{theorem}
+\vspace{0.1in}
+
+% Compact
+\begin{definition}{(Compact Set) \cite{folland2013real}}
+
+A \textbf{compact set} is a set $E$ which possesses the properties from Theorem 1.
+
+\end{definition}
+\vspace{0.1in}
+
+% Support and Compact Support
+\begin{definition}{(Support and Compact Support) \cite{folland2013real}}
+
+Let $(X,\tau)$ be a topological space and $C(X)$ be the space of continuous functions. If a function $\varphi \in C(X)$, then the \textbf{support} $supp(\varphi)$ of the function is the smallest closed set outside of which $\varphi$ vanishes, i.e. the closure of $\{x : \varphi(x) \neq 0\}$. If $supp(\varphi)$ is compact, we say that $r$ is \textbf{compact supported} and we define
+
+\[ C_{c}(X) = 
+    \left\{
+        \varphi \in C(X): supp(\varphi) \text{ is compact}
+    \right\}
+\]
+
+\vspace{0.05in}
+
+\noindent as the set of all continuous functions with compact support.
+
+\end{definition}
+\vspace{0.1in}
+
+% Lp Space
+\begin{definition}{($L^{p}$ space) \cite{folland2013real}}
+
+Let $(X,\mathcal{M},\mu)$ be a measure space. If $\varphi$ is a measurable function on $X$ and $0 < p < \infty$, we define
+
+\[ 
+    \left\lVert \varphi\right\rVert_{p} = 
+    \left[\int |\varphi|^{p}d\mu
+    \right]^{1/p}
+\]
+
+\vspace{0.05in}
+\noindent (allowing $\left\lVert \varphi\right\rVert_{p} = \infty$), and we define
+
+\[
+    L^{p}(X,\mathcal{M},\mu) = 
+    \left\{ 
+    \varphi: X \rightarrow \mathbb{C} : \varphi
+    \text{ is measurable and }
+    \left\lVert \varphi\right\rVert_{p} < \infty
+    \right\}.
+\]
+
+\vspace{0.05in}
+\noindent We abbreviate $L^{p}(X,\mathcal{M},\mu)$ by $L^{p}(\mu)$, $L^{p}(X)$ or simply $L^{p}$. In other words, the $L^{p}$ space is a function space where a measurable function $\varphi$ is $p$-integrable.
+
+\end{definition}
+\vspace{0.1in}
+
+% L2 Space
+\begin{definition}{($L^{2}$ space) \cite{folland2013real}}
+
+The $L^{2}(X)$ is the space of square integrable functions $\varphi: X \rightarrow \mathbb{R}$ on a measurable space $(X,\mathcal{M},\mu)$, i.e.
+
+\[ \int_{-\infty}^{\infty}|\varphi(x)|^{2}d\mu < \infty . \]
+
+\end{definition}
+\vspace{0.1in}
+
+% Distribution
+\begin{definition}{(Distribution and $\mathcal{D}^{'}(\mathbb{R}^{n})$ space) \cite{folland2013real}}
+
+Let $U \subset \mathbb{R}^{n}$ be an open set and $C_{c}^{\infty}(U) = \bigcap_{1}^{\infty}C_{c}^{k}(U)$. A \textbf{distribution} on $U$ is a continuous linear functional $\psi : C_{c}^{\infty}(U) \rightarrow \mathbb{C}$, when $C_{c}^{\infty}(U)$ is provided with the inductive limit topology. The space of all distributions on $U$ is denoted by $\mathcal{D}^{'}(U)$ and forms the topological dual space $\mathcal{D}(U) = C_{c}^{\infty}(U)$. We set $\mathcal{D}^{'} = \mathcal{D}^{'}(\mathbb{R}^{n})$ and we write the functional as $\langle T,v \rangle$ instead of $T(v)$.
+
+\end{definition}
+\vspace{0.1in}
+
+\begin{theorem}{2 \cite{folland2013real}}
+Let $E_{k}(x) = e^{2 \pi i k x}$. Then $\{E_{k} : k \in \mathbb{Z}^{n}\}$ is an orthonormal basis of $L^{2}(\mathbb{T}^{n})$.
+
+\begin{proof}
+
+Verification of orthonormality is an easy exercise in calculus; by Fubini's theorem it boils down to the fact that $\int_{0}^{1}e^{2 \pi i k t}dt$ equals $1$ if $k = 0$ and equals $0$ otherwise.
+
+Next, since $E_{k}E_{\lambda} = E_{k + \lambda}$, the set of finite linear combinations of the $E_{k}$'s is an algebra. It clearly separates points on $\mathbb{T}^{n}$; also, $E_{0} = 1$ and $\bar{E_{k}} = E_{-k}$. Since $\mathbb{T}^{n}$ is compact, the Stone-Weierstrass theorem implies that this algebra is dense in $C(\mathbb{T}^{n})$ in the uniform norm and hence in the $L^{2}$ norm, and $C(\mathbb{T}^{n})$ is itself dense in $L^{2}(\mathbb{T}^{n})$
+%by Proposition 7.9%
+. It follows that $\{E_{k}\}$ is a basis.
+
+\end{proof}
+\end{theorem}
+\vspace{0.1in}
+
+% Parseval's Theorem
+\begin{definition}{(Parseval's Equation) \cite{garling2014course}}
+If $\mathbb{V}$ is a topological vector space, $\varphi, \psi \in \mathbb{V}$, $\hat{\varphi}$ and $\hat{\psi}$ are respectively the Fourier Transforms of $\varphi$ and $\psi$, then
+
+\[
+    \frac{1}{2 \pi} 
+    \int_{-\pi}^{\pi} \varphi(t) \overline{\psi(t)}dt = 
+    \sum_{k=-\infty}^{\infty} \hat{\varphi_{k}} \overline{\hat{\psi_{k}}}.
+\]
+
+\noindent Particularly, $\frac{1}{2 \pi} \int_{-\pi}^{\pi} |\varphi(t)|^{2} dt = \sum_{k=-\infty}^{\infty} |\hat{\varphi_{k}}|^{2}$.
+
+\end{definition}
+\vspace{0.1in}
+
+% Fourier Transform of C([0,1] to l2(Z)
+\begin{corollary}{1 \cite{folland2013real}}
+\label{corollary_one}
+
+Let $\mathbb{T} = [0,1] \times [0,1]$. The Fourier Transform, as defined in Chapter~\ref{chapter:theoretical-background}, maps $L^{2}(\mathbb{T})$ one to one onto
+
+\[
+    \ell^{2}(\mathbb{Z}^{2}) = 
+    \left\{
+         (\xi_{ij})_{i,j \in \mathbb{Z}} \in \mathbb{C}: 
+        \sum_{i = -\infty}^{\infty}
+        \sum_{j = -\infty}^{\infty}
+        |\xi_{ij}|^{2} < \infty
+    \right\}
+\]
+
+\noindent In other words, the Fourier coefficients of a square integrable function defined within $\mathbb{T}$ are a square integrable sequence of real values. 
+
+\begin{proof}{\cite{garling2014course}}
+
+Parseval's equation implies that the Fourier Transform is an isometric (bijective map between two metric spaces) linear isomorphism (a map which preserves sets and relations) of $L^{2}(\mathbb{T})$ into $\ell^{2}(\mathbb{T})$. On the other hand, if $\gamma_{n}(e^{j \theta}) = e^{j n \theta}$ is an orthonormal sequence, i.e. each vector is orthonormal to all others, in $L^{2}(\mathbb{T})$ and $\{a_{n} \}_{n=-\infty}^{\infty} \in \ell_{2}(\mathbb{Z}^{2})$, then $\left( \sum_{i=-n}^{n} a_{i} \gamma_{i} \right)_{n=1}^{\infty}$ is a Cauchy sequence in $L^{2}(\mathbb{T})$. Since $L^{2}(\mathbb{T})$ is complete, the sequence converges to an element in $L^{2}(\mathbb{T})$.
+\end{proof}
+\end{corollary}
+\vspace{0.1in}
+
+Next, we provide a mathematical proof that the proposed sampling of the Fourier spectrum and the posterior mapping by means of an operator produces a probability distribution.
+
+\begin{theorem}{3}
+
+Let $\mathbb{T} = [0,1] \times [0,1]$. The proposed sampling of the Fourier spectrum yields a distribution, which maps $L^{2}(\mathbb{T})$ into $\ell_{2}(\mathbb{Z}^{2})$.
+
+\begin{proof}
+
+Indeed, let the magnitude matrix of Fourier coefficients of a digital image represented by the function $g \in L^{2}(\mathbb{T})$ be defined as
+
+\[
+    K(m,n) = 
+        \log_{e}{\left(1
+        + \sqrt{
+            [\operatorname{Re}{(\hat{g}(m,n))}]^{2}
+            + [\operatorname{Im}{(\hat{g}(m,n))}]^{2}
+          }
+        \right)},
+\]
+
+\vspace{0.1in}
+
+\noindent where $\hat{g}(m,n)$ are the complex Fourier coefficients just after the transform. Since the modulus of a complex number and the natural logarithm are always positive in this case (since we add 1 to the number, otherwise it could be negative), we have that every element generated by the function $K$ is positive for any outcome of $\hat{g} \in \mathbb{C}$.
+
+The sampling procedure is the element-wise mean of a discrete amount of inradii, taken from a inscribed circle within the matrix. Each inradius is a one-dimensional set $S$ of real numbers from $K$. Formally, the sampling consists of an operator $T : \ell^{2}(\mathbb{Z}^{2}) \rightarrow \ell^{2}(\mathbb{Z}^{2})$ defined as 
+
+\[
+    T(x_{i}) = \frac{\sum_{j=1}^{n}x_{ij}}{n},
+\]
+
+\vspace{0.1in}
+
+\noindent where $x_{i}$ is the $i$-th element of the final sample array and $\sum_{j=1}^{n}x_{ij}$ is the sum of each $i$-th element for each inradius $S$. We now need to show that $K \in \ell^{2}(\mathbb{T})$. Indeed, $L^{2}(\mathbb{T}) \subset \mathcal{D}^{'}(\mathbb{T})$, due to the following facts:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Every function $\varphi : \mathbb{T} \rightarrow \mathbb{C}$, $\varphi \in C_ {c}^{\infty}(\mathbb{T})$ is \textbf{locally integrable}, i.e.
+    
+    \[ \int_{\mathbb{T}} |\varphi|dx < \infty. \]
+    
+     Since $\mathbb{T}$ is compact and $\varphi$ is continuous, then $\varphi$ is consequently integrable all over $\mathbb{T}$;
+     
+     \item Every function $\varphi : \mathbb{T} \rightarrow \mathbb{C}$, $\varphi \in L^{p}(\mathbb{T})$ is \textbf{locally integrable}, i.e.
+     
+     \[ \int_{\mathbb{T}} |f|^{p}dx < \infty. \]
+     
+     It belongs to $L^{p}(\mathbb{T}^{2})$ for all compact subsets from $\mathbb{T}^{2}$, then $\varphi$ is called \textbf{locally $p$-integrable};
+     
+     \item The space $L^{2}(\mathbb{T})$ is a subset of $L^{p}(\mathbb{T})$ when $1 \leq p \leq 2$, which is our case, and also $L^{p}(\mathbb{T})$ is a subset of $\mathcal{D}^{'}(\mathbb{T})$. Thus, $L^{2}(\mathbb{T}) \subset L^{p}(\mathbb{T}) \subset \mathcal{D}^{'}(\mathbb{T})$; 
+     
+     \item From Corollary 1, it follows that the space $L^{2}(\mathbb{T})$ is isomorphic and isometric to $\ell^{2}(\mathbb{Z}^{2})$.
+\end{enumerate}
+
+\begin{flushright}
+$\square$
+\end{flushright}
+
+\noindent We will also show a numerical approach to complete the proof. Let $I$ be an arbitrary matrix which represents a digital image, described by
+
+\[
+I = 
+\begin{bmatrix}
+    0.00 & 0.00 & 0.00 & 0.00 & 0.00
+    \\
+    0.25 & 0.25 & 0.25 & 0.25 & 0.25
+    \\
+    0.50 & 0.50 & 0.50 & 0.50 & 0.50
+    \\
+    0.75 & 0.75 & 0.75 & 0.75 & 0.75
+    \\
+    1.00 & 1.00 & 1.00 & 1.00 & 1.00
+\end{bmatrix}.
+\]
+
+\noindent Practically, $I$ represents the set of numbers that the $g$ would produce after the acquisition of the following scene by an arbitrary imaging system:
+
+\begin{figure*}[ht]
+    \centering
+    \caption{Arbitrary scene acquired by an arbitrary imaging system.}
+    \includegraphics[scale=0.5]{images/arbitrary_tiles.png}
+    \fautor
+\end{figure*}
+
+The DFT transforms $I$ into a set of Fourier coefficients, as
+\[
+\hat{I} = 
+\begin{bmatrix}
+    12.5 + 0i & 0 + 0i & 0 + 0i & 0 + 0i & 0 + 0i
+    \\
+    -3.125 + 4.30119i & 0 + 0i & 0 + 0i & 0 + 0i & 0 + 0i
+    \\
+    -3.125 + 1.01537i & 0 + 0i & 0 + 0i & 0 + 0i & 0 + 0i	
+    \\
+    -3.125 -1.01537i & 0 + 0i & 0 + 0i & 0 + 0i & 0 + 0i
+    \\
+    -3.125 -4.30119i & 0 + 0i & 0 + 0i & 0 + 0i & 0 + 0i
+\end{bmatrix}.
+\]
+
+\noindent Applying $\hat{I}$ in $K$, we obtain the magnitude matrix of the Fourier coefficients from $\hat{I}$, denoted as $M$ and given by
+
+\[
+M = 
+\begin{bmatrix}
+    2.60269 & 0 & 0 & 0 & 0
+    \\
+    1.84318 & 0 & 0 & 0 & 0	
+    \\
+    1.45531 & 0 & 0 & 0 & 0	
+    \\
+    1.45531 & 0 & 0 & 0 & 0	
+    \\
+    1.84318 & 0 & 0 & 0 & 0	
+\end{bmatrix}.
+\]
+
+\vspace{0.1in}
+
+\noindent From this result, we may compute the sum of the square of absolute values of $M$ in order to show that the result is finite. Indeed,
+
+\[
+\sum_{i=1}^{m}\sum_{j=1}^{n}|M|^{2} \approx 18 < \infty,
+\]
+
+\noindent what completes the proof.
+\end{proof}
+\end{theorem}

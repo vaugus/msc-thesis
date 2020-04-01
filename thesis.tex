@@ -26,6 +26,26 @@
 \newcommand{\LatL}{0.42\textwidth}
 % ---------------------------------------------------------------------------
 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb,hyperref}
+\usepackage{enumitem}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+% Theorem Settings
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -129,9 +149,10 @@
 \label{chapter:related-work}
 \input{tex/sections/related-work/main}
 
-% \chapter{Materials and Methods}
-% \label{chapter:materials-and-methods}
-% \input{tex/sections/materials-and-methods}
+\chapter{Materials and Methods}
+\label{chapter:materials-and-methods}
+\input{tex/sections/materials-and-methods/main}
+
 
 % \chapter{Results}
 % \label{chapter:results}
@@ -184,17 +205,13 @@
 % ---
 % Inicia os apêndices
 % ---
-% \begin{apendicesenv}
+\begin{apendicesenv}
 
-%     \chapter{FFT Results}
-%     \label{chapter:fft-test-results}
-%     \input{tex/appendix/fft-test-results}
-    
-%     \chapter{STFT Results}
-%     \label{chapter:stft-test-results}
-%     \input{tex/appendix/stft-test-results}
+    \chapter{Definitions and Proofs}
+    \label{chapter:chapter:definitions-and-proofs}
+    \input{tex/appendix/definitions-and-proofs}
 
-% \end{apendicesenv}
+\end{apendicesenv}
 % ---
 
 
