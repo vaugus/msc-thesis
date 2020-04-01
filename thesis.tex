@@ -156,40 +156,28 @@
 
 % \chapter{Results}
 % \label{chapter:results}
-% \input{tex/sections/results}
+% \input{tex/sections/results/main}
 
 % \chapter{Conclusions}
 % \label{chapter:conclusions}
 % \input{tex/sections/conclusions}
 
-% \chapter{Ferramentas úteis}
-% \label{chapter:ferramentas-uteis}
-% \input{tex/ferramentas-uteis}
 
 % \chapter{Citações e referências}
 % \label{chapter:citacoes}
 % \input{tex/citacoes}
 
 
-% ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
-% ---
 \bookmarksetup{startatroot}% 
-% ---
 
-% ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
- ----------------------------------------------------------
 \postextual
 
-% ----------------------------------------------------------
 % Referências bibliográficas
-% ----------------------------------------------------------
 \bibliography{references}
 
-% ---------------------------------------------------------------------
 % GLOSSÁRIO
-% ---------------------------------------------------------------------
 
 % Arquivo que contém as definições que vão aparecer no glossário
 \input{tex/sections/glossario}
@@ -198,37 +186,11 @@
 % Impressão do glossário
 \printglossaries
 
-% ----------------------------------------------------------
 % Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
 \begin{apendicesenv}
-
     \chapter{Definitions and Proofs}
     \label{chapter:chapter:definitions-and-proofs}
     \input{tex/appendix/definitions-and-proofs}
-
 \end{apendicesenv}
-% ---
-
-
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
-% \begin{anexosenv}
-
-%     \chapter{Páginas interessantes na Internet} 
-%     \label{chapter:paginas-interessantes}
-%     \input{tex/annex/paginas-interessantes}
-
-% \end{anexosenv}
-% ---
 
 \end{document}
