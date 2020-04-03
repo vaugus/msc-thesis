@@ -1,4 +1,4 @@
-As mentioned in chapter \ref{chapter:fundamentals-of-optics-and-light-microscopy}, the bright-field microscopy images are formed by either transmitted or reflected light that passes through the sample and reach the objective lens. There difference between transmitted light and reflected light microscopes is the illumination system; there is no difference in how both direct light rays after those leave the specimen \cite{leng2009materials}.
+As mentioned in \autoref{chapter:fundamentals-of-optics-and-light-microscopy}, the bright-field microscopy images are formed by either transmitted or reflected light that passes through the sample and reach the objective lens. There difference between transmitted light and reflected light microscopes is the illumination system; there is no difference in how both direct light rays after those leave the specimen \cite{leng2009materials}.
 
 According to \citeonline{davidson2002optical}, the light which reaches the specimen is either undeviated, i.e. does not suffer any disturbances in its direction, or diffracted; the diffracted rays leave the sample with a phase difference of 180 degrees in comparison to the undeviated light and cause destructive interference in the eyepiece, which projects a magnified version of this pattern onto a sensor and consequently produces the image.
 
@@ -37,7 +37,7 @@ The Airy disks are intrinsically related to the numerical aperture and the defin
 d = 1.22 \frac{\lambda}{2 NA},
 \end{equation}
 
-\noindent where $d$ is the space between two adjacent particles that may be distinguished from each other, $\lambda$ is the wavelength of the illumination and $NA$ is the numerical aperture of the objective \cite{davidson2002optical}. It is evident that objectives with higher numerical apertures and shorter wavelengths of visible light will yield better resolution. The Figure \ref{fig:airy_disks} shows arbitrary examples of Airy patterns, as well as their possible configurations and their consequences to the image. In Figure \ref{fig:airy_disks}.(a), the usual shape of Airy patterns is shown, together with its two-dimensional representation as a function of the intensity by an interval. Next, Figure \ref{fig:airy_disks}.(b) depicts an occurrence of Airy disk overlapping where both points would be properly resolved, i.e. below the Rayleigh limit, and Figure \ref{fig:airy_disks}.(c) represents the minimum distance in which both points would be distinguished. Finally, Figure \ref{fig:airy_disks}.(d) represents an unresolved pair of points.
+\noindent where $d$ is the space between two adjacent particles that may be distinguished from each other, $\lambda$ is the wavelength of the illumination and $NA$ is the numerical aperture of the objective \cite{davidson2002optical}. It is evident that objectives with higher numerical apertures and shorter wavelengths of visible light will yield better resolution. \autoref{fig:airy_disks} shows arbitrary examples of Airy patterns, as well as their possible configurations and their consequences to the image. In \autoref{fig:airy_disks}.(a), the usual shape of Airy patterns is shown, together with its two-dimensional representation as a function of the intensity by an interval. Next, \autoref{fig:airy_disks}.(b) depicts an occurrence of Airy disk overlapping where both points would be properly resolved, i.e. below the Rayleigh limit, and \autoref{fig:airy_disks}.(c) represents the minimum distance in which both points would be distinguished. Finally, \autoref{fig:airy_disks}.(d) represents an unresolved pair of points.
 
 \begin{figure}[htb]
 	\centering
@@ -51,7 +51,7 @@ d = 1.22 \frac{\lambda}{2 NA},
 
 As explained by \citeonline{goodman1996introduction}, an imaging system, particularly a set of microscope lenses, is said to be \emph{diffraction-limited} if the incident spherical light wave generated from a point-source object is transformed into another spherical wave which converges to an ideal image point, described by the original object point and affected by some sort of isotropic effect, such as magnification in a microscope.
 
-The depth of field was described in chapter \ref{chapter:fundamentals-of-optics-and-light-microscopy} in terms of focal plane distances, but it may also be taken as the \emph{axial resolving power}, a measurement of resolution along the $z$ axis, determined by the numerical aperture and described by the Airy disk profile \cite{davidson2002optical}. Similarly to the Rayleigh's equation, the depth of field increases
+The depth of field was described in \autoref{chapter:fundamentals-of-optics-and-light-microscopy} in terms of focal plane distances, but it may also be taken as the \emph{axial resolving power}, a measurement of resolution along the $z$ axis, determined by the numerical aperture and described by the Airy disk profile \cite{davidson2002optical}. Similarly to the Rayleigh's equation, the depth of field increases
 with higher numerical apertures for the objective and shorter wavelengths of the incident light, and it represents a key property concerning the amount of blur in the resulting image.
 
 
@@ -60,7 +60,7 @@ with higher numerical apertures for the objective and shorter wavelengths of the
 \label{sec:point_spread_function_and_image_formation_model}
 
 When light waves from a point source reach lenses, they suffer diffraction and refraction, which construct a new propagating set of rays that converge to a point in the center of the image plane in the shape of Airy disks; such shape is called the \sigla{PSF}{Point Spread Function}
-of the imaging system (also called \emph{impulse response}), and it is intrinsically related to the imaging process \cite{wu2008microscope}. Particularly, the bright-field microscopy employs polychromatic nonpolarized incoherent light. From this concept, it is possible to relate the Airy disks to the PSF, since those are intensity distributions for each point source of light emanating from the specimen. Figure \ref{fig:point_spread_function}.(a) presents a theoretical scheme of imaging for a point source of light, and Figure \ref{fig:point_spread_function}.(b) depicts the shape of a incoherent PSF:
+of the imaging system (also called \emph{impulse response}), and it is intrinsically related to the imaging process \cite{wu2008microscope}. Particularly, the bright-field microscopy employs polychromatic nonpolarized incoherent light. From this concept, it is possible to relate the Airy disks to the PSF, since those are intensity distributions for each point source of light emanating from the specimen. \autoref{fig:point_spread_function}.(a) presents a theoretical scheme of imaging for a point source of light, and \autoref{fig:point_spread_function}.(b) depicts the shape of a incoherent PSF:
 
 \begin{figure}[htb]
 	\centering
@@ -72,7 +72,7 @@ of the imaging system (also called \emph{impulse response}), and it is intrinsic
     \fadaptada{castleman1996digital,wu2008microscope}
 \end{figure}
 
-In Figure \ref{fig:point_spread_function}.(a), the imaging system in in focus, which is given by
+In \autoref{fig:point_spread_function}.(a), the imaging system in in focus, which is given by
 
 \begin{equation}
 \label{eqn:lens_focus}
@@ -90,7 +90,7 @@ y_{i} = -\frac{d_{i}}{d_{o}}y_{o},
 
 \noindent where $(x_{o},y_{o})$ are the coordinates for the object location on its plane and $(x_{i},y_{i})$ are coordinates that locate the image on its plane. This implies that the shape of the image will not change according to the object's location, and this property yield \emph{shift invariance} to the system, which may be called \emph{isoplanatic}. These properties are observed in an ideal imaging system - simple lenses are not isoplanatic and linear, and  consequently simple microscopes also. However, there are approximations and mathematical tools that allow advanced microscopes to be assumed isoplanatic and linear.
 
-The PSF as related to the intensity distributions described by the Airy disks are limited to the area of the aperture. This means that the amount of light that reaches the image plane is truncated by the circular aperture, what is also true for the PSF. The truncation is mathematically represented by the \emph{pupil function}, which is zero outside the boundaries of the aperture and unity otherwise, and might include also information about wave aberrations of the lens \cite{goodman1996introduction}. As denoted by \citeonline{wu2008microscope} with some notation adjustments, the PSF of an incoherent illuminated circular aperture imaging system is the Fourier Transform (explained further in Chapter \ref{chapter:theoretical-background}) of the generalized pupil function, given by
+The PSF as related to the intensity distributions described by the Airy disks are limited to the area of the aperture. This means that the amount of light that reaches the image plane is truncated by the circular aperture, what is also true for the PSF. The truncation is mathematically represented by the \emph{pupil function}, which is zero outside the boundaries of the aperture and unity otherwise, and might include also information about wave aberrations of the lens \cite{goodman1996introduction}. As denoted by \citeonline{wu2008microscope} with some notation adjustments, the PSF of an incoherent illuminated circular aperture imaging system is the Fourier Transform (explained further in \autoref{chapter:theoretical-background}) of the generalized pupil function, given by
 
 \begin{equation}
 \label{eqn:incoherent_psf}
@@ -112,7 +112,7 @@ h_{\lambda}(x,y,z) = \int_{-\infty}^{\infty}
 
 \noindent where $h_{\lambda}(x,y,z)$ is point spread function for a light with wavelength $\lambda$, $P(x,y)$ is the pupil function, $z$ is the axial location the focal plane and $L = r / NA$ is the focal length, i.e. ratio between the radius of the circular aperture of the objective and the numerical aperture. The normalized Fourier Transform of the PSF is called \sigla{OTF}{Optical Transfer Function} \cite{castleman1996digital}.
 
-From this framework, the image is formed as a set of impulse responses from each point in the object plane that where magnified by the imaging system. Linear systems possess a general expression, a convolution (which will be explained in Chapter \ref{chapter:theoretical-background}) of the input with the system's impulse response, that describes the output \cite{brigham1988fast}. In this sense, the resulting image is a convolution of the PSF with the original image, defined as
+From this framework, the image is formed as a set of impulse responses from each point in the object plane that where magnified by the imaging system. Linear systems possess a general expression, a convolution (which will be explained in \autoref{chapter:theoretical-background}) of the input with the system's impulse response, that describes the output \cite{brigham1988fast}. In this sense, the resulting image is a convolution of the PSF with the original image, defined as
 
 \begin{equation}
 \label{eqn:image_formation_convolution}
@@ -125,7 +125,7 @@ g(x,y) = \int_{-\infty}^{\infty}
 
 \subsection{Discrete Image Formation Model}
 
-Digital images follow a discrete model for image formation due to the acquisition process: the spherical waves that leave the objectives reach the surface of \sigla{CCD}{Charge-coupled Devices}, sensors which proportionally converts light intensities to electrical signals that digitized as pixels \cite{gonzalez2018digital}. The digital images are matrices of pixels that represent light intensities with different channel configurations, where the most common one is the \sigla{RGB}{Red, Green and Blue} image. Therefore, similarly to the image formation model shown in Section \ref{sec:point_spread_function_and_image_formation_model}, the two-dimensional digital image formation is described with a discrete process, arbitrarily as
+Digital images follow a discrete model for image formation due to the acquisition process: the spherical waves that leave the objectives reach the surface of \sigla{CCD}{Charge-coupled Devices}, sensors which proportionally converts light intensities to electrical signals that digitized as pixels \cite{gonzalez2018digital}. The digital images are matrices of pixels that represent light intensities with different channel configurations, where the most common one is the \sigla{RGB}{Red, Green and Blue} image. Therefore, similarly to the image formation model shown in \autoref{sec:point_spread_function_and_image_formation_model}, the two-dimensional digital image formation is described with a discrete process, arbitrarily as
 
 \begin{equation}
 \label{eqn:discrete_image_formation}
@@ -146,7 +146,7 @@ r = \sqrt{x^{2} + y^{2}},
 r_{0} = \frac{\lambda d_{i}}{a},
 \end{align}
 
-\noindent where $h(r)$ is the radially symmetrical PSF, $r$ is the radial distance, $r_{0}$ is a scaling factor, $J_{1}$ is the Bessel function of first order and first kind, $\lambda$ is the wavelength of the illumination, $a$ is the diameter of the aperture and $d_{i}$ is the distance from the lens plane to the image plane. A scheme of the geometric setup of discrete image formation through the PSF is shown in in Figure \ref{eqn:discrete_image_formation}: 
+\noindent where $h(r)$ is the radially symmetrical PSF, $r$ is the radial distance, $r_{0}$ is a scaling factor, $J_{1}$ is the Bessel function of first order and first kind, $\lambda$ is the wavelength of the illumination, $a$ is the diameter of the aperture and $d_{i}$ is the distance from the lens plane to the image plane. A scheme of the geometric setup of discrete image formation through the PSF is shown in \autoref{eqn:discrete_image_formation}: 
 
 \begin{figure}[htb]
 	\centering
@@ -158,6 +158,6 @@ r_{0} = \frac{\lambda d_{i}}{a},
     \fadaptada{castleman1996digital}
 \end{figure}
 
-The discrete OTF is then the \sigla{DFT}{Discrete Fourier Transform} (explained in Chapter \ref{chapter:theoretical-background}) of the PSF in equation \ref{eqn:discrete_psf}. The OTF characterizes the intensities of light that emanate from the specimen in terms of frequencies. 
+The discrete OTF is then the \sigla{DFT}{Discrete Fourier Transform} (explained in \autoref{chapter:theoretical-background}) of the PSF in \autoref{eqn:discrete_psf}. The OTF characterizes the intensities of light that emanate from the specimen in terms of frequencies. 
 
 There is another property of image formation and acquisition that influences the image quality: the noise. Pursuant to \citeonline{wu2008microscope}, imaging is corrupted by intrinsic or extrinsic noise; the former is modelled by a Poisson distribution that influences each photon that reaches the sensor, and the latter is modelled by a Gaussian distribution that sums to the matrix of pixels. Details about noise are out of the scope of this work, since the degradation to be deeply explored is the defocus blur.
