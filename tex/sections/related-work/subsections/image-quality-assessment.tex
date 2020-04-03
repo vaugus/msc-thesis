@@ -37,7 +37,7 @@ First, an edge detector is applied to the luminance component of the image (equi
 
 The authors in \cite{ferzli2009noreference} employ a psychometric model, i.e. the assignment of numerical representations to subjective tests to create a perceptual sharpness metric. The subjective tests are made concerning the \emph{Just Noticeable Blur} (JNB) concept, which is the minimum amount of perceived blurriness around an edge given a contrast higher than the limit of contrast between background and foreground that is possible to notice. 
 
-The subjective test experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with the aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that are treated as the probability of detecting blur as a function of the standard deviation $\sigma$. The denoted by equation \ref{eqn:psychometric_jnb}:
+The subjective test experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with the aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that are treated as the probability of detecting blur as a function of the standard deviation $\sigma$, denoted by
 
 \begin{equation}
 \label{eqn:psychometric_jnb}
@@ -81,13 +81,13 @@ D = \left(
     \right)^{\frac{1}{\beta}}.
 \end{align}
 
-\noindent Finally, $D$ from equation \ref{eqn:p_blur_final} is then normalized by the amount of blocks an represents the final image quality index.
+\noindent Finally, $D$ from \autoref{eqn:p_blur_final} is then normalized by the amount of blocks an represents the final image quality index.
 
 \subsection{A No-Reference Image Blur Metric Based on the Cumulative Probability of Blur Detection (CPBD)}
 
 A sharpness metric that extends the approach described in \ref{subsec:jnb_approach} was proposed in \cite{narvekar2011noreference}. It is based on the cumulative probability of blur detection (CPBD), which applies the same psychometric function framework from JNB. The $w_{JNB}$ value is defined as 5 if the contrast is less or equal to 50 and 3 otherwise. The metric explores the normalized histogram of the probability of blur detection from the whole image, where CPBD is the percentage of edges at which blur is not likely to be detected.
 
-First, the horizontal edges from the image are detected, also divided into blocks of $64 \times 64$ and classified as edge blocks or sharp blocks with the same threshold as in \citeonline{ferzli2009noreference}. The probability of detection blur for and edge $e_{i}$ is computed with the equation \ref{eqn:cpbd_jnb}
+First, the horizontal edges from the image are detected, also divided into blocks of $64 \times 64$ and classified as edge blocks or sharp blocks with the same threshold as in \citeonline{ferzli2009noreference}. The probability of detection blur for and edge $e_{i}$ is computed with the \autoref{eqn:cpbd_jnb}
 
 \begin{equation}
 \label{eqn:cpbd_jnb}
@@ -102,7 +102,7 @@ First, the horizontal edges from the image are detected, also divided into block
 \end{split}
 \end{equation}
 
-\noindent Then, the cumulative probability of blur detection is computed from the probability density function of equation \ref{eqn:cpbd_jnb}, and may be described as
+\noindent Then, the cumulative probability of blur detection is computed from the probability density function of \autoref{eqn:cpbd_jnb}, and may be described as
 
 \begin{equation}
 \label{eqn:cpbd}
@@ -156,7 +156,7 @@ S_{1}(\mathbf{x}) = 1 - \frac{1}{1 + e^{\tau_{1}
 (\alpha_{\mathbf{x}} - \tau_{2})}},
 \end{equation}
 
-\noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. Equation \ref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information.
+\noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. \autoref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information.
 
 $S_{2}$ incorporates the spatial information by analyzing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
 
@@ -195,7 +195,7 @@ x = \{i - 1, i, i + 1\};\;\;
 y = \{j - 1, j, j + 1\},
 \end{align}
 
-\noindent where $g(k,l)$ with the bounds for $k$ and $l$ denoted in equation \ref{eqn:mlv} are the 8-neighbors of the pixel $g(i,j)$. In a nutshell, the metric finds the maximum among the 8-neighborhood of a pixel, concerning the $\ell_{1}$ norm as a distance. With this setup, the algorithm begins with the grayscale conversion of an image of dimensions $M \times N$. The neighborhoods are $3 \times 3$ blocks along the image and the MLV is computed for all pixels, which results in a map $\Psi(g)$ given by
+\noindent where $g(k,l)$ with the bounds for $k$ and $l$ denoted in \autoref{eqn:mlv} are the 8-neighbors of the pixel $g(i,j)$. In a nutshell, the metric finds the maximum among the 8-neighborhood of a pixel, concerning the $\ell_{1}$ norm as a distance. With this setup, the algorithm begins with the grayscale conversion of an image of dimensions $M \times N$. The neighborhoods are $3 \times 3$ blocks along the image and the MLV is computed for all pixels, which results in a map $\Psi(g)$ given by
 
 \begin{equation}
 \label{eqn:mlv_matrix}

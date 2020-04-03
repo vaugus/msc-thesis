@@ -1,12 +1,10 @@
 Statistics is the science of planning studies and experiments, obtaining data, organizing, summarizing, presenting, analyzing, and interpreting those data and then drawing conclusions based on them; particularly among its main applications, the \emph{descriptive statistics} is a branch that comprises a set of methods which aim to describe relevant characteristics in data \cite{triola2017elementary}. The descriptive statistics methods either employ graphical elements such as boxplots, histograms, bar graphs and scatter plots to analyze data or yield numerical summary measures such as means, standard deviations, correlation coefficients and other related indices \cite{devore2011probability}. The methods that compose a descriptive statistical approach for data analysis are simple yet powerful tools that play a very important role within the scope of this project. The \emph{kurtosis} and the \emph{z-score} are the most prominent measurements for the application and will be clearly explained after some basic concepts. The graphical methods are irrelevant for this work.
 
-% Chapter~\ref{chapter:materials_and_methods}
-Chapter {\color{red} Materials and Methods}
-will present the information about the nature of data to be analysed in this work. The concepts of \emph{population}, \emph{sample} and \emph{variable} are elementary: a population is a well-defined collection of objects that might be included in the analysis, a sample is a subset of a population and a variable is a feature of the objects which may change from one object to another \cite{devore2011probability}. Moreover, a \emph{frequency distribution} is a tool that presents how the data is partitioned among several categories by listing each category and its frequency of data values in each of them; a \emph{relative frequency distribution} is a frequency distribution where each frequency is represented by a proportion, usually as percentage \cite{triola2017elementary}.
+\autoref{chapter:materials_and_methods} will present the information about the nature of data to be analysed in this work. The concepts of \emph{population}, \emph{sample} and \emph{variable} are elementary: a population is a well-defined collection of objects that might be included in the analysis, a sample is a subset of a population and a variable is a feature of the objects which may change from one object to another \cite{devore2011probability}. Moreover, a \emph{frequency distribution} is a tool that presents how the data is partitioned among several categories by listing each category and its frequency of data values in each of them; a \emph{relative frequency distribution} is a frequency distribution where each frequency is represented by a proportion, usually as percentage \cite{triola2017elementary}.
 
 \subsection{Measures of Central Tendency}
 
-According to \citeonline{mendenhall2016statistics}, the measures of central tendency provides several ways to locate the center of the relative frequency distribution, and the three most common are the \emph{arithmetic mean}, i.e. the average of the measurements, the \emph{median}, i.e. the middle number when the measurements are ordered in ascending or descending order and the \emph{mode}, i.e. the value that occurs with the greatest frequency. Figure \ref{fig:central_tendency} presents the interpretations of these three metrics for a relative frequency distribution:
+According to \citeonline{mendenhall2016statistics}, the measures of central tendency provides several ways to locate the center of the relative frequency distribution, and the three most common are the \emph{arithmetic mean}, i.e. the average of the measurements, the \emph{median}, i.e. the middle number when the measurements are ordered in ascending or descending order and the \emph{mode}, i.e. the value that occurs with the greatest frequency. \autoref{fig:central_tendency} presents the interpretations of these three metrics for a relative frequency distribution:
 
 \begin{figure}[H]
 	\centering
@@ -100,7 +98,7 @@ m_{r} = \frac{1}{n}
         \sum_{i=1}^{k}p_{i}(x_{i} - \bar{x})^{r}
 \end{equation}
 
-\noindent for every $x_{i}$ in the possible outcomes of $X$. Thus, kurtosis may be defined as the ratio of the fourth moment (equation \ref{eqn:rth_moment} with $r = 4$) by the square of the variance (also equation \ref{eqn:rth_moment} with $r = 2$), denoted by
+\noindent for every $x_{i}$ in the possible outcomes of $X$. Thus, kurtosis may be defined as the ratio of the fourth moment (\autoref{eqn:rth_moment} with $r = 4$) by the square of the variance (also \autoref{eqn:rth_moment} with $r = 2$), denoted by
 
 \begin{equation}
 \label{eqn:kurtosis}

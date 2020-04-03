@@ -40,7 +40,7 @@ The guided filtering, i.e. a windowed linear transform of the input image where 
 
 The decomposition step transforms the input images into two-scale representations by means of a convolution with an average filter of size $31 \times 31$. The first representation is named \emph{base} layer, directly obtained from the average filter convolution, and the second representation is named \emph{detail} layer, obtained by subtracting the base layer from the input image.
 
-In order to retrieve the weight map, i.e. characterization of sharp and blurry regions of the image, edge extraction is performed by means of Laplacian filtering with a $3 \times 3$ kernel (which will be further explained in Chapter~\ref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
+In order to retrieve the weight map, i.e. characterization of sharp and blurry regions of the image, edge extraction is performed by means of Laplacian filtering with a $3 \times 3$ kernel (which will be further explained in \autoref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
 
 \begin{equation}
 \label{eqn:weight_map}

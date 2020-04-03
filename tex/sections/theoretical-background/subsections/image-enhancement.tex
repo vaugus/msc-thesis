@@ -15,7 +15,7 @@ The image histogram is one of the simplest and most useful tools in image proces
 hist_{equalized}(r) = \frac{L - 1}{MN} hist_{cumulative}(r),
 \end{equation}
 
-\noindent where $hist_{equalized}(r)$ and $hist_{cumulative}(r)$ are the equalized and cumulative histograms relative to a range $L$ of intensities after image quantization with $r$ values, $M \times N$ is the image resolution. Since it stems from a sum of probabilities and no new gray intensity levels should be created, the process generates fractional values that are mapped onto integers. The result of this process is contrast enhancement, which may be seen in Figure \ref{fig:histogram_equalization}:
+\noindent where $hist_{equalized}(r)$ and $hist_{cumulative}(r)$ are the equalized and cumulative histograms relative to a range $L$ of intensities after image quantization with $r$ values, $M \times N$ is the image resolution. Since it stems from a sum of probabilities and no new gray intensity levels should be created, the process generates fractional values that are mapped onto integers. The result of this process is contrast enhancement, which may be seen in \autoref{fig:histogram_equalization}:
 
 \begin{figure}[htb]
 	\centering
@@ -29,7 +29,7 @@ hist_{equalized}(r) = \frac{L - 1}{MN} hist_{cumulative}(r),
 
 \subsection{Spatial Filtering}
 
-Spatial filtering consists of the convolution of an image with a predefined kernel operator, which creates new pixel values and replaces them in the original image \cite{gonzalez2018digital}. The continuous form may be represented as a convolution over all values of a defined region of the image and the discrete form consists of sliding a weight mask over the image \cite{wu2008microscope}. Figure \ref{fig:generic_spatial_filtering} presents an arbitrary schema of a basic linear spatial filtering procedure:
+Spatial filtering consists of the convolution of an image with a predefined kernel operator, which creates new pixel values and replaces them in the original image \cite{gonzalez2018digital}. The continuous form may be represented as a convolution over all values of a defined region of the image and the discrete form consists of sliding a weight mask over the image \cite{wu2008microscope}. \autoref{fig:generic_spatial_filtering} presents an arbitrary schema of a basic linear spatial filtering procedure:
 
 \begin{figure}[htb]
 	\centering
@@ -47,7 +47,7 @@ Examples of discrete spatial filtering in digital image processing are smoothing
 
 Contrast enhancement may be described as the slope of the function that is relating input image intensity value to desired resultant image intensities \cite{sonali2019approach}. Histogram equalization is one of the techniques to perform contrast enhancement and works in an image by mapping the distribution of its gray levels to an approximately uniform distribution. The performance of this process is deeply related to the amount of noise in the image since it consists of peaks in the histogram, which unbalances the mapping and enhances noisy structures. One solution to this problem, according to \citeonline{zuiderveld1994constrast}, is to divide the image into \emph{contextual regions}, i.e. rectangular areas of $8 \times 8$ size, compute the optimal contrast for each of the regions and merge the results with bilinear interpolation to avoid boundary effects. This method is known as \sigla{AHE}{Adaptive Histogram Equalization}, where the global outlier gray levels do not influence each contextual region contrast enhancement.
 
-The \sigla{CLAHE}{Contrast Limited Adaptive Histogram Equalization} method was proposed to overcome the drawback of noise. As stated by \citeonline{sonali2019approach}, it is the method that improves the low contrast issue and operates by limiting the contrast enhancement that is usually performed by ordinary histogram equalization or the AHE, which results in the noise enhancement as well. It is accomplished by allowing only a maximum number of pixels in each of the histogram bins and equally distributing the clipped pixels among the whole histogram \cite{zuiderveld1994constrast}. Figure \ref{fig:hr_ahe_clahe} presents an example of the differences between histogram equalization techniques and their results in a \sigla{MRI}{Magnetic Resonance Imaging} example:
+The \sigla{CLAHE}{Contrast Limited Adaptive Histogram Equalization} method was proposed to overcome the drawback of noise. As stated by \citeonline{sonali2019approach}, it is the method that improves the low contrast issue and operates by limiting the contrast enhancement that is usually performed by ordinary histogram equalization or the AHE, which results in the noise enhancement as well. It is accomplished by allowing only a maximum number of pixels in each of the histogram bins and equally distributing the clipped pixels among the whole histogram \cite{zuiderveld1994constrast}. \autoref{fig:hr_ahe_clahe} presents an example of the differences between histogram equalization techniques and their results in a \sigla{MRI}{Magnetic Resonance Imaging} example:
 
 \begin{figure}[htb]
 	\caption{\label{fig:hr_ahe_clahe} MRI image of a human knee \textbf{(a)}, a simple histogram equalization \textbf{(b)}, an adaptive histogram equalization \textbf{(c)} and the contrast limited adaptive histogram equalization \textbf{(d)}.} 
