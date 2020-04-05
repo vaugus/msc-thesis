@@ -56,13 +56,9 @@
 % ---
 % Tanto na capa quanto nas folhas de rosto apenas a primeira letra da primeira palavra (ou nomes próprios) devem estar em letra maiúscula, todas as demais devem ser em letra minúscula.
 
-% \tituloPT{Profundidade de campo estendida em imagens multifocais de microscopia de luz por meio de técnicas no domínio de transformadas}
+\tituloPT{Fusão adaptativa em imagens de microscopia de campo claro adquiridas em diferentes planos focais}
 
-% \tituloEN{Extended depth of field in multifocal light microscopy images with transform domain techniques}
-
-\tituloPT{Fusão adaptativa em imagens de microscopia de luz adquiridas em diferentes planos focais}
-
-\tituloEN{Adaptive fusion of light microscopy images acquired in different focal planes}
+\tituloEN{Adaptive fusion of bright-field microscopy images acquired in different focal planes}
 
 \autor[Catanante, V. A. A.]{Victor Augusto Alves Catanante}
 \genero{M} % Gênero do autor (M = Masculino / F = Feminino)
@@ -133,9 +129,9 @@
 % ----------------------------------------------------------
 \textual
 
-% \chapter{Introduction}
-% \label{chapter:introduction}
-% \input{tex/sections/introduction}
+\chapter{Introduction}
+\label{chapter:introduction}
+\input{tex/sections/introduction/main}
 
 \chapter{Fundamentals of Optics and Light Microscopy}
 \label{chapter:fundamentals-of-optics-and-light-microscopy}
@@ -157,20 +153,13 @@
 \label{chapter:materials-and-methods}
 \input{tex/sections/materials-and-methods/main}
 
+\chapter{Results}
+\label{chapter:results}
+\input{tex/sections/results/main}
 
-% \chapter{Results}
-% \label{chapter:results}
-% \input{tex/sections/results/main}
-
-% \chapter{Conclusions}
-% \label{chapter:conclusions}
-% \input{tex/sections/conclusions}
-
-
-% \chapter{Citações e referências}
-% \label{chapter:citacoes}
-% \input{tex/citacoes}
-
+\chapter{Conclusions}
+\label{chapter:conclusions}
+\input{tex/sections/conclusions/main}
 
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
 \bookmarksetup{startatroot}% 
@@ -193,7 +182,7 @@
 % Apêndices
 \begin{apendicesenv}
     \chapter{Definitions and Proofs}
-    \label{chapter:chapter:definitions-and-proofs}
+    \label{chapter:definitions-and-proofs}
     \input{tex/appendix/definitions-and-proofs}
 \end{apendicesenv}
 

@@ -1,0 +1,86 @@
+The NR-IQA method was developed first, and our results with well-known NR-IQA approaches such as MLV \cite{bahrami2014fast}, $S_{3}$ \cite{vu2012s3}, JNB \cite{ferzli2009noreference}, CPBD \cite{narvekar2011noreference}, Marziliano \textit{et. al.} \cite{marziliano2002noreference} and Kanjar \cite{kanjar2013image}. \autoref{tab:iqa_performance_comparison} shows the results of the PLCC, SRCC and KRCC metrics for the \textit{Callisia}, \textit{Tradescantia} and \textit{Cthenante} datasets, respectively.
+
+\begin{table}[ht]
+    \centering
+    \caption{Performance comparison of our proposed method and other NR-IQA metrics on the microscopy images datasets.}
+    \label{tab:iqa_performance_comparison}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        Dataset & Index & MLV & $S_{3}$ & JNB & CPBD & Marz. & Kanjar & \textbf{Proposed}\\
+        \midrule
+        
+        \multirow{3}{*}{\textit{\small Callisia}} 
+        & \small PLCC & 0.2829 & 0.1752 & 0.5461 & 0.7361 & 0.7457 & 0.6688 & \textbf{0.7488}\\
+        & \small SRCC & 0.2752 & 0.1730 & 0.6031 & 0.6122 & 0.6122 & 0.5971 & \textbf{0.6212}\\
+        & \small KRCC & 0.2267 & 0.1425 & 0.4968 & 0.5043 & 0.5043 & 0.4919 & \textbf{0.5117}\\
+        
+        \midrule
+        
+        \multirow{3}{*}{\textit{\small Tradescantia}}
+        & \small PLCC & 0.1285 & -0.1312 & 0.2561 & 0.2409 & 0.2322 & 0.2564 & \textbf{0.3698}\\
+        & \small SRCC & 0.1346 & -0.1253 & 0.2181 & 0.2413 & 0.2227 & 0.2227 & \textbf{0.2552}\\
+        & \small KRCC & 0.1107 & -0.1031 & 0.1794 & 0.1985 & 0.1832 & 0.1833 & \textbf{0.2099}\\
+
+        \midrule
+        
+        \multirow{3}{*}{\textit{\small Cthenante}} 
+        & \small PLCC & 0.0446 & -0.1682 & 0.7840 & 0.8041 & 0.8012 & 0.7831 & \textbf{0.8129}\\
+        & \small SRCC & 0.0227 & -0.2068 & 0.7414 & \textbf{0.7515} & 0.7464 & 0.7338 & 0.7414\\
+        & \small KRCC & 0.0187 & -0.1704 & 0.6108 & \textbf{0.6191} & 0.6150 & 0.6046 & 0.6108\\
+        
+        \bottomrule
+    \end{tabular}
+    \centering
+    \fautor
+\end{table}
+
+
+From \autoref{tab:iqa_performance_comparison}, we may conclude that our tests obtained reasonable results with the proposed microscopy images. Our method obtained the highest values for most of the metrics in most of the datasets.  The difference between our images and benchmark datasets such as LIVE \cite{sheikh2006statistical} and CSIQ \cite{larson2010most} is that our bright-field microscopy images are subjected to a non-homogeneous blur kernel and the spherical aberrations are more prominent. Consequently, the labeling of blurred and sharp is subjective, since the notion of quality might be different according to what the images will be used for. In the scope of this work, the reason for assessing image quality is to predict eligible images and select the proper ones to perform the fusion process.
+
+The PLCC, SRCC and KRCC coefficients also evaluate the \textit{monotonicity}, i.e. the property of maintaining the order relation between the sets - it is only nondecreasing or nonincreasing. In this work, monotonicity relates the values obtained by applying our metric on the proposed datasets and the set of labels provided by the subject evaluation of them. The results in \autoref{tab:iqa_performance_comparison} also show how monotonic the metric is. Finally, the computational performance of an NR-IQA metric may be a constraint. Autofocus systems in microscopes, for example, should be capable of updating sharpness metrics several times to find the best focus setup. Our method was built with the C++ language and the OpenCV framework in order to achieve good computational performance with common hardware and operating system settings and is available in a repository. We also implemented the Kanjar method in Python, and the code is also organized in a repository. 
+
+The literature NR-IQA methods we used to compare our results were implemented in MATLAB, C++ and Python programming languages. The implementations we used are summarized in \autoref{tab:implementations}:
+
+\begin{table}[htbp]
+    \caption{Implementations of the literature IQA methods and ours.}
+    \label{tab:implementations}
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Method} & \textbf{Environment} & \textbf{Implementation}\\
+        \midrule
+        MLV & MATLAB & \url{https://sites.google.com/site/khosrobahrami2010/publications}\\
+        $S_{3}$ & MATLAB & \url{http://vision.eng.shizuoka.ac.jp/s3/}\\
+        JNB & MATLAB & \url{https://ivulab.asu.edu/software/jnbm/}\\
+        CPBD & Python & \url{https://pypi.org/project/cpbd/}\\
+        Marz. & C++ & \url{https://github.com/PeterWang1986/blur}\\
+        Kanjar & Python & \url{https://github.com/vaugusto92/kanjar-nr-iqa}\\
+        Proposed & C++ & \url{https://github.com/vaugusto92/fourier-light-microscopy-nr-ism}\\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{table}
+
+
+\autoref{tab:running_times_comparison} presents the running time comparison for all methods in the three proposed datasets. Despite the programming language differences, our method yielded a relevant computational efficiency in terms of execution time. 
+
+\begin{table}[ht]
+    \centering
+    \caption{Running times for the proposed method and other NR-IQA metrics on our \emph{Callisia repens} microscopy images dataset.}
+    \label{tab:running_times_comparison}
+    \begin{tabular}{lccccccc}
+        \toprule
+        & \multicolumn{7}{c}{Times} \\
+        \midrule
+        Dataset & MLV & $S_{3}$ & JNB & CPBD & Marz. & Kanjar & \textbf{Proposed}\\
+        \midrule
+        
+        \textit{Callisia} & 00:01:06 & 04:25:00 & 00:04:37 & 00:14:00 & \textbf{00:00:08} & 00:00:25 & 00:00:13\\
+        \textit{Tradescantia} & 00:01:55 & 00:49:30 & 00:05:42 & 00:14:31 & \textbf{00:00:09} & 00:00:30 & 00:00:20\\
+        \textit{Cthenante} & 00:01:31 & 03:17:16 & 00:04:28 & 00:14:47 & \textbf{00:00:06} & 00:00:24 & 00:00:11\\
+        
+        \bottomrule
+    \end{tabular}
+    \centering
+    \fautor
+\end{table}

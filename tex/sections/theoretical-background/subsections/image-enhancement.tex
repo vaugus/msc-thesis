@@ -6,7 +6,6 @@ Fourier transform domain methods operate with images as a distribution of freque
 
 Finally, the wavelet transform based methods enhance images based on Wavelet Transforms, i.e. mathematical frameworks that decompose signals and images into frequency components in different scales. Some approaches such as thresholding may be applied to wavelet coefficients, and since the output of wavelet transforms depend on the chosen wavelet function, many possible variants depend on the image features. 
 
-\subsection{Histogram Equalization}
 
 The image histogram is one of the simplest and most useful tools in image processing and consists of a function that summarizes the gray level content of an image in terms of a frequency distribution \cite{castleman1996digital}. The histogram equalization consists of applying a non-linear monotonic mapping to provide an approximation of a uniform distribution to the output image's histogram \cite{gonzalez2018digital}. The output histogram is a normalization of the cumulative histogram of the image, given by
 
@@ -27,7 +26,6 @@ hist_{equalized}(r) = \frac{L - 1}{MN} hist_{cumulative}(r),
     \fadaptada{gonzalez2018digital}
 \end{figure}
 
-\subsection{Spatial Filtering}
 
 Spatial filtering consists of the convolution of an image with a predefined kernel operator, which creates new pixel values and replaces them in the original image \cite{gonzalez2018digital}. The continuous form may be represented as a convolution over all values of a defined region of the image and the discrete form consists of sliding a weight mask over the image \cite{wu2008microscope}. \autoref{fig:generic_spatial_filtering} presents an arbitrary schema of a basic linear spatial filtering procedure:
 
