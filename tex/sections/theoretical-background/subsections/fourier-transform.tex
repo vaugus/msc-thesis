@@ -1,18 +1,18 @@
-Regarding image transforms, one of the most important examples is the Fourier Transform. It was conceived by Jean Baptiste Joseph Fourier (1768 - 1830) and states that any periodic function can be expressed as the sum of sines and cosines of different frequencies, each multiplied by a different coefficient \cite{gonzalez2018digital}. According to \citeonline{brigham1988fast}, the relationship between the different frequency sinusoids and arbitrary function $s$ to be analyzed is described as
+The Fourier Transform is widely used in practical image processing. It was conceived by Jean Baptiste Joseph Fourier (1768 - 1830) and states that any periodic function can be expressed as the sum of sines and cosines of different frequencies, each multiplied by a different coefficient \cite{gonzalez2018digital}. According to \citeonline{brigham1988fast}, the relationship between the different frequency sinusoids and arbitrary function $s$ to be analyzed is described as
 
 \begin{equation}
 \label{eqn:fourier_transform}
 S(f) = \int_{-\infty}^{\infty}s(x)e^{-j 2 \pi f x} dx,
 \end{equation}
 
-\noindent where $S(f)$ is the Fourier Transform of the $s(t)$ and $j = \sqrt{-1}$ represents the imaginary unit. Note that the function transformed from the one-dimensional spatial domain to the frequency domain, represented by $f$. Similarly, the inverse transform is denoted by
+\noindent where $S(f)$ is the Fourier Transform of the $s(t)$ and $j = \sqrt{-1}$ represents the imaginary unit. Note that the function transformed from the one-dimensional spatial domain to the frequency domain, is represented by $f$. Similarly, the inverse transform is denoted by
 
 \begin{equation}
 \label{eqn:inverse_fourier_transform}
 s(x) = \int_{-\infty}^{\infty}S(f)e^{j 2 \pi f x} df.
 \end{equation}
 
-As stated by \citeonline{bracewell2000fourier}, an arbitrary periodic function $s$ with period $T$ is commonly to express it as a Fourier series, given by the expression
+As stated by \citeonline{bracewell2000fourier}, an arbitrary periodic function $s$ with a period $T$ can be expressed as a Fourier series, given by the expression
 
 \begin{equation}
 \label{eqn:fourier_series}
@@ -27,9 +27,9 @@ a_{n} &= \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \cos{(2 \pi n f 
 b_{n} &= \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \sin{(2 \pi n f t)} dt.\\
 \end{align*}
 
-If the function is not periodic, then the Fourier Transform is applied as a continuous function of frequency, i.e. $s(t)$ is represented by the sum of sinusoids of all frequencies \cite{brigham1988fast}. Particularly, this stands for images, which are non-periodic functions. The common approach is to appraise the image as a section of a periodic function so the use of Fourier Transform makes sense.
+If the function is not periodic, then the Fourier Transform is applied as a continuous function of frequency, i.e. $s(t)$ is represented by the sum of sinusoids of all frequencies \cite{brigham1988fast}. Particularly, this applies to images, which are non-periodic functions. The most common approach is to appraise the image as a section of a periodic function so the use of Fourier Transform makes sense.
 
-The Equations \ref{eqn:fourier_transform} and \ref{eqn:inverse_fourier_transform} together are named a \emph{Fourier Transform pair}. Images are represented by two-variable functions, which motivates the use of a two-dimensional Fourier Transform; moreover, as digital images are matrix representations of images, the two-dimensional Discrete Fourier Transform is the most relevant brand of the FT for image processing applications. Consequently, the two-dimensional Fourier Transform pair of a function $s(x,y)$ is given by
+The Equations \ref{eqn:fourier_transform} and \ref{eqn:inverse_fourier_transform} together are named the \emph{Fourier Transform pair}. Images are represented by two-variable functions, which motivates the use of a two-dimensional Fourier Transform; moreover, as digital images are matrix representations of images, the two-dimensional Discrete Fourier Transform is the most relevant brand of the FT for image processing applications. Consequently, the two-dimensional Fourier Transform pair of a function $s(x,y)$ is given by
 
 \begin{align}
 \label{eqn:two_dimensional_continuous_fourier_transform}
@@ -58,7 +58,7 @@ According to \citeonline{bracewell2000fourier}, this pair of equations represent
     e^{j\theta} = \cos{\theta} + j\sin{\theta}
 \end{equation}
 
-\noindent where $\theta = 2 \pi f$ is a number that represents an angle in radians and $e^{j\theta}$ is the polar form representation of the sinusoids \cite{gonzalez2018digital}. Finally, the common two-dimensional DFT form applied among image processing is, as reported by \citeonline{gonzalez2018digital}, denoted by
+\noindent where $\theta = 2 \pi f$ is a number that represents an angle in radians and $e^{j\theta}$ is the polar form representation of the sinusoids \cite{gonzalez2018digital}. Finally, the two-dimensional DFT form commonly used in image processing is, as reported by \citeonline{gonzalez2018digital}, denoted by
 
 \begin{align}
 \label{eqn:two_dimensional_discrete_fourier_transform}
@@ -81,6 +81,6 @@ s(x,y) &= \frac{1}{MN}
         du dv,
 \end{align}
 
-\noindent where $s(x,y)$ is a discrete function that represents an image of size $M \times N$, $x$ and $y$, discrete variables that represent spatial coordinates, $u$ and $v$ are discrete spatial frequencies. 
+\noindent where $s(x,y)$ is a discrete function that represents an image of size $M \times N$, $x$ and $y$, discrete variables that represent spatial coordinates, and $u$ and $v$ are discrete spatial frequencies. 
 
-One prominent example of Fourier Transform use is the Convolution Theorem. It states that convolution may be computed by a multiplication in the Fourier domain \cite{brigham1988fast}. This allows much faster computations of convolution in comparison to the spatial domain approach and is frequently used in many applications, such as image filtering and convolutional neural networks. In terms of computational complexity, the common two-dimensional Discrete Fourier Transform implementations yield results in $\mathcal{O}(n^{2})$ time for square or zero-padded images and $\mathcal{O}(mn)$ for images of size $m \times n$; for this reason, the \sigla{FFT}{Fast Fourier Transform} is a divide-and-conquer implementation created by Cooley and Tookey in 1965 and reduces the computational complexity to $\mathcal{O}(n \log n)$ \cite{bracewell2000fourier}. The Fourier Transform is widely employed in this work and the chosen approach to compute it is the FFT algorithm.
+One prominent example of Fourier Transform use is the Convolution Theorem. It states that convolution may be computed by a multiplication in the Fourier domain \cite{brigham1988fast}. This allows much faster computations of convolution in comparison to the spatial domain approach and is frequently used in many applications, such as image filtering and convolutional neural networks. In terms of computational complexity, the conventional two-dimensional Discrete Fourier Transform implementations are of order $\mathcal{O}(n^{2})$ for square or zero-padded images and $\mathcal{O}(mn)$ for images of size $m \times n$; for this reason, the \sigla{FFT}{Fast Fourier Transform} is a divide-and-conquer implementation created by Cooley and Tookey in 1965 and reduces the computational complexity to $\mathcal{O}(n \log n)$ \cite{bracewell2000fourier}. The Fourier Transform is widely employed in this work and the chosen approach to compute it is the FFT algorithm.
