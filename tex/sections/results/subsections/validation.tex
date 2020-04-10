@@ -1,13 +1,13 @@
-Concerning the IQA method, the proposed labels, i.e. ``eligible'' and ``negligible'', are a subjective quality score. According to \citeonline{wang2011information}, evaluation metrics such as the Pearson Linear Correlation Coefficient (PLCC), the Spearman's Rank Correlation Coefficient (SRCC) and the Kendall's Rank Correlation Coefficient (KRCC) are quantitive methods that relate to our comparison and suitable for the case. For all correlation coefficients, higher values yield higher reliability to the objective IQA metric.
+Concerning the IQA method, the proposed labels, i.e. ``eligible'' and ``negligible'', are a subjective quality score. According to \citeonline{wang2011information}, evaluation metrics such as the Pearson Linear Correlation Coefficient (PLCC), the Spearman's Rank Correlation Coefficient (SRCC) and the Kendall's Rank Correlation Coefficient (KRCC) are quantitive methods that relate to our comparison and are suitable for the case. For all correlation coefficients, higher values yield higher reliability to the objective IQA metric.
 
-According to \citeonline{chen2002correlation}, the PLCC (also named Pearson's r coefficient) is the most widely used correlation coefficient characterize the degree of the association between linearly related variables, given by
+According to \citeonline{chen2002correlation}, the PLCC (also named Pearson's r coefficient) is the most widely used correlation coefficient. It characterizes the degree of the association between linearly related variables and is given by
 
 \begin{equation}
 \label{eqn:plcc}
 r_{xy} = \frac{n \sum x_{i} y_{i} - \sum x_{i} \sum y_{i}}{\sqrt{n \sum x_{i}^{2} \left(\sum x_{i}\right)^{2} n \sum y_{i}^{2} \left(\sum y_{i}\right)^{2}}},
 \end{equation}
 
-\noindent where $r_{xy}$ is the r correlation coefficient between the $x$ and $y$ variables, $n$ is the number of observations of both variables, $x_{i}$ is the value of $x$ for the $i$th observation and $y_{i}$ is the value of $y$ for the $i$th observation. Still, according to \citeonline{chen2002correlation}, the KRCC and SRCC are non-parametric tests that also measure the strength of dependence between two variables, may be denoted as
+\noindent where $r_{xy}$ is the r correlation coefficient between the $x$ and $y$ variables, $n$ is the number of observations of both variables, $x_{i}$ is the value of $x$ for the $i$th observation and $y_{i}$ is the value of $y$ for the $i$th observation. Still, according to \citeonline{chen2002correlation}, the KRCC and SRCC are non-parametric tests that also measure the strength of dependence between two variables. They may be denoted as
 
 \begin{equation}
 \label{eqn:krcc}
@@ -68,4 +68,4 @@ STD = \sqrt{\sum_{i = 0}^{L}}(i - \Bar{i})^{2} h(i),
 \Bar{i} = \sum_{i = 0}^{L}i h(i).
 \end{align}
 
-\noindent where $h(i)$ and $L$ are the same as in \autoref{eqn:entropy}.
+\noindent with $h(i)$ and $L$ as defined in \autoref{eqn:entropy}.
