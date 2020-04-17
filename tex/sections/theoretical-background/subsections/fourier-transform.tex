@@ -1,11 +1,11 @@
-The Fourier Transform is widely used in practical image processing. It was conceived by Jean Baptiste Joseph Fourier (1768 - 1830) and states that any periodic function can be expressed as the sum of sines and cosines of different frequencies, each multiplied by a different coefficient \cite{gonzalez2018digital}. According to \citeonline{brigham1988fast}, the relationship between the different frequency sinusoids and arbitrary function $s$ to be analyzed is described as
+The Fourier Transform is widely used in practical image processing. It was conceived by Jean Baptiste Joseph Fourier (1768 - 1830) and states that any periodic function can be expressed as the sum of sines and cosines of different frequencies, each multiplied by a different coefficient \cite{gonzalez2018digital}. According to \citeonline{brigham1988fast}, the relationship between the different frequency sinusoids and an arbitrary function $s$ to be analyzed is described as
 
 \begin{equation}
 \label{eqn:fourier_transform}
 S(f) = \int_{-\infty}^{\infty}s(x)e^{-j 2 \pi f x} dx,
 \end{equation}
 
-\noindent where $S(f)$ is the Fourier Transform of the $s(t)$ and $j = \sqrt{-1}$ represents the imaginary unit. Note that the function transformed from the one-dimensional spatial domain to the frequency domain, is represented by $f$. Similarly, the inverse transform is denoted by
+\noindent where $S(f)$ is the Fourier Transform of the $s(t)$ function and $j = \sqrt{-1}$ represents the imaginary unit. Note that the function transformed from the one-dimensional spatial domain to the frequency domain, is represented by $f$. Similarly, the inverse transform is denoted by
 
 \begin{equation}
 \label{eqn:inverse_fourier_transform}
