@@ -1,8 +1,8 @@
-As mentioned in \autoref{chapter:fundamentals-of-optics-and-light-microscopy}, the bright-field microscopy images are formed by either transmitted or reflected light that passes through the sample and reach the objective lens. The difference between transmitted light and reflected light microscopes is the illumination system; there is no difference in how both direct light rays leave the specimen \cite{leng2009materials}.
+As mentioned in \autoref{chapter:fundamentals-of-optics-and-light-microscopy}, the bright-field microscopy images are formed by either transmitted or reflected light that passes through the sample and reaches the objective lens. The difference between transmitted light and reflected light microscopes is the illumination system; there is no difference in how both direct light rays leave the specimen \cite{leng2009materials}.
 
 According to \citeonline{davidson2002optical}, the light which reaches the specimen is either undeviated, i.e. does not suffer any disturbances in its direction, or diffracted; the diffracted rays leave the sample with a phase difference of 180 degrees in comparison to the undeviated light and cause destructive interference in the eyepiece, which projects a magnified version of this pattern onto a sensor and consequently produces the image.
 
-Furthermore, the diffraction patterns that are captured by objectives have a particular shape. As also stated by \citeonline{davidson2002optical}, the \emph{Airy disks}(also called \emph{Airy patterns}), named after Sir George Biddell Airy (1801 - 1892), are small circular diffraction disks projected by the objectives onto the image plane of the eyepiece diaphragm, which describe the focus profile the resulting image. The Airy disks as described by \citeonline{fowles1989introduction} following the Fraunhoffer diffraction pattern, and may be mathematically modelled as an angular distribution of intensity of light diffracted by a circular aperture, given by
+Furthermore, the diffraction patterns that are captured by objectives have a particular shape. As also stated by \citeonline{davidson2002optical}, the \emph{Airy disks}(also called \emph{Airy patterns}), named after Sir George Biddell Airy (1801 - 1892), are small circular diffraction disks projected by the objectives onto the image plane of the eyepiece diaphragm, which describe the focus profile the resulting image. The Airy disks, as described by \citeonline{fowles1989introduction}, follow the Fraunhoffer diffraction pattern, and may be mathematically modelled as an angular distribution of intensity of light diffracted by a circular aperture, given by
 
 \begin{align}
 \label{eqn:airy_function}
@@ -112,7 +112,7 @@ h_{\lambda}(x,y,z) = \int_{-\infty}^{\infty}
 
 \noindent where $h_{\lambda}(x,y,z)$ is point spread function for a light with wavelength $\lambda$, $P(x,y)$ is the pupil function, $z$ is the axial location the focal plane and $L = r / NA$ is the focal length, i.e. ratio between the radius of the circular aperture of the objective and the numerical aperture. The normalized Fourier Transform of the PSF is called \sigla{OTF}{Optical Transfer Function} \cite{castleman1996digital}.
 
-The image is then formed as a set of impulse responses from each point in the object plane that where magnified by the imaging system. Linear systems possess a general expression, a convolution (which will be explained in \autoref{chapter:theoretical-background}) of the input with the system's impulse response, that describes the output \cite{brigham1988fast}. In this sense, the resulting image is a convolution of the PSF with the original image, defined as
+The image is then formed as a set of impulse responses from each point in the object plane that were magnified by the imaging system. Linear systems possess a general expression, a convolution (which will be explained in \autoref{chapter:theoretical-background}) of the input with the system's impulse response, that describes the output \cite{brigham1988fast}. In this sense, the resulting image is a convolution of the PSF with the original image, defined as
 
 \begin{equation}
 \label{eqn:image_formation_convolution}
@@ -125,7 +125,7 @@ g(x,y) = \int_{-\infty}^{\infty}
 
 \subsection{Discrete Image Formation Model}
 
-Digital images follow a discrete model for image formation due to the acquisition process: the spherical waves that leave the objectives reach the surface of \sigla{CCD}{Charge-coupled Devices}, sensors which proportionally converts light intensities to electrical signals digitized as pixels \cite{gonzalez2018digital}. The digital images are matrices of pixels that represent light intensities with different channel configurations, where the most common one is the \sigla{RGB}{Red, Green and Blue} image. Therefore, similarly to the image formation model shown in \autoref{sec:point_spread_function_and_image_formation_model}, the two-dimensional digital image formation is arbitrarily described as a discrete process
+Digital images follow a discrete model for image formation due to the acquisition process: the spherical waves that leave the objectives reach the surface of \sigla{CCD}{Charge-coupled Devices}, sensors which proportionally convert light intensities to electrical signals digitized as pixels \cite{gonzalez2018digital}. The digital images are matrices of pixels that represent light intensities with different channel configurations, where the most common one is the \sigla{RGB}{Red, Green and Blue} image. Therefore, similarly to the image formation model shown in \autoref{sec:point_spread_function_and_image_formation_model}, the two-dimensional digital image formation is arbitrarily described as a discrete process
 
 \begin{equation}
 \label{eqn:discrete_image_formation}
