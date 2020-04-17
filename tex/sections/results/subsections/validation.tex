@@ -1,13 +1,13 @@
-Concerning the IQA method, the proposed labels, i.e. ``eligible'' and ``negligible'', are a subjective quality score. According to \citeonline{wang2011information}, evaluation metrics such as the Pearson Linear Correlation Coefficient (PLCC), the Spearman's Rank Correlation Coefficient (SRCC) and the Kendall's Rank Correlation Coefficient (KRCC) are quantitive methods that relate to our comparison and are suitable for the case. For all correlation coefficients, higher values yield higher reliability to the objective IQA metric.
+Concerning the IQA method, the proposed labels, i.e. ``eligible'' and ``negligible'', are a subjective quality score. According to \citeonline{wang2011information}, evaluation metrics such as the Pearson Linear Correlation Coefficient (PLCC), the Spearman's Rank Correlation Coefficient (SRCC) and the Kendall's Rank Correlation Coefficient (KRCC) are quantitative techniques which are more appropriate to our goals. For all correlation coefficients, higher values indicate higher reliability to the objective IQA metric.
 
-According to \citeonline{chen2002correlation}, the PLCC (also named Pearson's r coefficient) is the most widely used correlation coefficient. It characterizes the degree of the association between linearly related variables and is given by
+According to \citeonline{chen2002correlation}, the PLCC (also named Pearson's $r$ coefficient) is the most widely used correlation coefficient. It characterizes the degree of the association between linearly related variables and is given by
 
 \begin{equation}
 \label{eqn:plcc}
 r_{xy} = \frac{n \sum x_{i} y_{i} - \sum x_{i} \sum y_{i}}{\sqrt{n \sum x_{i}^{2} \left(\sum x_{i}\right)^{2} n \sum y_{i}^{2} \left(\sum y_{i}\right)^{2}}},
 \end{equation}
 
-\noindent where $r_{xy}$ is the r correlation coefficient between the $x$ and $y$ variables, $n$ is the number of observations of both variables, $x_{i}$ is the value of $x$ for the $i$th observation and $y_{i}$ is the value of $y$ for the $i$th observation. Still, according to \citeonline{chen2002correlation}, the KRCC and SRCC are non-parametric tests that also measure the strength of dependence between two variables. They may be denoted as
+\noindent where $r_{xy}$ is the $r$ correlation coefficient between the $x$ and $y$ variables, $n$ is the number of observations of both variables, $x_{i}$ is the value of $x$ for the $i$th observation and $y_{i}$ is the value of $y$ for the $i$th observation. Still, according to \citeonline{chen2002correlation}, the KRCC and SRCC are non-parametric tests that also measure the strength of dependence between two variables. They may be denoted as
 
 \begin{equation}
 \label{eqn:krcc}
@@ -19,7 +19,7 @@ r_{xy} = \frac{n \sum x_{i} y_{i} - \sum x_{i} \sum y_{i}}{\sqrt{n \sum x_{i}^{2
 \rho = 1 - \frac{6 \sum d_{i}^{2}}{n \left(n^{2}-1 \right)},
 \end{equation}
 
-\noindent where $\tau$ and $\rho$ denote the KRCC and SRCC measures, respectively. For both equations, $n$ is the number of observations of both variables. In \autoref{eqn:krcc}, $n_{c}$ and $n_{d}$ are the number of concordant and discordant observations, i.e. ordered in the same and in different ways, respectively. In addition, $d_{i}$ in \autoref{eqn:srcc} denotes the difference between the ranks of corresponding variables.
+\noindent where $\tau$ and $\rho$ denote the KRCC and SRCC measures, respectively. For both equations, $n$ is the number of observations of both variables. In \autoref{eqn:krcc}, $n_{c}$ and $n_{d}$ are the number of concordant and discordant observations, i.e. ranked in the same and opposite ways, respectively. In addition, $d_{i}$ in \autoref{eqn:srcc} denotes the difference between the ranks of corresponding variables.
 
 Similarly, we propose the use of Entropy, Spatial Frequency (SF) and the Standard Deviation (STD) for the evaluation of our image fusion method \cite{naidu2008pixel}. The Entropy measures the information content of an image and is denoted as
 
@@ -59,7 +59,7 @@ CF = \sqrt{\frac{1}{M N}
 SF = \sqrt{RF^{2} + CF^{2}},
 \end{equation}
 
-\noindent where $I(x,y)$ is the fused image and $M$, $N$ are the image width and height, respectively. Higher values indicate better fusion quality since more activity means less homogeneous regions in our case. Finally, the Standard Deviation measures the contrast in the fused image, and therefore higher values yield higher contrast. It may be obtained as
+\noindent where $I(x,y)$ is the fused image and $M$, $N$ are the image width and height, respectively. Higher values indicate better fusion quality since more activity means less homogeneous regions in our case. Finally, the Standard Deviation measures the contrast in the fused image, and therefore higher values yield higher contrast. It can be computed as
 
 \begin{align}
 \label{eqn:standard_deviation}

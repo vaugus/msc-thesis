@@ -9,7 +9,7 @@ The image registration methods consist of the following steps, as reported by \c
 
     \item \emph{Transform model estimation}: parameter estimation for mapping functions that align the input images with the reference image, either by establishing feature correspondence or performing an optimization procedure;
 
-    \item \emph{Image resampling and transformation}: image is resampled with interpolation techniques.
+    \item \emph{Image resampling and transformation}: the image is resampled with interpolation techniques.
 
 \end{itemize}
 
@@ -38,7 +38,7 @@ As originally proposed by \citeonline{lowe1999object}, the SIFT is a feature ext
     
     \item \emph{Orientation assignment}: one ore more orientations are assigned to each keypoint location, based on image gradient directions;
     
-    \item \emph{Keypoint descriptor}: a measurement of the local image gradients is performed for the particular scales and neighborhood of each keypoint, followed by a    transformation of those into a proper representation.
+    \item \emph{Keypoint descriptor}: a measurement of the local image gradients is performed for the particular scales and neighborhood of each keypoint, followed by a transformation of those into a proper representation.
 	
 \end{itemize}
 
@@ -66,7 +66,7 @@ D(\mathbf{x}) = D +
                 \frac{\partial D^{T}}{\partial  \mathbf{x}}\mathbf{x} + \frac{1}{2}\mathbf{x^{T}}\frac{\partial^{2} D}{\partial \mathbf{x}^{2}}\mathbf{x},
 \end{equation}
 
-\noindent where the derivatives of the difference-of-Gaussians matrix $D$ is computed at the sample point and $\mathbf{x} = (x,y,\sigma)^{T}$ is the offset for such point. The extremum location is found with the derivative of $D$ with respect to $\mathbf{x}$ and setting it to zero. The value of $D$ at the extremum provides a way to include only stable and good contrast extrema. As well as the low contrast keypoint exclusion, it is necessary to eliminate keypoints which possess a large principal curvature across the edge direction and a small one in its perpedicular direction; this is achieved with a threshold based on the sum and product of the eigenvalues from the trace and determinant of a Hessian matrix computed at the location and scale of each keypoint.
+\noindent where the derivatives of the difference-of-Gaussians matrix $D$ is computed at the sample point and $\mathbf{x} = (x,y,\sigma)^{T}$ is the offset for such point. The extremum location is found with the derivative of $D$ with respect to $\mathbf{x}$ by setting it to zero. The value of $D$ at the extremum provides a way to include only stable and good contrast extrema. As well as the low contrast keypoint exclusion, it is necessary to eliminate keypoints which possess a large principal curvature across the edge direction and a small one in its perpendicular direction; this is achieved with a threshold based on the sum and product of the eigenvalues from the trace and determinant of a Hessian matrix computed at the location and scale of each keypoint.
 
 The next step is to provide the orientation of each keypoint concerning local image properties. This yields invariance to image rotation and is done by computing the gradient magnitude and the orientation for each smoothed image sample, denoted by
 
