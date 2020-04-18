@@ -36,11 +36,11 @@ Along with PCA, the authors explored a fusion approach with the DWT. The transfo
 
 \subsection{Image fusion with guided filtering}
 
-The guided filtering, i.e., a windowed linear transform of the input image where coefficients are obtained by linear ridge regression was applied to perform image fusion \cite{li2013image}. The authors proposed a pixel-level image fusion technique that also makes use of low pass filtering, edge extraction, and spatial consistency. It consists of three steps: two-scale image decomposition, weight map construction with guided filtering and two-scale image reconstruction.
+The guided filtering, i.e., a windowed linear transform of the input image where coefficients are obtained by linear ridge regression was applied to perform image fusion \cite{li2013image}. The authors proposed a pixel-level image fusion technique that also makes use of low-pass filtering, edge extraction, and spatial consistency. It consists of three steps: two-scale image decomposition, weight map construction with guided filtering and two-scale image reconstruction.
 
 The decomposition step transforms the input images into two-scale representations by means of a convolution with an average filter of size $31 \times 31$. The first representation is named \emph{base} layer, directly obtained from the average filter convolution, and the second representation is named \emph{detail} layer, obtained by subtracting the base layer from the input image.
 
-In order to retrieve the weight map, i.e., characterization of sharp and blurry regions of the image, edge extraction is performed with a $3 \times 3$ Laplacian filtering kernel (which will be further explained in \autoref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
+In order to retrieve the weight map, i.e., a characterization of sharp and blurry regions of the image, edge extraction is performed with a $3 \times 3$ Laplacian filtering kernel (which will be further explained in \autoref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
 
 \begin{equation}
 \label{eqn:weight_map}
@@ -63,7 +63,7 @@ P_{i}^{k} =
 
 \subsection{Multi-scale weighted gradient-based fusion for multi-focus images}
 
-Another way to perform edge-detection based image fusion is to extract gradients from each image of a dataset and merge them with the structure tensor, as proposed by \citeonline{zhou2014multi}. The first step consists of obtaining the local gradients of each input image in the form of a structure tensor, i.e. a non-negative second-moment matrix where its eigenvalues represent the intensity changes in a given point, and then a local gradient covariance matrix described as
+Another way to perform edge detection-based image fusion is to extract gradients from each image of a dataset and merge them with the structure tensor, as proposed by \citeonline{zhou2014multi}. The first step consists of obtaining the local gradients of each input image in the form of a structure tensor, i.e. a non-negative second-moment matrix where its eigenvalues represent the intensity changes in a given point, and then a local gradient covariance matrix described as
 
 \begin{equation}
 C_{\sigma} =
@@ -95,7 +95,7 @@ With a coarse representation of the focused regions in hands, the next step is t
 
 \subsection{Image fusion technique using multi-resolution singular value decomposition}
 
-\citeonline{naidu2011image} proposed a fusion technique which is similar to the DWT-based ones, but employs a Multiresolution \sigla{MSVD}{Singular Value Decomposition} instead. The multiresolution SVD performs a factorization of a matrix into eigenvalues and eigenvectors in different scales by the following steps:
+\citeonline{naidu2011image} proposed a fusion technique which is similar to the DWT-based ones, but employs a Multiresolution Singular Value Decomposition (MSVD) instead. The multiresolution SVD performs a factorization of a matrix into eigenvalues and eigenvectors in different scales by the following steps:
 
 \begin{enumerate}[label=\Roman* -]
     \item Let $X = [x_{1},x_{2},\dots,x_{n}]$ be an one-dimensional signal of length $n$. Reshape $X$ onto a matrix given by 
