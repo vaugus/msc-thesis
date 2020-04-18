@@ -36,7 +36,7 @@ First, an edge detector is applied to the luminance component of the image (equi
 
 \citeonline{ferzli2009noreference} employ a psychometric model, i.e. the assignment of numerical representations to subjective tests to create a perceptual sharpness metric. The subjective tests employ the \emph{Just Noticeable Blur} (JNB) concept, which is the minimum amount of perceived blur around an edge given a contrast higher than the limit of contrast between background and foreground that is possible to notice. 
 
-The subjective experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with the aim to find a particular standard deviation $\sigma_{JNB}$ of a Gaussian $7 \times 7$ mask. Each contrast value yields a normalized histogram with the volunteers' responses that are treated as the probability of detecting blur as a function of the standard deviation $\sigma$, denoted by
+The subjective experiment consists in the evaluation of 27 contrast values (considering the difference between the background and the foreground grayscale values), done by 18 volunteers with normal or corrected vision, with the aim to find a particular standard deviation $\sigma_{JNB}$ of a $7 \times 7$ Gaussian mask. Each contrast value yields a normalized histogram with the volunteers' responses that are treated as the probability of detecting blur as a function of the standard deviation $\sigma$, denoted by
 
 \begin{equation}
 \label{eqn:psychometric_jnb}
@@ -45,7 +45,7 @@ P = 1 - \exp{\left( - \left| \frac{\sigma}{\sigma_{JNB} } \right|^{\beta} \right
 
 \noindent where $\sigma$ is the standard deviation of the Gaussian blur filter and corresponds to the blur strength at the considered edge, $\sigma_{JNB}$ is the standard deviation corresponding to the JNB threshold. The parameters $\sigma_{JNB}$ and $\beta$ are chosen by means of a least-square fitting to approximate the probabilities $P$ with the answers from volunteers. The $\sigma_{JNB}$ value is adjusted to obtain $P = 63\%$.
 
-First and foremost, the image is divided into blocks of dimensions $64 \times 64$. Let each block and the image be denoted by $R$ and $g$, respectively. All the blocks are subject to a Sobel edge detection process and are later classified as “smooth” or “edge” using a threshold. If the number of edge pixels in a block is greater than $0.2\%$ of the total number of pixels in it, then it is classified as an edge block. The smooth blocks are not processed since they are not relevant in terms of blur. Then, for each block, the horizontal edge pixels are retrieved and the width of each edge is computed. With this in hands, the perceptual blur metric for each block $R_{b}$ is described by equation 
+First and foremost, the image is divided into blocks of dimensions $64 \times 64$. Let each block and the image be denoted by $R$ and $g$, respectively. All the blocks are subject to a Sobel edge detection process and are later classified as ``smooth'' or ``edge'' using a threshold. If the number of edge pixels in a block is greater than $0.2\%$ of the total number of pixels in it, then it is classified as an edge block. The smooth blocks are not processed since they are not relevant in terms of blur. Then, for each block, the horizontal edge pixels are retrieved and the width of each edge is computed. With this in hands, the perceptual blur metric for each block $R_{b}$ is described by the equation 
 
 \begin{equation}
 \label{eqn:perceptual_blur_metric}
@@ -80,7 +80,7 @@ D = \left(
     \right)^{\frac{1}{\beta}}.
 \end{align}
 
-\noindent Finally, $D$ from \autoref{eqn:p_blur_final} is then normalized by the amount of blocks an represents the final image quality index.
+\noindent Finally, $D$ from \autoref{eqn:p_blur_final} is then normalized by the amount of blocks and represents the final image quality index.
 
 \subsection{A No-Reference Image Blur Metric Based on the Cumulative Probability of Blur Detection (CPBD)}
 
