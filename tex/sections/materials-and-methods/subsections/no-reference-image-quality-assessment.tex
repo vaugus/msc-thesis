@@ -1,4 +1,4 @@
-The next step is to devise a quantitative representation of sharpness for each image in each dataset. This measure allows for the selection of the eligible images through statistical analysis and the posterior registration of the selected slices. We propose a new method for image quality assessment based on a sampling process of the Fourier spectrum and posterior analysis of the coefficients as a probability distribution using summary and descriptive statistics. This section presents each stage of the method: pre-processing, Fourier spectrum sampling and statistical analysis. Figure \ref{fig:pipeline} shows a diagram of the proposed method.
+The next step is to devise a quantitative representation of sharpness for each image in each dataset. This measure allows for the selection of the eligible images through statistical analysis and the posterior registration of the selected slices. We propose a new method for image quality assessment based on a sampling process of the Fourier spectrum and posterior analysis of the coefficients as a probability distribution using summary and descriptive statistics. This section presents each stage of the method: pre-processing, Fourier spectrum sampling and statistical analysis. \autoref{fig:pipeline} shows a diagram of the proposed method.
 
 \begin{figure}[ht]
   \centering
@@ -22,7 +22,7 @@ linear combination of the three channels of a RGB image, as shown in the matrix 
 I_{resized}(x,y) = ax + by + cxy + d.
 \end{equation}
 
-The CLAHE algorithm is then applied  to deliver a more uniform image to the Fourier Transform. This is necessary as microscopy images are influenced by illumination conditions, the focus adjustment itself and also physical properties of the transmitted or reflected light.
+The CLAHE algorithm is then applied to deliver a more uniform image to the Fourier Transform. This is necessary as microscopy images are influenced by illumination conditions, the focus adjustment itself and also physical properties of the transmitted or reflected light.
 
 Next, the DFT is applied to all images and the resulting spectra are analyzed. The Fourier spectrum of a two-dimensional signal such as an image is a matrix with complex coefficients and zeros on each of its four corners and carries information about frequency bands of the image, characterized as a distribution. Our approach requires a shift between the first and third quadrants, and also the second and the fourth quadrants, to the center of the matrix. The unshifted and shifted Fourier spectrum of an grayscale airplane test image are shown in Figures \ref{fig:fourier_spectrum}.(c) and \ref{fig:fourier_spectrum}.(d), respectively. 
 
