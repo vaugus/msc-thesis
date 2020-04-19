@@ -21,11 +21,20 @@ a_{0} + \sum_{1}^{\infty} (a_{n} \cos{2 \pi n f t} + b_{n} \sin{2 \pi n f t}),
 
 \noindent where
 
+% \begin{align*}
+% a_{0} = \frac{1}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) dt,
+% &&
+% a_{n} = \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \cos{(2 \pi n f t)} dt,
+% &&
+% b_{n} = \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \sin{(2 \pi n f t)} dt.\\
+% \end{align*}
+
 \begin{align*}
 a_{0} &= \frac{1}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) dt\\
 a_{n} &= \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \cos{(2 \pi n f t)} dt\\
 b_{n} &= \frac{2}{T} \int_{-\frac{1}{2} T}^{\frac{1}{2} T} s(t) \sin{(2 \pi n f t)} dt.\\
 \end{align*}
+
 
 If the function is not periodic, then the Fourier Transform is applied as a continuous function of frequency, i.e. $s(t)$ is represented by the sum of sinusoids of all frequencies \cite{brigham1988fast}. Particularly, this applies to images, which are non-periodic functions. The most common approach is to appraise the image as a section of a periodic function so the use of Fourier Transform makes sense.
 
@@ -51,14 +60,14 @@ s(x,y) &= \int_{-\infty}^{\infty}
         du dv.
 \end{align}
 
-According to \citeonline{bracewell2000fourier}, this pair of equations represents the analysis of $s(x,y)$ into components of the form $\exp{\left[j 2 \pi (ux + vy) \right]}$, where the variables $u$ and $v$ represent spatial frequencies. The equation that relates such components to sinusoids is the \emph{Euler's Formula} or \emph{Euler's Identity}, written as
+According to \citeonline{bracewell2000fourier}, this pair of equations represents the analysis of $s(x,y)$ into components of the form $\exp{\left[j 2 \pi (ux + vy) \right]}$, where the variables $u$ and $v$ represent spatial frequencies. The equation that relates such components to sinusoids is the \emph{Euler's Formula} or \emph{Euler's Identity}, i.e $e^{j\theta} = \cos{\theta} + j\sin{\theta}$, where $\theta = 2 \pi f$ is a number that represents an angle in radians and $e^{j\theta}$ is the polar form representation of the sinusoids \cite{gonzalez2018digital}. Finally, the two-dimensional DFT form commonly used in image processing is, as reported by \citeonline{gonzalez2018digital}, denoted by
 
-\begin{equation}
-\label{eqn:euler_formula}
-    e^{j\theta} = \cos{\theta} + j\sin{\theta}
-\end{equation}
+% \begin{equation}
+% \label{eqn:euler_formula}
+%     e^{j\theta} = \cos{\theta} + j\sin{\theta}
+% \end{equation}
 
-\noindent where $\theta = 2 \pi f$ is a number that represents an angle in radians and $e^{j\theta}$ is the polar form representation of the sinusoids \cite{gonzalez2018digital}. Finally, the two-dimensional DFT form commonly used in image processing is, as reported by \citeonline{gonzalez2018digital}, denoted by
+% \noindent where $\theta = 2 \pi f$ is a number that represents an angle in radians and $e^{j\theta}$ is the polar form representation of the sinusoids \cite{gonzalez2018digital}. Finally, the two-dimensional DFT form commonly used in image processing is, as reported by \citeonline{gonzalez2018digital}, denoted by
 
 \begin{align}
 \label{eqn:two_dimensional_discrete_fourier_transform}
