@@ -1,46 +1,4 @@
-When images belonging to the same scene are acquired in different conditions such as distinct focus configurations, sensors, or even at different times, they should be geometrically aligned according to a reference image. The process of overlaying two or more images with different acquisition settings is named image registration and plays an important role as a pre-processing step for image fusion, change detection and multichannel image restoration \cite{zitova2003image}. According to \citeonline{gonzalez2018digital}, magnetic resonance imaging and positron emission tomography systems, for example, are two different medical image modalities that may require images to be registered. Images which were taken in different times such as satellite images also need to be registered.
-
-The image registration methods consist of the following steps, as reported by \citeonline{zitova2003image} and \citeonline{gonzalez2018digital}:
-
-\begin{itemize}
-    \item \emph{Feature detection}: manually or automatically detect distinctive objects, e.g. edges, contours, corners and represent those as \emph{control points}, i.e. points with known locations in the reference and input images;
-
-    \item \emph{Feature matching}: a relationship between the detected features in each image is established using feature descriptors;
-
-    \item \emph{Transform model estimation}: parameter estimation for mapping functions that align the input images with the reference image, either by establishing feature correspondence or performing an optimization procedure;
-
-    \item \emph{Image resampling and transformation}: the image is resampled with interpolation techniques.
-
-\end{itemize}
-
-Image registration is, in practice, a mapping between two or more images by means of a spatial and an intensity transformation \cite{brown1992survey}. Some prominent examples of registration methods are the principal axes, multiresolution, optimization-based, boundary, model-based and adaptive methods  \cite{goshtasby2012image}. The spatial transformations play an important role in all image registration techniques, and the most common examples are rigid, affine, projective, perspective and global polynomial \cite{brown1992survey}. Also pursuant to \citeonline{brown1992survey}, each of such transformations may be described as:
-
-\begin{itemize}
-    \item \emph{Rigid}: accounts for object or sensor movement in which objects in the images retain their relative shape and size. Example: \emph{rigid-body transformation} which combines rotation, translation and scale changes; 
-    
-    \item \emph{Affine}: handle more complicated distortions and preserve mathematical properties. Example: \emph{shear transformation};
-    
-    \item \emph{Projective and Perspective}: the former deals with distortions due to projection of the objects at varying distances to the sensor onto the image plane, and the latter demands prior knowledge about the locations of the objects in the scene relative to the sensor;
-    
-    \item \emph{Polynomial}: cover the broadest range of distortions, as long as they are approximately homogeneous in the image.
-\end{itemize}
-
-In the scope of this work, the microscopy images were registered with a particular combination of methods. The feature extraction was done with a custom implementation of the \sigla{SIFT}{Scale Invariant Feature Transform}, together with a custom extension of the \sigla{RANSAC}{Random Sample Consensus} method for parameter estimation and the geometric consensus filtering process with the expected transformation model and a maximal expected error as parameters \cite{saalfeld2019computational}. Those techniques will be described next.
-
-\subsection{Scale-invariant feature transform}
-
-As originally proposed by \citeonline{lowe1999object}, the SIFT is a feature extraction approach for object and scene recognition which consists of the following steps:
-
-\begin{itemize}
-	\item \emph{Scale-space extrema detection}: a difference-of-Gaussian function is applied in order to identify the invariant scale and orientation keypoints;
-    
-    \item \emph{Keypoint localization}: each keypoint candidate is selected based on measures of their stability;
-    
-    \item \emph{Orientation assignment}: one ore more orientations are assigned to each keypoint location, based on image gradient directions;
-    
-    \item \emph{Keypoint descriptor}: a measurement of the local image gradients is performed for the particular scales and neighborhood of each keypoint, followed by a transformation of those into a proper representation.
-	
-\end{itemize}
+As originally proposed by \citeonline{lowe1999object}, the SIFT is a feature extraction approach for object and scene recognition. First, the scale-space extrema are detected with a difference-of-Gaussian function, applied in order to identify the invariant scale and orientation keypoints. Each keypoint is selected based on measures of their stability, and one or more orientations are assigned to each keypoint location based on image gradient directions. Finally, a measurement of the local image gradients is performed for the particular scales and neighborhood of each keypoint, followed by a transformation of those into a proper representation.
 
 The custom SIFT implementation described here was proposed by \citeonline{lowe2004distinctive}. The difference-of-Gaussian method for the detection of scale-space extrema is a convolution of an image $f(x,y)$ with the difference of two nearby scales of distance $k$, given by
 
@@ -56,9 +14,7 @@ D(x,y,\sigma) = \left(G(x,y,k \sigma) - G(x,y,\sigma)\right) f(x,y),
 G(x,y,\sigma) = \frac{1}{\sqrt{2 \pi \sigma}} e^{- \frac{x^{2} + y^{2}}{\sigma^{2}}}.
 \end{equation}
 
-The difference-of-Gaussians is constructed by convolving the image with several Gaussians separated by the multiplicative factor $k$, followed by a reduction of the scale-space by doubling $\sigma$ at each change of scale. Next, the local maxima and minima (extrema) are detected by checking the 8-neighborhood in the current image and 9-neighborhood in the image, in adjacent scales.
-
-Having computed the scale-space extrema, the keypoints are localized by fitting a 3D quadratic function of local sample points with the Taylor expansion
+The difference-of-Gaussians is constructed by convolving the image with several Gaussians separated by the multiplicative factor $k$, followed by a reduction of the scale-space by doubling $\sigma$ at each change of scale. Next, the local maxima and minima (extrema) are detected by checking the 8-neighborhood in the current image and 9-neighborhood in the image, in adjacent scales. Having computed the scale-space extrema, the keypoints are localized by fitting a 3D quadratic function of local sample points with the Taylor expansion
 
 \begin{equation}
 \label{eqn:taylor_DoG}

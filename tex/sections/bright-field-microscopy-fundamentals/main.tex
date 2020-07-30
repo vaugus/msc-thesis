@@ -1,0 +1,40 @@
+Microscopes are instruments designed to accomplish several important tasks to human knowledge, capable of magnifying images of small objects and structures which otherwise would not be seen by the human eye. It grants more information about the object of study to the research or the analysis. The first idea of the device was introduced by Romans, which discovered the magnifying property of glass in some sort of biconvex shape. Zacharias Janssen (1588-1632) was responsible for the invention of the first compound microscope with a concave eyepiece and  Francisco Fontana (1580-1656) introduced the convex eyepiece version of it \cite{zilio2009optica}. Furthermore, Robert Hooke (1635-1703) and Anton van Leeuwenhoek (1632-1723) were the most prominent science-related men responsible for microscope improvements \cite{wu2008microscope}.
+
+Science is subject to continuous technological improvements that reflect on every field of study. Due to the development of theories and their empirical proofs of veracity, in addition to the advances in hardware and software power, techniques such as image processing are applied to other fields. This also happens in microscopy, aiming to improve image quality, data reliability, and range of use \cite{boyde1990modern}.
+
+This chapter provides information about optics and microscopy concepts in this work. The first part is dedicated to the basic set of concepts and properties from optics that are necessary for light microscopy; the second one describes the structure of the optical microscope, along with its uses and implications on the acquired images. Plenty of image degradation is due to the system acquisition process; in fact, defocus is a natural occurrence in optics, mainly caused by adjustments of the optical system.
+
+% \subsection{Properties of the Spherical Lenses}
+% \input{tex/sections/fundamentals-of-optics-and-light-microscopy/subsections/properties-of-spherical-lenses.tex}
+    
+\section{Bright-field microscopy}
+\label{sec:light_microscopy}
+
+Historically, the structure of the first microscopes developed by Hooke and Leeuwenhoek had no eyepiece; the compound microscope, developed by Janssen, consists of the magnification lenses and also an eyepiece, which adds more magnification power and delivers the image to the user \cite{lawlor2019introduction}. As stated by \citeonline{murphy2012fundamentals}, the word \emph{compound} refers to the fact that the objective lens and the eyepiece (or ocular) work together to produce the final magnification of the image as a product of their magnifications. A graphical representation of the general structure of a compound microscope is shown in \autoref{fig:compound_microscope}, and as reported by \citeonline{bell2009introduction}, it consists of objective lenses, eyepieces, condensers, the stage and the light source.
+
+\begin{figure}[H]
+	\centering
+	\caption{\label{fig:compound_microscope} Structure of the basic compound microscope: lenses that capture light rays from the specimen or object (objectives) or where the observer may look through (eyepieces), a collector of light from the light source (condenser), the support for the object (stage) and the light source.}
+	\begin{center}
+	    \includegraphics[scale=0.4]{images/fig5.png}
+	\end{center}
+	\centering
+    \fdireta{bell2009introduction}
+\end{figure}
+
+Since light is some sort of radiation, there are several different ways to achieve imaging in microscopes; it can be made by light, polarized light, lasers, X-rays, among others. There are also advanced techniques such as confocal microscopy, which is capable of imaging a very small area of the object, with all the light rays focused on it \cite{rochow1994introduction}. The choice of the most suitable microscopy depends on the task.
+
+According to \citeonline{dokland2006techniques}, the purpose of light microscopy is to provide magnified images of specimens by means of capturing emitted, reflected or transmitted light in the visible range of the spectrum, or even in the ultraviolet or near-infrared regions. As reported by \citeonline{lawlor2019introduction}, there are three general styles of light microscope. The \emph{upright microscope} is the easily affordable, easy to use traditional configuration with a light source on the base, a stage and the objective lenses. The \emph{inverted microscope} consists of the inverted configuration of an upright microscope, and offers some advantages when it comes to life sciences applications such as live cell imaging. Finally, the \emph{stereomicroscope} consists of a fusion of two compound microscopes in a convergent optical system and may have two different objectives and eyepieces or only one objective and two eyepieces \cite{schreier2004advances}. The former is named \emph{binobjective-binocular} (Greenough) and the latter \emph{monobjective-binocular}, or \sigla{CMO}{Common Main Objective Stereo Microscope}. One of the advantages of CMO microscopes is the higher depth of field, which allows the user to view and investigate biological specimens, relatively small materials and any kind of non-smooth surfaces. Furthermore, it is possible to view and acquire images in three dimensions \cite{rochow1994introduction}. The structure of both types of stereo compound microscopes is depicted in \autoref{fig:stereo_compound_microscope}.
+
+\begin{figure}[htb]
+	\centering
+	\caption{\label{fig:stereo_compound_microscope} Graphic representation of the basic stereo compound light microscope structure, (a) for the Greenough type and (b) for the CMO.}
+	\begin{center}
+	    \includegraphics[scale=0.4]{images/stereomicroscope.png}
+	\end{center}
+	\centering
+    \fdireta{rochow1994introduction}
+\end{figure}
+
+\subsection{Z-stacking Technique}
+\input{tex/sections/bright-field-microscopy-fundamentals/subsections/light-microscopy-techniques}

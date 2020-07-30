@@ -1,8 +1,8 @@
 As mentioned in \autoref{chapter:fundamentals-of-optics-and-light-microscopy}, the bright-field microscopy images are formed by either transmitted or reflected light that passes through the sample and reaches the objective lens. The difference between transmitted light and reflected light microscopes is the illumination system; there is no difference in how both direct light rays leave the specimen \cite{leng2009materials}.
 
-According to \citeonline{davidson2002optical}, the light which reaches the specimen is either undeviated, i.e. does not suffer any disturbances in its direction, or diffracted; the diffracted rays leave the sample with a phase difference of 180 degrees in comparison to the undeviated light and cause destructive interference in the eyepiece, which projects a magnified version of this pattern onto a sensor and consequently produces the image.
+According to \citeonline{davidson2002optical}, the light which reaches the specimen is either undeviated, i.e. does not suffer any disturbances in its direction, or diffracted; the diffracted rays leave the sample with a phase difference in comparison to the undeviated light and cause destructive interference in the eyepiece, which projects a magnified version of this pattern onto a sensor and consequently produces the image.
 
-Furthermore, the diffraction patterns that are captured by objectives have a particular shape. As also stated by \citeonline{davidson2002optical}, the \emph{Airy disks}(also called \emph{Airy patterns}), named after Sir George Biddell Airy (1801 - 1892), are small circular diffraction disks projected by the objectives onto the image plane of the eyepiece diaphragm, which describe the focus profile the resulting image. The Airy disks, as described by \citeonline{fowles1989introduction}, follow the Fraunhoffer diffraction pattern, and may be mathematically modelled as an angular distribution of intensity of light diffracted by a circular aperture, given by
+Furthermore, the diffraction patterns that are captured by objectives have a particular shape. As also stated by \citeonline{davidson2002optical}, the \emph{Airy disks} (also called \emph{Airy patterns}), named after Sir George Biddell Airy (1801 - 1892), are small circular diffraction disks projected by the objectives onto the image plane of the eyepiece diaphragm, which describe the focus profile of the resulting image. The Airy disks, as described by \citeonline{fowles1989introduction}, follow the Fraunhoffer diffraction pattern, and may be mathematically modelled as an angular distribution of intensity of light diffracted by a circular aperture, given by
 
 \begin{align}
 \label{eqn:airy_function}
@@ -16,7 +16,7 @@ I(\theta) = I_{0}
         \right) \frac{a}{2},
 \end{align}
 
-\noindent where $I_{0} = (C \pi R^{2})^{2}$ is the intensity for $\theta = 0$, $C$ is a constant, $R$ is the radius of the aperture, $\lambda$ is the wavelength of the light, $a$ is the diameter of the aperture and $J_{1}$ is the Bessel function of the first kind and first order \cite{mathews1970mathematical}. The Bessel function for the general case of $rth$ order is given by
+\noindent where $I_{0} = (C \pi R^{2})^{2}$ is the intensity for $\theta = 0$, $C$ is a constant, $R$ is the radius of the aperture, $\lambda$ is the wavelength of the light, $a$ is the diameter of the aperture and $J_{1}$ is the Bessel function of the first kind and first order \cite{mathews1970mathematical}. The Bessel function for the general case of $r^{th}$ order is given by
 
 \begin{align}
 \label{eqn:1st_bessel}
@@ -60,11 +60,11 @@ with higher numerical apertures for the objective and shorter wavelengths of the
 \label{sec:point_spread_function_and_image_formation_model}
 
 When light waves from a point source reach the lenses, they suffer diffraction and refraction, originating a new propagating set of rays that converge to a point in the center of the image plane in the shape of Airy disks; such shape is called the \sigla{PSF}{Point Spread Function}
-of the imaging system (also called \emph{impulse response}), and it is intrinsically related to the imaging process \cite{wu2008microscope}. Particularly, the bright-field microscopy employs polychromatic nonpolarized incoherent light. Hence, it is possible to relate the Airy disks to the PSF, since those are intensity distributions for each point source of light emanating from the specimen. \autoref{fig:point_spread_function}.(a) presents a theoretical scheme of imaging for a point source of light, and \autoref{fig:point_spread_function}.(b) depicts the shape of a incoherent PSF:
+of the imaging system (also called \emph{impulse response}), and it is intrinsically related to the imaging process \cite{wu2008microscope}. Particularly, the bright-field microscopy employs polychromatic nonpolarized incoherent light. Hence, it is possible to relate the Airy disks to the PSF, since those are intensity distributions for each point source of light emanating from the specimen. \autoref{fig:point_spread_function}.(a) presents a theoretical scheme of imaging for a point source of light, and \autoref{fig:point_spread_function}.(b) depicts the shape of a incoherent PSF.
 
 \begin{figure}[htb]
 	\centering
-	\caption{\label{fig:point_spread_function} Point Spread Function generated by a focused diffraction-limited system with incoherent light.} 
+	\caption{\label{fig:point_spread_function} Light rays from a point source go through a lens' surface and converge to a point in the image plane (a) and the scheme of a point spread function generated by a focused diffraction-limited system with incoherent light (b).} 
 	\begin{center}
 	    \includegraphics[scale=0.235]{images/point_spread_function.jpeg}
 	\end{center}
