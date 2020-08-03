@@ -2,22 +2,36 @@ As for the use of light microscopes, there are several techniques and configurat
 
 \begin{figure}[htb]
 	\centering
-	\caption{\label{fig:bright-field_microscopy} Example of bright-field microscopy image.}
+	\caption{\label{fig:bright-field_microscopy} Example of bright-field microscopy image of bone tissue.}
 	\begin{center}
-	    \includegraphics[scale=0.3]{images/bright-field_microscopy.png}
+	    \includegraphics[scale=0.25]{images/bright-field_microscopy.png}
 	\end{center}
 	\centering
     \fdireta{lawlor2019introduction}
 \end{figure}
 
-The \textit{z-stacking} is a procedure to capture images in different positions concerning the $z$ axis, named slices, which may be applied to many different techniques to create a pseudo 3D image of the sample and consequently retrieve depth information about the specimen \cite{lawlor2019introduction}. The distance between each slice is dictated by the technique, either manually or automatically, and the focus needs to be adjusted at each slice. Next, the images must be aligned before any analysis is conducted. \autoref{fig:z-stack_example} represents a z-stacking example.
+\subsection{Z-stacking technique}
 
-\begin{figure}[H]
+The \textit{z-stacking} is a procedure to capture images in different positions concerning the $z$ axis, named slices, which may create a pseudo 3D image of the sample and consequently retrieve depth information about the specimen \cite{lawlor2019introduction}. \autoref{fig:z-stack-scheme} presents the scheme of a z-stack acquisition with an arbitrary object:
+
+\begin{figure}[htb]
+	\centering
+	\caption{\label{fig:z-stack-scheme} Scheme of a z-stack image dataset acquisition with an arbritrary object.}
+	\begin{center}
+	    \includegraphics[scale=0.4]{images/z-stack-object.png}
+	\end{center}
+	\centering
+    \fdireta{trivedi2020centroid}
+\end{figure}
+
+The distance between each slice is dictated manually or automatically by the technique, and the focus needs to be adjusted at each slice. Next, the images must be aligned before any analysis is conducted. \autoref{fig:z-stack_example} represents the differences in focus between the slices of a z-stack.
+
+\begin{figure}[htb]
 	\centering
 	\caption{\label{fig:z-stack_example} Z-stack images of yeast cells, acquired in positions under the focal plane (-15, -10 and -5 $\mu m$), exactly on it (0 $\mu m$) and above it (5, 10 and 15 $\mu m$).}
 	\begin{center}
 	    \includegraphics[scale=0.5]{images/z-stack.png}
 	\end{center}
 	\centering
-    \fadaptada{wei2018neural}
+    \fdireta{wei2018neural}
 \end{figure}
