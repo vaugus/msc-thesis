@@ -1,8 +1,8 @@
-Defocus blur is an example among all distortions that an image may be acquainted with during its acquisition or processing; this implies that the resulting image will have some sort of degradation in its visual quality, which justifies the need of objective techniques to evaluate and predict the quality of images since the subjective ways are commonly unavailable or inconvenient \cite{wang2004image}. This section presents a literature review on no-reference IQA methods based on frequency domain analysis, human perception of blur, probabilities, local contrast levels, and gray level variability. These methods guided the study and development of our approach and demonstrated a significant importance in the no-reference image quality evaluation process. Our method explores one of these techniques, i.e. the frequency domain analysis.
+Defocus blur is an example among all distortions that an image may be acquainted with during its acquisition or processing; this implies that the resulting image will have some sort of degradation in its visual quality, which justifies the need of objective techniques to evaluate and predict the quality of images since the subjective ways are commonly unavailable or inconvenient \cite{wang2004image}. This section presents a literature review on no-reference IQA methods based on frequency domain analysis, human perception of blur, probabilities, local contrast levels, and gray level variability. 
 
 \subsection{Image sharpness measure for blurred images in frequency domain}
 
-\citeonline{kanjar2013image} proposed a Fourier Transform based algorithm to compute an image quality measure of blurred images. This approach is an attempt to quantify sharpness as the amount of high-frequency components in a blurred image is smaller than in a sharper one. The algorithm consists of the following, where $g(x,y)$ denotes the input image of size $M \times N$:
+\citeonline{kanjar2013image} proposed a DFT-based algorithm to compute an image quality measure of blurred images. This approach is an attempt to quantify sharpness as the amount of high-frequency components in a blurred image is smaller than in a sharper one. The algorithm consists of the following, where $g(x,y)$ denotes the input image of size $M \times N$:
 
 \begin{enumerate}[label=\Roman* -]
     \item Compute the Fourier Transform representation of image $g(x,y)$, denoted by $\hat{g}(m,n)$;
@@ -22,14 +22,12 @@ Defocus blur is an example among all distortions that an image may be acquainted
     
     \item Compute the number $t$ of pixels in $\hat{g}$ where $\hat{g} > m /1000$;
     
-    \item Calculate the image quality measure $FM = t /M.N$.
+    \item Calculate the image quality measure $FM = t /M \times N$.
 \end{enumerate}
 
 \subsection{A no-reference perceptual blur metric}
 
-A very simple but efficient perceptual blur metric was proposed in \cite{marziliano2002noreference}. It is also based on the fact that high-frequency components are attenuated in a blurred image. Considering that blur affects the edges and texture regions of an image, the technique attempts to measure how scattered they are. 
-
-First, an edge detector is applied to the luminance component of the image (equivalent to a grayscale-converted image) in order to find the vertical edges. Each row of the image is scanned for pixels corresponding to edges, and the width of each edge is computed by the difference of local extrema closest to the edge. This is done for each edge location, and the global blur measure is the average of all computed widths.
+A very simple but efficient perceptual blur metric was proposed by \citeonline{marziliano2002noreference}. It is also based on the fact that high-frequency components are attenuated in a blurred image. Considering that blur affects the edges and texture regions of an image, the technique attempts to measure how scattered they are. First, an edge detector is applied to the luminance component of the image (equivalent to a grayscale-converted image) in order to find the vertical edges. Each row of the image is scanned for pixels corresponding to edges, and the width of each edge is computed by the difference of local extrema closest to the edge. This is done for each edge location, and the global blur measure is the average of all computed widths.
 
 \subsection{A No-Reference Objective Image Sharpness Metric Based on the Notion of Just Noticeable Blur (JNB)}
 \label{subsec:jnb_approach}
@@ -155,9 +153,7 @@ S_{1}(\mathbf{x}) = 1 - \frac{1}{1 + e^{\tau_{1}
 (\alpha_{\mathbf{x}} - \tau_{2})}},
 \end{equation}
 
-\noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. \autoref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information.
-
-$S_{2}$ incorporates the spatial information by analyzing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
+\noindent where $\tau_{1} = -3$ and $\tau_{2} = 2$. \autoref{eqn:sigmoid_s1} is a sigmoid function to estimate sharpness considering the slope of the spectral magnitude. This measure does not include the contrast information directly and it may generate inaccurate classifications; this is the reason why the authors propose the use of spatial information. $S_{2}$ incorporates the spatial information by analyzing the 8-neighborhoods of pixels in a block $\mathbf{x}$. The \sigla{TV}{Total Variation} is a metric of regularity within the grayscale values and is mathematically described as
 
 \begin{equation}
 \label{eqn:total_variation}
@@ -171,9 +167,7 @@ v(\mathbf{x}) = \frac{1}{255}\sum_{i,j}\left|x_{i} - x_{j}\right|,
 S_{2} = \frac{1}{4} \max_{a \in \mathbf{x}} v(a),
 \end{equation}
 
-\noindent where $a$ is a $2 \times 2$ block of $\mathbf{x}$. Each $x$ is of dimensions $8 \times 8$ and the overlap is $d = 4$. The final map for the whole image is the sum of all indices for each of the blocks.
-
-Finally, let $\mathbf{X}$ denote the set of all blocks which form the image. The $S_{3}$ image quality index is the weighted geometric mean defined by
+\noindent where $a$ is a $2 \times 2$ block of $\mathbf{x}$. Each $x$ is of dimensions $8 \times 8$ and the overlap is $d = 4$. The final map for the whole image is the sum of all indices for each of the blocks. Finally, let $\mathbf{X}$ denote the set of all blocks which form the image. The $S_{3}$ image quality index is the weighted geometric mean defined by
 
 \begin{equation}
 \label{eqn:s3_index}
