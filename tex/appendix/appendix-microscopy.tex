@@ -1,12 +1,6 @@
-This chapter provides information about optics and microscopy concepts in this work. The first part is dedicated to the basic set of concepts and properties from optics that are necessary for light microscopy; the second one describes the structure of the optical microscope, along with its uses and implications on the acquired images. Plenty of image degradation is due to the system acquisition process; in fact, defocus is a natural occurrence in optics, mainly caused by adjustments of the optical system.
+This chapter provides information about optics and microscopy in order to aid the bright-field microscopy and defocus blur comprehension. Plenty of image degradation is due to the system acquisition process; in fact, defocus is a natural occurrence in optics, mainly caused by adjustments of the optical system. The definition of the spectroscopy procedure consists on the interaction between electromagnetic radiation and the matter \cite{gauglitz2006handbook}. This concept can be extended to microscopy, which deals with the range of the electromagnetic spectrum of wavelength between 400 and 700 nanometers, i.e. visible light, to create visual representations of the objects \cite{bell2009introduction}. Light microscopy is inherently related to optics, and some concepts of the field are directly related to the blurring process; therefore, it is meaningfully important to elucidate them.
 
-
-\section{Relevant elements of optics}
-
-The definition of the spectroscopy procedure consists on the interaction between electromagnetic radiation and the matter \cite{gauglitz2006handbook}. This concept can be extended to microscopy, which deals with the range of the electromagnetic spectrum of wavelength between 400 and 700 nanometers, i.e. visible light,  to create visual representations of the objects
-\cite{bell2009introduction}. Light microscopy is inherently related to optics, and some concepts of the field are directly related to the blurring process; therefore, it is meaningfully important to elucidate them.
-
-\subsection{Dual Nature of Light}
+\section{Dual Nature of Light}
 
 The light was described in different ways according to different geniuses. Isaac Newton (1642-1727) proposed that light had a corpuscular nature, due to the trajectory in which light appeared to travel in a uniform medium in his experiments; Christiaan Huygens (1629-1695) stated in his works that light was traveling in a ``wave-like'' way and apparently could explain some optical principles such as the interference phenomena \cite{fowles1989introduction}. 
 
@@ -26,13 +20,9 @@ Light as an electromagnetic wave is therefore composed of the two vectors and pr
 	\fautor
 \end{figure}
 
-\subsection{Light Wave Properties and Phenomena}
+\section{Light Wave Properties and Phenomena}
 
-The light waves can be represented by a ray, i.e. a single oriented line which shows the direction of propagation; several waves that propagate in nearly the same direction can be named as a beam \cite{halliday2013fundamentals}. 
-
-% These two models of the real light are important and useful representations within the boundaries of visible light, and allow easier explanations of light properties.
-
-Some relevant properties of waves are explained here according to \citeonline{tipler2007physics}. The frequency ($f$) is the number of cycles per unit of time, or the reciprocal of the time that a periodic wave takes to execute a complete cycle of oscillatory motion $T$, given by $f = T^{-1}$. The Amplitude is the maximum displacement from the equilibrium position, where the wave peak reaches its highest value. Finally, the Phase is a point in time on the cycle of a wave propagation, quantified in degrees.
+The light waves can be represented by a ray, i.e. a single oriented line which shows the direction of propagation; several waves that propagate in nearly the same direction can be named as a beam \cite{halliday2013fundamentals}. Some relevant properties of waves are explained here according to \citeonline{tipler2007physics}. The frequency ($f$) is the number of cycles per unit of time, or the reciprocal of the time that a periodic wave takes to execute a complete cycle of oscillatory motion $T$, given by $f = T^{-1}$. The Amplitude is the maximum displacement from the equilibrium position, where the wave peak reaches its highest value. Finally, the Phase is a point in time on the cycle of a wave propagation, quantified in degrees.
 
 When rays or beams of light reach surfaces during its propagation, there are four prominent phenomena to consider: reflection, refraction, interference and diffraction. The incident ray of light suffers a split procedure when it reaches a frontier between two homogeneous media. One of the resulting rays reflects within the initial medium and the other one propagates inside the other medium; the first phenomenon is denominated \emph{reflection} and the second, \emph{refraction} \cite{born1999principles}. The speed of light depends on the medium in which it propagates. The \emph{refractive index} is a number that quantifies the speed of light in a particular medium in relation to the speed of light in vacuum, and can be described by
 
@@ -61,8 +51,7 @@ When rays or beams of light reach surfaces during its propagation, there are fou
     \fdireta{halliday2013fundamentals}
 \end{figure}
 
-When two or more waves of similar or equal frequency superpose in space and form a different intensity pattern, the \emph{interference} of the waves occurred \cite{tipler2008physics}. Mathematically, when interference is observed with light waves, it consists on a vector addition of the electromagnetic fields \cite{zilio2009optica}.
-If the interfering waves are in phase, i.e. the difference between the same positions within the wave cycles of the two waves is zero. This process is called \emph{constructive}, which yields a larger amplitude to the new wave. Similarly, if the interfering waves are not in phase, then the process is named \emph{destructive} and yield smaller or null amplitudes to the new wave \cite{tipler2007physics}. Both types of interference are show in \autoref{fig:interference}.
+When two or more waves of similar or equal frequency superpose in space and form a different intensity pattern, the \emph{interference} of the waves occurred \cite{tipler2008physics}. Mathematically, when interference is observed with light waves, it consists on a vector addition of the electromagnetic fields \cite{zilio2009optica}. If the interfering waves are in phase, i.e. the difference between the same positions within the wave cycles of the two waves is zero. This process is called \emph{constructive}, which yields a larger amplitude to the new wave. Similarly, if the interfering waves are not in phase, then the process is named \emph{destructive} and yield smaller or null amplitudes to the new wave \cite{tipler2007physics}. Both types of interference are show in \autoref{fig:interference}.
 
 \begin{figure}[htb]
 	\centering
@@ -75,19 +64,7 @@ If the interfering waves are in phase, i.e. the difference between the same posi
     \fadaptada{tipler2007physics}
 \end{figure}
 
-The wave theory of light also contains another important property for the real processes: the \emph{diffraction}, a phenomenon that was discovered by Francesco Maria Grimaldi (1618-1663) and consists of the distortion in a wavefront which focuses on obstacles such as apertures on an object, spheres, disks, or anything with similar dimension to the wavelength of the focusing light \cite{zilio2009optica}. The wavefront deviates and scatters after propagating through the obstacle and transforms itself into circular or spherical waves; this is a relevant property that distinguishes a wave from a particle, since the latter would either propagate without any change in its trajectory or would be blocked by the obstacle \cite{tipler2007physics}. When a beam of light reaches an opaque object, the waves suffer changes in their direction of propagation, which can be predicted by the fact that all the points in each wavefront (points of identical phase on waves) generate a new wave, as stated by Huygens \cite{fowles1989introduction}. As described by the Huygens principle, each point of the wavefront acts as a source and creates secondary waves which scatter in every direction; each of the new wavefronts is generated by the interference of an infinite number of sources of waves \cite{zilio2009optica}. The scheme in \autoref{fig:diffraction} illustrates the diffraction phenomenon with an arbitrary obstacle and a small source of waves.
-
-\begin{figure}[htbp]
-	\centering
-	\caption{\label{fig:diffraction} Diffraction scheme of a wavefront.}
-	\begin{center}
-	    \includegraphics[scale=1.9]{images/diffraction.png}
-	\end{center}
-	\centering
-    \fdireta{tipler2007physics}
-\end{figure}
-
-Diffraction is a phenomenon that always happens as waves pass through apertures, but its magnitude depends on the relative proportions between the aperture size and the wavelength: when the latter is large in comparison to the former, the diffraction effects are large and, likewise, a relatively small wavelength yields smaller effects \cite{tipler2007physics}. As stated by \citeonline{zilio2009optica}, there are two common types of diffraction:
+The wave theory of light also contains another important property for the real processes: the \emph{diffraction}, a phenomenon that was discovered by Francesco Maria Grimaldi (1618-1663) and consists of the distortion in a wavefront which focuses on obstacles such as apertures on an object, spheres, disks, or anything with similar dimension to the wavelength of the focusing light \cite{zilio2009optica}. The wavefront deviates and scatters after propagating through the obstacle and transforms itself into circular or spherical waves; this is a relevant property that distinguishes a wave from a particle, since the latter would either propagate without any change in its trajectory or would be blocked by the obstacle \cite{tipler2007physics}. When a beam of light reaches an opaque object, the waves suffer changes in their direction of propagation, which can be predicted by the fact that all the points in each wavefront (points of identical phase on waves) generate a new wave, as stated by Huygens \cite{fowles1989introduction}. As described by the Huygens principle, each point of the wavefront acts as a source and creates secondary waves which scatter in every direction; each of the new wavefronts is generated by the interference of an infinite number of sources of waves \cite{zilio2009optica}. Diffraction is a phenomenon that always happens as waves pass through apertures, but its magnitude depends on the relative proportions between the aperture size and the wavelength: when the latter is large in comparison to the former, the diffraction effects are large and, likewise, a relatively small wavelength yields smaller effects \cite{tipler2007physics}. As stated by \citeonline{zilio2009optica}, there are two common types of diffraction:
 
 \begin{itemize}
     \item \emph{Fresnel Diffraction}: also named near-field diffraction, it occurs when a cylindrical wavefront (the curvature cannot be neglected) passes through an obstacle and diffracts in the near-field, i.e. short distances relative to the path of the diffracted waves' propagation. However, the observation distance is usually finite. It results in different sizes and shapes for the diffraction patterns;
@@ -96,10 +73,9 @@ Diffraction is a phenomenon that always happens as waves pass through apertures,
     
 \end{itemize}
 
-\subsection{Illumination Qualities}
+\section{Illumination Qualities}
 
 The propagating waves, rays or beams of light that illuminate the object in imaging systems carry some attributes which depend on the source and the desired result. \autoref{fig:illumination_qualities} depicts some relevant qualities of light. 
-
 
 \begin{figure}[htb]
 	\centering
@@ -111,10 +87,9 @@ The propagating waves, rays or beams of light that illuminate the object in imag
     \fadaptada{murphy2012fundamentals}
 \end{figure}
 
-Pursuant to \citeonline{murphy2012fundamentals}, the attributes in \autoref{fig:illumination_qualities} 
-refer to color, polarization, coherence and direction. Every ray in a \emph{monochromatic} beam has the same wavelength, i.e. the same color, and similarly a \emph{polychromatic} beam consists of a mixture of rays with different wavelengths. The polarization relates to the vibration in the electric vector of light as an electromagnetic wave which may occur in parallel planes (\emph{polarized light}) or not (\emph{nonpolarized light}). The coherence is the relationship between the phase of each wave of a given wavelength: if the phase is the same for all waves, as in a laser beam, the light is named \emph{coherent}, otherwise it is said that the illumination is \emph{noncoherent} or \emph{incoherent}, as in bright-field microscopes. Finally, the waves may propagate in parallel trajectories, i.e. be \emph{collimated}, or may diverge or converge to some point.
+Pursuant to \citeonline{murphy2012fundamentals}, the attributes in \autoref{fig:illumination_qualities} refer to color, polarization, coherence and direction. Every ray in a \emph{monochromatic} beam has the same wavelength, i.e. the same color, and similarly a \emph{polychromatic} beam consists of a mixture of rays with different wavelengths. The polarization relates to the vibration in the electric vector of light as an electromagnetic wave which may occur in parallel planes (\emph{polarized light}) or not (\emph{nonpolarized light}). The coherence is the relationship between the phase of each wave of a given wavelength: if the phase is the same for all waves, as in a laser beam, the light is named \emph{coherent}, otherwise it is said that the illumination is \emph{noncoherent} or \emph{incoherent}, as in bright-field microscopes. Finally, the waves may propagate in parallel trajectories, i.e. be \emph{collimated}, or may diverge or converge to some point.
 
-\subsection{Properties of the Spherical Lenses}
+\section{Properties of the Spherical Lenses}
 
 As stated by \citeonline{halliday2013fundamentals}, \emph{lenses} are objects consisting of a transparent material, with a certain refractive index, that are made of two spherical surfaces on which light propagates and suffers refraction. They are used in optical systems due to their capacity to create images as long as their refractive index is not equal to that of the medium. Yet, in agreement with \citeonline{halliday2013fundamentals}, some concepts related to lenses are important in our context and will be shown below. \autoref{fig:spherical_lens} illustrates an arbitrary spherical lens, with principal elements from geometric optics that relate to lenses and its consequent imaging properties.
 

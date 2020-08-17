@@ -1,4 +1,4 @@
-Either in microscopic or macroscopic scales, imaging devices have a finite depth of field. Blurry regions in images may occur due to several reasons, e.g. the acquisition outside the boundaries of the depth of field \cite{huang2007evaluation}. Therefore, it is nearly impossible to obtain a globally sharp image in microscopic scales, since height differences within the surface of the sample will also be magnified and the depth of field of microscopes is usually small. Image fusion of stack of images, acquired with a variety of focus adjustments, may yield a fully sharp image. In this section, we investigate multi-focus image fusion techniques based on principal component analysis, guided filtering with local linear models, gradients and singular value decomposition. Similarly to the proposed IQA method, our image fusion approach explores one of the well-known literature methods, i.e. a gradient-based analysis to distinguish sharp and blurry regions.
+Either in microscopic or macroscopic scales, imaging devices have a finite depth of field. Blurry regions in images may occur due to several reasons, e.g. the acquisition outside the boundaries of the depth of field \cite{huang2007evaluation}. Therefore, it is nearly impossible to obtain a globally sharp image in microscopic scales, since height differences within the surface of the sample will also be magnified and the depth of field of microscopes is usually small. Image fusion of stack of images, acquired with a variety of focus adjustments, may yield a fully sharp image. In this section, we investigate multi-focus image fusion techniques based on principal component analysis, guided filtering with local linear models, gradients and singular value decomposition.
 
 \subsection{Pixel-level image fusion using wavelets and principal component analysis}
 
@@ -30,17 +30,11 @@ Either in microscopic or macroscopic scales, imaging devices have a finite depth
 g_{fused}(x,y) = P_{1}g_{1}(x,y) + P_{2}g_{2}(x,y),
 \end{equation}
 
-\noindent where $g_{fused}$ represents the fused image and $g_{1}$ and $g_{2}$ represent the two input images. The process may be extended to several images by applying the method in the first two images of the dataset, then with the fused image and another image and so on.
-
-Along with PCA, the authors explored a fusion approach with the DWT. The transform is applied to the input images and decomposes them into subbands of detailed and approximation wavelet coefficients, i.e. high and low-frequency components, respectively. Finally, the fusion rule consists of averaging the approximation coefficients and choosing the maximum among each detailed coefficient in each subband.
+\noindent where $g_{fused}$ represents the fused image and $g_{1}$ and $g_{2}$ represent the two input images. The process may be extended to several images by applying the method in the first two images of the dataset, then with the fused image and another image and so on. Along with PCA, the authors explored a fusion approach with the DWT. The transform is applied to the input images and decomposes them into subbands of detailed and approximation wavelet coefficients, i.e. high and low-frequency components, respectively. Finally, the fusion rule consists of averaging the approximation coefficients and choosing the maximum among each detailed coefficient in each subband.
 
 \subsection{Image fusion with guided filtering}
 
-The guided filtering, i.e., a windowed linear transform of the input image where coefficients are obtained by linear ridge regression was applied to perform image fusion \cite{li2013image}. The authors proposed a pixel-level image fusion technique that also makes use of low-pass filtering, edge extraction, and spatial consistency. It consists of three steps: two-scale image decomposition, weight map construction with guided filtering and two-scale image reconstruction.
-
-The decomposition step transforms the input images into two-scale representations by means of a convolution with an average filter of size $31 \times 31$. The first representation is named \emph{base} layer, directly obtained from the average filter convolution, and the second representation is named \emph{detail} layer, obtained by subtracting the base layer from the input image.
-
-In order to retrieve the weight map, i.e., a characterization of sharp and blurry regions of the image, edge extraction is performed with a $3 \times 3$ Laplacian filtering kernel (which will be further explained in \autoref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
+The guided filtering, i.e., a windowed linear transform of the input image where coefficients are obtained by linear ridge regression was applied to perform image fusion \cite{li2013image}. The authors proposed a three step pixel-level image fusion technique (decomposition, filtering and reconstruction) that also makes use of low-pass filtering, edge extraction, and spatial consistency. The decomposition step transforms the input images into two-scale representations by means of a convolution with an average filter of size $31 \times 31$. The first representation is named \emph{base} layer, directly obtained from the average filter convolution, and the second representation is named \emph{detail} layer, obtained by subtracting the base layer from the input image. In order to retrieve the weight map, i.e., a characterization of sharp and blurry regions of the image, edge extraction is performed with a $3 \times 3$ Laplacian filtering kernel (which will be further explained in \autoref{chapter:materials-and-methods}); subsequently, the edges undergo a Gaussian low-pass filter of dimensions $11 \times 11$ and $\sigma = 5$. Let $S_{i}^{k}$ be the smoothed edge in the pixel $k$ of the $i$th input image. The weight map is built as
 
 \begin{equation}
 \label{eqn:weight_map}
@@ -91,7 +85,7 @@ Q = \sqrt{(s_{1} + s_{2})^{2} + \alpha(s_{1} - s_{2})^{2}},
 
 \noindent where $\alpha > -1$. This is used as a sharpness measure for the multi-focus images at different scales in the presence of anisotropic blur and also misregistration. The sharpness is first computed at a large scale, i.e. a large $\sigma$ value, which roughly detects the focused region of each input image.
 
-With a coarse representation of the focused regions in hands, the next step is to define an unknown region near the boundaries of each focused region and set the gradient weights as $1$ for sharp and $0$ for blurry. The gradient weights are then calculated by applying the focus measure with a small $\sigma$ value and then merged with the gradients. This results in a set of probabilities for each pixel in each image. The composition of the fused image is then guided by the largest probability values.
+The next step is to define an unknown region near the boundaries of each focused region and set the gradient weights as $1$ for sharp and $0$ for blurry. The gradient weights are then calculated by applying the focus measure with a small $\sigma$ value and then merged with the gradients. This results in a set of probabilities for each pixel in each image. The composition of the fused image is then guided by the largest probability values.
 
 \subsection{Image fusion technique using multi-resolution singular value decomposition}
 
@@ -119,9 +113,7 @@ With a coarse representation of the focused regions in hands, the next step is t
         \end{bmatrix},
     \end{equation*}
     
-    where $s_{1}^{2}$ and $s_{2}^{2}$ are the squares of the singular values. Then, let $\hat{X}_{1} = U_{1}^{T}X_{1}$. The top row of $\hat{X}_{1}$ contains the approximation component, i.e. the largest eigenvalue, and the bottom row contains the detail component, i.e. the smallest eigenvalue. Let $\varphi$ and $\psi$ represent the top and bottom rows of $\hat{X}_{1}$, respectively;
-    
-    \item In order to perform the image decomposition in other scales, the approximation component $\varphi$ plays the role of $X$.
+    where $s_{1}^{2}$ and $s_{2}^{2}$ are the squares of the singular values. Then, let $\hat{X}_{1} = U_{1}^{T}X_{1}$. The top row of $\hat{X}_{1}$ contains the approximation component, i.e. the largest eigenvalue, and the bottom row contains the detail component, i.e. the smallest eigenvalue. Let $\varphi$ and $\psi$ represent the top and bottom rows of $\hat{X}_{1}$, respectively. In order to perform the image decomposition in other scales, the approximation component $\varphi$ plays the role of $X$.
 
 \end{enumerate}
 
