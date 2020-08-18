@@ -1,8 +1,8 @@
-\subsection{Proposed dataset}
+\section{Proposed dataset}
 
 Three bright-field microscopy images datasets were acquired with the ZEISS Axiocam ERc5s camera in the ZEISS SteREO Discovery.v20 and the ZEISS AxioLab A1 stereo microscopes from the Scientific Computing Group (SCG) at São Carlos Institute of Physics (IFSC). The datasets contain images from leaf histological samples of the plants \textit{Callisia repens}, \textit{Tradescantia zebrina} and \textit{Cthenante oppenheimiana}, acquired with different focal planes and with different magnification levels. 
 
-A shared feature among the species \textit{Callisia repens}, \textit{Tradescantia zebrina} and \textit{Cthenante oppenheimiana} is the purple abaxial (lower or bottom) leaf surface. This is commonly observed in deeply-shaded understorey plants and can be either transient or permanent, depending on the species and environmental conditions \cite{filho2018plants}. Several research projects have been conducted by the SCG group on plant leaf images, including biological studies with complex network analysis, where the locations of particular structures of the leaf, i.e. the stomata, were modeled as graphs. The \emph{stoma} (plural \emph{stomata}) is a structure that consists of an aperture between two cells, named \emph{guard cells}, and controls the exchange of steam, CO$_{2}$ and other gases from the inner part of the leaf and the atmosphere  \cite{hetherington2003role}. Furthermore, the concentration of stomata in leaves of purple plants is high; such stomatal cells are green and create a contrast between the epidermis and the stomata, which yields very good results with optical microscopy imaging \cite{filho2018plants}. Samples of blurred and sharp images of both datasets are shown in Figure \ref{fig:datasets}.
+A shared feature among the species \textit{Callisia repens}, \textit{Tradescantia zebrina} and \textit{Cthenante oppenheimiana} is the purple abaxial (lower or bottom) leaf surface. This is commonly observed in deeply-shaded understorey plants and can be either transient or permanent, depending on the species and environmental conditions \cite{filho2018plants}. Several research projects have been conducted by the SCG group on plant leaf images, including biological studies with complex network analysis, where the locations of particular structures of the leaf, i.e. the stomata, were modeled as graphs. The \emph{stoma} (plural \emph{stomata}) is a structure that consists of an aperture between two cells, named \emph{guard cells}, and controls the exchange of steam, CO$_{2}$ and other gases from the inner part of the leaf and the atmosphere  \cite{hetherington2003role}. Furthermore, the concentration of stomata in leaves of purple plants is high; such stomatal cells are green and create a contrast between the epidermis and the stomata, which yields very good results with optical microscopy imaging \cite{filho2018plants}. Samples of blurred and sharp images of both datasets are shown in \autoref{fig:datasets}.
 
 \begin{figure}[ht]
 	\centering
@@ -17,7 +17,7 @@ We will refer to the datasets as \textit{Callisia}, \textit{Tradescantia} and \t
 
 The SteREO Discovery.v20 microscope allows a precise measurement of the objective height, and the slices were acquired with a distance of 10 $\mu$m between each other - the maximum manually achievable distance. On the other hand, the absence of such micrometer precision measurement in the AxioLab A1 microscope did not hinder the construction of the z-stacks. For both microscopes, the acquisition started with the objective height above the focal plane, which provided a completely blurred image. Then, the objective was axially lowered progressively, and at each step, an image was taken; this process was done until the objective height was below the focal plane and the images were blurred again.
 
-The z-stacks needed to be registered for image fusion, but this can only be done after the eligible images in each set were chosen. Therefore, after our IQA method was applied, we aligned each stack with the TrakEM2 package, which is an ImageJ-based tool for processing and analyzing microscopy images. It includes methods for lens distortion correction, stitching, serial section alignment, correction of section thickness, and contrast adjustment \cite{saalfeld2019computational}. TrakEM2 uses the techniques described in the Image Registration section of Chapter~\ref{chapter:theoretical-background} to align the stacks.
+The z-stacks needed to be registered for image fusion, but this can only be done after the eligible images in each set were chosen. Therefore, after our IQA method was applied, we aligned each stack with the TrakEM2 package, which is an ImageJ-based tool for processing and analyzing microscopy images. It includes methods for lens distortion correction, stitching, serial section alignment, correction of section thickness, and contrast adjustment \cite{saalfeld2019computational}. TrakEM2 uses  a particular combination of methods. The feature extraction was done with a custom implementation of the \sigla{SIFT}{Scale Invariant Feature Transform}, together with a custom extension of the \sigla{RANSAC}{Random Sample Consensus} method for parameter estimation and the geometric consensus filtering process with the expected transformation model and a maximal expected error as parameters \cite{saalfeld2019computational}. 
 
 In order to validate the results according to a subjective quality index, each image was labeled as sharp or blurred, which translates as \emph{eligible} and \emph{negligible} for the fusion process, respectively. The axial nature of the acquisition allowed for a contiguous set of eligible images in each dataset. The relevant properties of the datasets are summarized in \autoref{tab:dataset_info}. 
 
@@ -38,8 +38,49 @@ In order to validate the results according to a subjective quality index, each i
     \fautor
 \end{table}
 
-\subsection{Benchmark datasets}
+\section{Benchmark datasets}
 
-\cite{hosu2020koniq}
+Benchmark datasets are fundamental in computer vision and image processing research in order to track the performance, accuracy and efficiency of new methods and algorithms. The image quality assessment was also evaluated against literature methods with the well-known Computational and Subjective Image Quality database (CSIQ) image quality assessment database \cite{larson2010most} and the KonIQ database, the largest image quality assessment database to date \cite{hosu2020koniq}. 
 
-\cite{larson2010most}
+The CSIQ database contains 30 original images of dimensions $512 \times 512$. Each image is distorted in four to five different levels separately by JPEG and JPEG-2000 compression, Gaussian blurring, global contrast decrements and additive pink Gaussian noise. The Gaussian blur subset with 150 images was employed in the proposed analysis. The dataset also contains 5000 subjective rates done by 35 different observers, by means of a Mean Opinion Score (MOS) - integer numbers in the interval $[1,5]$ where 1 is the worst score and 5 is the best. \autoref{fig:csiq_example} shows two samples of the CSIQ database.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Samples from the CSIQ database: blurred image (a) and sharp image (b).}
+    \label{fig:csiq_example}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{images/csiq_blurred.png}
+        \caption{}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{images/csiq_sharp.png}
+        \caption{}
+    \end{subfigure}
+    \centering
+    \fdireta{larson2010most}
+\end{figure}
+
+
+The KonIQ database was built in order to evaluate the performance of a deep learning method for blind image quality assessment. It consists of 10073 images of dimensions $1024 \times 768$ with different labels for brightness, contrast, colorfulness and sharpness. The labels were generated from 1.2 million MOS rating of 1459 observers. One dissimilar feature of KonIQ when compared to CSIQ is that the quality assessment should be done among different scenes with different levels of degradation. \autoref{fig:koniq_example} presents both blurred and sharp samples from the KonIQ image.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Samples from the KonIQ database: blurred image (a) and sharp image (b).}
+    \label{fig:koniq_example}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{images/koniq-blurred.jpg}
+        \caption{}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{images/koniq-sharp.jpg}
+        \caption{}
+    \end{subfigure}
+    \centering
+    \fdireta{hosu2020koniq}
+\end{figure}
