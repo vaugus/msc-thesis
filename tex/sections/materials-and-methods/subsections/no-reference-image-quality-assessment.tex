@@ -7,7 +7,9 @@ The next step is to devise a quantitative representation of sharpness for each i
   \label{fig:pipeline}
 \end{figure}
 
-First, the image undergoes a grayscale conversion with the luminance method \cite{ponti2016image} - a 
+The DFT was chosen as the basis for the method after tests with the techniques in the literature review, but it was also claimed within the SCG group that it is a simple and robust way to describe image sharpness in terms of a frequency profile. Some tests were done with the discrete wavelet transform, but the response was similar to the DFT. Similarly, after exploring the mathematical properties of the Fourier transform and also the other mathematical functions employed, i.e. the logarithm and the modulus of a complex number, the final feature vector was proven to be a distribution and could be mapped onto a probability space. This discovery brought the idea of statistics to the scope of this work, and by means of visualization techniques such as 2D and 3D plots, it was possible to notice the pattern of blurred and sharp images in the resulting distribution. The need of a statistical property capable of quantifying such pattern and allowing the method to segregate the blurred and sharp images motivated the research for techniques that deal with the shape of a distribution. The simplest tools were kurtosis, the interquartile range and the $z$-score, which were empirically proven to be accurate in the proposed setup.
+
+First, each image undergoes a grayscale conversion with the luminance method \cite{ponti2016image} - a 
 linear combination of the three channels of a RGB image, as shown in the matrix equation given by
 
 \begin{equation}
@@ -15,16 +17,9 @@ linear combination of the three channels of a RGB image, as shown in the matrix 
     I_{luminance} = 0.299R + 0.587G + 0.114B,
 \end{equation}
 
-\noindent where $I_{luminance}$ is the matrix that represents the grayscale converted image, $R$, $G$ and $B$ represent the matrices of the red, green and blue channels, respectively. Next, the resolution of each grayscale image is reduced by half, from 2560 $\times$ 1920 to 1280 $\times$ 960. This provides shorter computational times. We empirically observed that  reduction in resolution did not compromise the results. We employed a bilinear interpolation that uses the four nearest neighbors to estimate the intensity at a given location \cite{gonzalez2018digital}, described as
+\noindent where $I_{luminance}$ is the matrix that represents the grayscale converted image, $R$, $G$ and $B$ represent the matrices of the red, green and blue channels, respectively. 
 
-\begin{equation}
-\label{eqn:bilinear_interpolation}
-I_{resized}(x,y) = ax + by + cxy + d.
-\end{equation}
-
-The CLAHE algorithm is then applied to deliver a more uniform image to the Fourier Transform. This is necessary as microscopy images are influenced by illumination conditions, the focus adjustment itself and also physical properties of the transmitted or reflected light.
-
-Next, the DFT is applied to all images and the resulting spectra are analyzed. The Fourier spectrum of a two-dimensional signal such as an image is a matrix with complex coefficients and zeros on each of its four corners and carries information about frequency bands of the image, characterized as a distribution. Our approach requires a shift between the first and third quadrants, and also the second and the fourth quadrants, to the center of the matrix. The unshifted and shifted Fourier spectrum of an grayscale airplane test image are shown in Figures \ref{fig:fourier_spectrum}.(c) and \ref{fig:fourier_spectrum}.(d), respectively. 
+The CLAHE algorithm is then applied to deliver a more uniform image to the Fourier Transform. This is necessary as microscopy images are influenced by illumination conditions, the focus adjustment itself and also physical properties of the transmitted or reflected light. Next, the DFT is applied to all images and the resulting spectra are analyzed. The Fourier spectrum of a two-dimensional signal such as an image is a matrix with complex coefficients and zeros on each of its four corners and carries information about frequency bands of the image, characterized as a distribution. Our approach requires a shift between the first and third quadrants, and also the second and the fourth quadrants, to the center of the matrix. The unshifted and shifted Fourier spectrum of an grayscale airplane test image are shown in Figures \ref{fig:fourier_spectrum}.(c) and \ref{fig:fourier_spectrum}.(d), respectively. 
 
 \begin{figure}[ht]
 	\centering
@@ -37,9 +32,7 @@ Next, the DFT is applied to all images and the resulting spectra are analyzed. T
 
 The frequency information may be retrieved from the shifted Fourier spectrum by means of concentric circles drawn over it in the form of masks. Theoretically, the number of masks that may be applied to the spectra is infinite, but the discrete nature of images renders a finite number of masks. Let the matrix of DFT coefficients be graphically represented in Figure~\ref{fig:fourier_spectrum}.(e) and be mathematically denoted as a square of side $L = \max{(m,n)}$, $k = L / 2$ be the maximum radius value for circles within the square and $C = (k,k)$ be the center of the infinite set of concentric circles inscribed in the square. Circles with small radii comprise low-frequency information whereas large radii values cover high-frequency coefficients.
 
-Taking into account the pixel resolution of the input images, it makes sense to sample the information, otherwise, the computational complexity and running times of the algorithm for one image alone would be impractical. Moreover, it is also unrealistic to evaluate every area under each concentric circle to retrieve the frequency content of an image; there is also no standard discrete amount of frequency bands to be evaluated.
-
-Therefore, we drove our efforts to comprise as much information about each frequency band as possible and explored the fact that the Fourier spectrum of a real function such as an image is even, i.e. symmetric concerning its origin. Instead of the pure complex coefficients, we represent the Fourier spectrum by the magnitude of its coefficients, given by
+Taking into account the pixel resolution of the input images, it makes sense to sample the information, otherwise, the computational complexity and running times of the algorithm for one image alone would be impractical. Moreover, it is also unrealistic to evaluate every area under each concentric circle to retrieve the frequency content of an image; there is also no standard discrete amount of frequency bands to be evaluated. Therefore, we drove our efforts to comprise as much information about each frequency band as possible and explored the fact that the Fourier spectrum of a real function such as an image is even, i.e. symmetric concerning its origin. Instead of the pure complex coefficients, we represent the Fourier spectrum by the magnitude of its coefficients, given by
 
 \begin{equation}
 \label{eqn:magnitude_of_DFT}
@@ -52,7 +45,7 @@ K(m,n) =
     \right)},
 \end{equation}
 
-\noindent where $\hat{g}(m,n)$ are the complex Fourier coefficients of an image $g(x,y)$. We propose to sample the spectrum by means of radial lines as masks, i.e. white antialiased lines are drawn over a zero-valued matrix of dimensions 1280 $\times$ 960, the same dimensions of the Fourier spectrum of the reduced image, which are then element-wise multiplied by the spectrum. The lines are created from the $(x_{c},y_{c})$ center of the spectrum to points in an approximate radial position, which is calculated by
+\noindent where $\hat{g}(m,n)$ are the complex Fourier coefficients of an image $g(x,y)$. We propose to sample the spectrum by means of radial lines as masks, i.e. white antialiased lines are drawn over a zero-valued matrix with the same dimensions as the Fourier spectrum of the image, which are then element-wise multiplied by the spectrum. The lines are created from the $(x_{c},y_{c})$ center of the spectrum to points in an approximate radial position, which is calculated by
 
 \begin{equation}
 \label{eqn:points_on_radii}
@@ -71,7 +64,7 @@ P(x,y) =
 a_{j} : a_{j} = 
 \frac{j \pi}{180}
 \right\}
-&&  j = \{0,5,...,100\}.
+&&  j = \{0,10,...,360\}.
 \end{align}
 
 Equation
@@ -79,11 +72,11 @@ Equation
 floating-point ordered pair, rounded to the nearest integer value in order to represent a location in the spectrum. The
 antialiased lines are drawn with a Gaussian filtering process. After all the lines have been generated, the mask is similar to what is shown in Figure~\ref{fig:radial_masks}:
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\caption{Final mask of antialised radial lines to sample the Fourier spectrum.}
 	\label{fig:radial_masks}
-	\includegraphics[scale=0.5]{images/radial_masks.png}
+	\includegraphics[scale=0.8]{images/radial_masks.png}
 	\centering
 	\fautor
 \end{figure}
@@ -98,13 +91,35 @@ T(x_{i}) = \frac{x_{i}}{\sum_{j=0}^{n-1}x_{j}}
 &&  i = \{0,1,...,n-1\},
 \end{align}
 
-\noindent where each $x_{i}$ is a value of the descriptor which will be mapped onto a probability. Note that each feature vector after the sampling process is a distribution in the scope of the Distribution Theory, i.e. a continuous linear functional defined on a space of smooth (functions with continuous derivatives up to some desired order over some domain \cite{weisstein2020smooth}) and compact supported (the functions yields zero outside of a closed and bounded set \cite{weisstein2020compact}) functions, with values in the range $[0,\infty)$. Therefore, it makes sense to apply the operator that maps it to a probability. This proposition was proved in \autoref{chapter:definitions-and-proofs}, which summarizes several definitions from Mathematical Analysis, Measure Theory and Distribution Theory required for the proof.
+\noindent where each $x_{i}$ is a value of the descriptor which will be mapped onto a probability. Note that each feature vector after the sampling process is a distribution in the scope of the Distribution Theory, i.e. a continuous linear functional defined on a space of smooth (functions with continuous derivatives up to some desired order over some domain \cite{weisstein2020smooth}) and compact supported (the functions yields zero outside of a closed and bounded set \cite{weisstein2020compact}) functions, with values in the range $[0,\infty)$. Therefore, it makes sense to apply the operator that maps it to a probability. This proposition was proved in \autoref{chapter:definitions-and-proofs}, which summarizes several definitions from Mathematical Analysis, Measure Theory and Distribution Theory required for the proof. The shape of the frequency distribution represented by each descriptor may vary according to the contents of the image, i.e. lines, circles, edges or complex textures, but it possesses a common representation, as shown in \autoref{fig:descriptor} for the 
+``1600'' image in the CSIQ database. The black line represents a sharp image (without any degree of Gaussian blur) and the blue line represents the blurriest sample of the ``1600'' subset.
 
-Information embedded in the low-frequency components of each feature vector corresponds to the Dirac delta distribution within the PSF of the microscope and should be discarded since it is equal to all images and does not resemble blur information; the removal should be done with caution so that the remaining information is enough to represent the blur profile of the image and allow the further selection by the image quality metric. An optimal threshold should be calculated for ``cropping'' the data, i.e. only a subset of it will represent the sharpness information. The threshold is chosen to maximize the difference between the maximum and the minimum among a set of kurtosis values of each feature vector.
+\begin{figure}[htb]
+	\centering
+	\caption{Common shape of the descriptors right after computation.}
+	\label{fig:descriptor}
+	\includegraphics[width=\textwidth, height=12cm, trim = 0cm 0cm 0cm 0.3cm, clip]{images/descriptor.png}
+	\centering
+	\fautor
+\end{figure}
+
+Information embedded in the low-frequency components of each feature vector corresponds to the Dirac delta distribution within the PSF of the microscope and should be discarded since it is equal to all images and does not resemble blur information; the removal should be done with caution so that the remaining information is enough to represent the blur profile of the image and allow the further selection by the image quality metric. An optimal threshold should be calculated for ``cropping'' the data, i.e. only a subset of it will represent the sharpness information. The threshold is chosen to maximize the range of a set of kurtosis values for each feature vector.
+
+Consequently, the data presented by \autoref{fig:descriptor} provides an overview of the distribution of frequencies, but it does not depict distinguishable differences between a sharp and a blurred image. However, by maintaining the range of values, selecting a subset of both sharp and blurred feature vectors (in this case, the dimensions of the original image are $512 \times 512$ and the feature vectors are of length 592) which starts at the position zero and ends at 100, and finally plotting both subsets, it is possible to notice a difference between the graphs. \autoref{fig:low_frequencies} shows that the blue line (the blurred image) contains larger values within the $[0,20]$ interval in the $x$ axis in comparison to the black line (the sharp image), providing less 
+``peakedness''  to the distribution - which translates itself as lower kurtosis values.
+
+\begin{figure}[htb]
+	\centering
+	\caption{Low-frequency profiles of a sharp (black line) and a blurry (blue line) image.}
+	\label{fig:low_frequencies}
+	\includegraphics[scale=2.2, trim = 0 0.3cm 0 0.4cm, clip]{images/low_frequencies.png}
+	\centering
+	\fautor
+\end{figure}
 
 The array of kurtosis for every crop size is computed as follows. The crop size initializes as zero and is used to compute the kurtosis of the entire set $\{x_{1},x_{2},...,x_{n}\}$ of all descriptors. The crop size is then incremented by 1, yielding the subset $\{x_{2},x_{3},...,x_{n}\}$. This process is done until the kurtosis for all crop sizes of the feature vectors is computed. Algorithm \ref{alg:kurtosis_array} summarizes the computation of kurtosis for all crop sizes:
 
-\begin{algorithm}[H]
+\begin{algorithm}[htb]
 	\caption{Kurtosis computation}
 	\label{alg:kurtosis_array}
 	\begin{algorithmic}[1]
@@ -176,4 +191,6 @@ The array of kurtosis for every crop size is computed as follows. The crop size 
 	\end{algorithmic}
 \end{algorithm}
 
-The low-frequency is discarded in each feature vector up to the optimal threshold, and the IQR measure is computed for all of them. In this work, the IQR value of the feature vector of an image corresponds to the amount of details, i.e. high-frequency content on it: the higher the IQR value, the sharper the image is. Finally, an estimate of the subset of images that is eligible for the fusion process is then obtained by the $z$-score transformation by choosing the images that locate at one or more standard deviation units away from the mean.
+The low-frequency is discarded in each feature vector up to the optimal threshold, and a final kurtosis value is computed for all of them. In this work, such final kurtosis value of each feature vector of an image corresponds to the amount of details, i.e. high-frequency content on it: the higher the kurtosis value, the sharper the image is. Finally, an estimate of the subset of images that is eligible for the fusion process is then obtained by the $z$-score transformation by choosing the images that locate at one or more standard deviation units away from the mean.
+
+% IQR measure is computed for all of them. In this work, the IQR value of the feature vector of an image corresponds to the amount of details, i.e. high-frequency content on it: the higher the IQR value, the sharper the image is. Finally, an estimate of the subset of images that is eligible for the fusion process is then obtained by the $z$-score transformation by choosing the images that locate at one or more standard deviation units away from the mean.
