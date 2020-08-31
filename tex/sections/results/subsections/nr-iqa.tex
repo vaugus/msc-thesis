@@ -1,9 +1,8 @@
-The NR-IQA method was developed first, and we compared our results with well-known NR-IQA approaches such as MLV \cite{bahrami2014fast}, $S_{3}$ \cite{vu2012s3}, JNB \cite{ferzli2009noreference}, CPBD \cite{narvekar2011noreference}, Marziliano \textit{et. al.} \cite{marziliano2002noreference} and Kanjar \cite{kanjar2013image}. \autoref{tab:iqa_performance_comparison} shows the results of the PLCC, SRCC and KRCC metrics for the \textit{Callisia}, \textit{Tradescantia} and \textit{Cthenante} datasets, respectively.
-
+We compared our results with well-known NR-IQA approaches such as MLV \cite{bahrami2014fast}, $S_{3}$ \cite{vu2012s3}, JNB \cite{ferzli2009noreference}, CPBD \cite{narvekar2011noreference}, Marziliano \textit{et. al.} \cite{marziliano2002noreference} and Kanjar \cite{kanjar2013image}. \autoref{tab:iqa_performance_comparison} shows the results of the PLCC, SRCC and KRCC metrics for the \textit{Callisia}, \textit{Tradescantia} and \textit{Cthenante} datasets, respectively. For all proposed datasets, the correlation coefficients were computed against the Mean Structural Similarity Index between the resulting image of our fusion method and the images.  
 
 \begin{table}[ht]
     \centering
-    \caption{Performance comparison of our proposed method and other NR-IQA metrics on the microscopy images datasets.}
+    \caption{Performance comparison of our proposed method and other NR-IQA metrics on the microscopy images datasets, in terms of correlation coefficients between the MSSIM quality score and each method.}
     \label{tab:iqa_performance_comparison}
     \begin{tabular}{lcccccccc}
         \toprule
@@ -11,36 +10,40 @@ The NR-IQA method was developed first, and we compared our results with well-kno
         \midrule
         
         \multirow{3}{*}{\textit{\small Callisia}} 
-        & \small PLCC & 0.2829 & 0.1752 & 0.5461 & 0.7361 & 0.7457 & 0.6688 & \textbf{0.7488}\\
-        & \small SRCC & 0.2752 & 0.1730 & 0.6031 & 0.6122 & 0.6122 & 0.5971 & \textbf{0.6212}\\
-        & \small KRCC & 0.2267 & 0.1425 & 0.4968 & 0.5043 & 0.5043 & 0.4919 & \textbf{0.5117}\\
+        & \small PLCC & 0.1462 & 0.0140 & 0.7336 & 0.8606 & 0.8663 & 0.8167 & \textbf{0.8155}\\
+        & \small SRCC & 0.3099 & 0.3654 & 0.9623 & 0.9658 & 0.9671 & 0.9594 & \textbf{0.9364}\\
+        & \small KRCC & 0.2130 & 0.2558 & 0.8584 & 0.8636 & 0.8701 & 0.8506 & \textbf{0.7961}\\
         
         \midrule
         
         \multirow{3}{*}{\textit{\small Tradescantia}}
-        & \small PLCC & 0.1285 & -0.1312 & 0.2561 & 0.2409 & 0.2322 & 0.2564 & \textbf{0.3698}\\
-        & \small SRCC & 0.1346 & -0.1253 & 0.2181 & 0.2413 & 0.2227 & 0.2227 & \textbf{0.2552}\\
-        & \small KRCC & 0.1107 & -0.1031 & 0.1794 & 0.1985 & 0.1832 & 0.1833 & \textbf{0.2099}\\
+        & \small PLCC & 0.1910 & 0.0466 & 0.2867 & 0.2565 & 0.2683 & 0.3400 & \textbf{0.4708}\\
+        & \small SRCC & 0.0249 & 0.0184 & 0.6052 & 0.6023 & 0.5159 & 0.6544 & \textbf{0.5730}\\
+        & \small KRCC & 0.0117 & 0.0107 & 0.5012 & 0.4825 & 0.3930 & 0.5798 & \textbf{0.4350}\\
 
         \midrule
         
         \multirow{3}{*}{\textit{\small Cthenante}} 
-        & \small PLCC & 0.0446 & -0.1682 & 0.7840 & 0.8041 & 0.8012 & 0.7831 & \textbf{0.8129}\\
-        & \small SRCC & 0.0227 & -0.2068 & 0.7414 & \textbf{0.7515} & 0.7464 & 0.7338 & 0.7414\\
-        & \small KRCC & 0.0187 & -0.1704 & 0.6108 & \textbf{0.6191} & 0.6150 & 0.6046 & 0.6108\\
+        & \small PLCC & 0.0760 & 0.2346 & 0.9463 & 0.8428 & 0.9490 & 0.8968 & \textbf{0.9482}\\
+        & \small SRCC & 0.1289 & 0.2450 & 0.9617 & 0.8821 & 0.9697 & 0.9650 & \textbf{0.9466}\\
+        & \small KRCC & 0.0976 & 0.1717 & 0.8384 & 0.7212 & 0.8653 & 0.8545 & \textbf{0.8020}\\
         
+        \midrule
+        
+        \multirow{3}{*}{\textit{\small Mean}} 
+        & \small PLCC & 0.1377 & 0.0984 & 0.6556 & 0.6533 & 0.6945 & 0.6845 & \textbf{0.7448}\\
+        & \small SRCC & 0.1546 & 0.2096 & 0.8430 & 0.8168 & 0.8176 & 0.8596 & \textbf{0.8187}\\
+        & \small KRCC & 0.1074 & 0.1461 & 0.7327 & 0.6891 & 0.7095 & 0.7617 & \textbf{0.6777}\\
+
         \bottomrule
     \end{tabular}
     \centering
     \fautor
 \end{table}
 
+The difference between our images and benchmark datasets such as LIVE \cite{sheikh2006statistical} and CSIQ \cite{larson2010most} is that our bright-field microscopy images are subjected to a non-homogeneous blur kernel and the spherical aberrations are more prominent. Consequently, the labeling of blurred and sharp is subjective, since the notion of quality might be different according to what the images will be used for. In the scope of this work, the reason for assessing image quality is to predict eligible images and select the proper ones to perform the fusion process. The SRCC and KRCC coefficients also evaluate the \textit{monotonicity}, i.e. the property of maintaining the order relation between the sets - it is only nondecreasing or nonincreasing. In this work, monotonicity relates the values obtained by applying our metric on the proposed datasets and the set of labels provided by the subject evaluation of them.
 
-From \autoref{tab:iqa_performance_comparison}, we may conclude that our tests obtained reasonable results with the proposed microscopy images. Our method obtained the highest values for most of the metrics in most of the datasets.  The difference between our images and benchmark datasets such as LIVE \cite{sheikh2006statistical} and CSIQ \cite{larson2010most} is that our bright-field microscopy images are subjected to a non-homogeneous blur kernel and the spherical aberrations are more prominent. Consequently, the labeling of blurred and sharp is subjective, since the notion of quality might be different according to what the images will be used for. In the scope of this work, the reason for assessing image quality is to predict eligible images and select the proper ones to perform the fusion process.
-
-The PLCC, SRCC and KRCC coefficients also evaluate the \textit{monotonicity}, i.e. the property of maintaining the order relation between the sets - it is only nondecreasing or nonincreasing. In this work, monotonicity relates the values obtained by applying our metric on the proposed datasets and the set of labels provided by the subject evaluation of them. The results in \autoref{tab:iqa_performance_comparison} also show how monotonic the metric is. Finally, the computational performance of an NR-IQA metric may be a constraint. Autofocus systems in microscopes, for example, should be capable of updating sharpness metrics several times to find the best focus setup. Our method was coded in C++ language and the OpenCV framework to deliver good computational performance with common hardware and operating system settings and is available in a repository. We also implemented the Kanjar method in Python, and the code is also organized in a repository. 
-
-On the other hand, the methods we used in our comparisons were implemented in MATLAB, C++ and Python programming languages. Details are summarized in \autoref{tab:implementations}, including the repository with the implementation of our method:
+The Kanjar method was also implemented in Python, and the code is also organized in a repository. The methods we used in our comparisons were implemented in MATLAB, C++ and Python programming languages. Details are summarized in \autoref{tab:implementations}, including the repository with the implementation of our method:
 
 \begin{table}[htbp]
     \caption{Implementations of the literature IQA methods and ours.}
@@ -60,28 +63,4 @@ On the other hand, the methods we used in our comparisons were implemented in MA
         \bottomrule
     \end{tabular}
 \end{center}
-\end{table}
-
-
-\autoref{tab:running_times_comparison} presents the running time comparison for all methods in the three proposed datasets. Despite the programming language differences, our method yielded a relevant computational efficiency in terms of execution time. 
-
-\begin{table}[ht]
-    \centering
-    \caption{Running times for the proposed method and other NR-IQA metrics on our \emph{Callisia repens} microscopy images dataset.}
-    \label{tab:running_times_comparison}
-    \begin{tabular}{lccccccc}
-        \toprule
-        & \multicolumn{7}{c}{Times} \\
-        \midrule
-        Dataset & MLV & $S_{3}$ & JNB & CPBD & Marz. & Kanjar & \textbf{Proposed}\\
-        \midrule
-        
-        \textit{Callisia} & 00:01:06 & 04:25:00 & 00:04:37 & 00:14:00 & \textbf{00:00:08} & 00:00:25 & 00:00:13\\
-        \textit{Tradescantia} & 00:01:55 & 00:49:30 & 00:05:42 & 00:14:31 & \textbf{00:00:09} & 00:00:30 & 00:00:20\\
-        \textit{Cthenante} & 00:01:31 & 03:17:16 & 00:04:28 & 00:14:47 & \textbf{00:00:06} & 00:00:24 & 00:00:11\\
-        
-        \bottomrule
-    \end{tabular}
-    \centering
-    \fautor
 \end{table}
