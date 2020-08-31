@@ -45,7 +45,7 @@ K(m,n) =
     \right)},
 \end{equation}
 
-\noindent where $\hat{g}(m,n)$ are the complex Fourier coefficients of an image $g(x,y)$. We propose to sample the spectrum by means of radial lines as masks, i.e. white antialiased lines are drawn over a zero-valued matrix with the same dimensions as the Fourier spectrum of the image, which are then element-wise multiplied by the spectrum. The lines are created from the $(x_{c},y_{c})$ center of the spectrum to points in an approximate radial position, which is calculated by
+\noindent where $\hat{g}(m,n)$ are the complex Fourier coefficients of an image $g(x,y)$. We propose to sample the spectrum by means of radial lines as masks, i.e. white lines are drawn over a zero-valued matrix with the same dimensions as the Fourier spectrum of the image, which are then element-wise multiplied by the spectrum. The lines are created from the $(x_{c},y_{c})$ center of the spectrum to points in an approximate radial position, which is calculated by
 
 \begin{equation}
 \label{eqn:points_on_radii}
@@ -64,7 +64,7 @@ P(x,y) =
 a_{j} : a_{j} = 
 \frac{j \pi}{180}
 \right\}
-&&  j = \{0,10,...,360\}.
+&&  j = \{0,1,2,...,360\}.
 \end{align}
 
 Equation
@@ -76,7 +76,7 @@ antialiased lines are drawn with a Gaussian filtering process. After all the lin
 	\centering
 	\caption{Final mask of antialised radial lines to sample the Fourier spectrum.}
 	\label{fig:radial_masks}
-	\includegraphics[scale=0.8]{images/radial_masks.png}
+	\includegraphics[scale=0.6]{images/radial_masks.png}
 	\centering
 	\fautor
 \end{figure}

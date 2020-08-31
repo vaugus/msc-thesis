@@ -1,6 +1,6 @@
 The proposed method was implemented in Python programming language with the NumPy, Scipy, scikit-image and Pillow libraries. Following reproducible research ideals, the code is organized and made available in a repository \footnote{\url{https://github.com/vaugusto92/light-microscopy-image-fusion-prototype}}.
 
-We compared our proposed method with well-known multi-focus image fusion approaches such as PCA \cite{naidu2008pixel}, GF \cite{li2013image}, MSWG \cite{zhou2014multi}, and MSVD \cite{naidu2011image}. The optimal value for the $\sigma$ parameter was empirically acquired, and was set to $0.7$. \autoref{tab:fusion_performance_comparison} shows the results of the Entropy, MSSIM and STD metrics for the \textit{Callisia}, \textit{Tradescantia} and \textit{Cthenante} datasets with each fusion approach.
+We compared our proposed method with well-known multi-focus image fusion approaches such as PCA \cite{naidu2008pixel}, GF \cite{li2013image}, MSWG \cite{zhou2014multi}, and MSVD \cite{naidu2011image}. The optimal value for the $\sigma$ parameter was empirically acquired and set to $0.7$. \autoref{tab:fusion_performance_comparison} shows the results of the Entropy, MSSIM and STD metrics for the \textit{Callisia}, \textit{Tradescantia} and \textit{Cthenante} datasets with each fusion approach.
 
 \begin{table}[ht]
     \centering
@@ -21,14 +21,21 @@ We compared our proposed method with well-known multi-focus image fusion approac
         \multirow{3}{*}{\textit{\small Tradescantia}}
         & \small Entropy & 8.4619 & 9.2162 & 9.2120 & 8.6751 & \textbf{9.3011}\\
         & \small SF & 0.0167 & 0.0249 & 0.0250 & 0.0219 & \textbf{0.0286}\\
-        & \small STD & 0.0809 & \textbf{0.0826} & 0.0825 & 0.0811 & 0.0816\\
+        & \small STD & 0.0809 & 0.0826 & 0.0825 & 0.0811 & \textbf{0.0816}\\
         
         \midrule
 
         \multirow{3}{*}{\textit{\small Cthenante}}
-        & \small Entropy & 6.7263 & 6.7577 & 3.6411 & \textbf{7.7962} & 4.3565\\
+        & \small Entropy & 6.7263 & 6.7577 & 3.6411 & 7.7962 & \textbf{4.3565}\\
         & \small SF & 0.0317 & 0.0473 & 0.0645 & 0.0482 & \textbf{0.0881}\\
         & \small STD & 0.0810 & 0.0760 & 0.0815 & 0.0827 & \textbf{0.1117}\\
+        
+        % \midrule
+
+        % \multirow{3}{*}{\textit{\small Mean}}
+        % & \small Entropy & 8.7270 & 9.1023 & 8.1861 & 9.3157 & \textbf{8.6160}\\
+        % & \small SF & 0.0245 & 0.0356 & 0.0445 & 0.0375 & \textbf{0.0667}\\
+        % & \small STD & 0.1195 & 0.1175 & 0.1196 & 0.1202 & \textbf{0.1306}\\
 
         \bottomrule
     \end{tabular}
@@ -36,4 +43,4 @@ We compared our proposed method with well-known multi-focus image fusion approac
     \fautor
 \end{table}
 
-The values in \autoref{tab:fusion_performance_comparison} show that the proposed method produces better results when compared to the well-known multi-focus image fusion methods in the bright-field microscopy z-stacks. Our image dataset differs from benchmarks such as the Lytro \cite{nejati2015multi}. As seen in \autoref{chapter:blur-characterization-and-image-formation}, the image formation is subject to anisotropic blur kernels due to the optical properties of the lenses in bright-field microscopy. In the benchmark images, it is possible to point out precisely the blurred and sharp regions, as there are usually two or three images of each scene. Our datasets, on the other hand, do not allow this. Thus, the fusion results for benchmark datasets reach optimal performance, and some of them even contain the reference image for a better comparison. Finally, the fusion rule should be robust to noise and should have a large variation with respect to the degree of blurring \cite{huang2007evaluation}. The Gaussian smoothing procedure provides robustness to noise in our algorithm. 
+Our image dataset differs from benchmarks such as the Lytro \cite{nejati2015multi}. As seen in \autoref{chapter:blur-characterization-and-image-formation}, the image formation is subject to anisotropic blur kernels due to the optical properties of the lenses in bright-field microscopy. In the benchmark images, it is possible to point out precisely the blurred and sharp regions, as there are usually two or three images of each scene. Our datasets, on the other hand, do not allow this. Thus, the fusion results for benchmark datasets reach optimal performance, and some of them even contain the reference image for a better comparison. Finally, the fusion rule should be robust to noise and should have a large variation with respect to the degree of blurring \cite{huang2007evaluation}. The Gaussian smoothing procedure provides robustness to noise in our algorithm. 
